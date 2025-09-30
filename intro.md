@@ -17,12 +17,22 @@ Before diving into this course, make sure you're equipped with the right foundat
 
 ## What You Should Know
 
-::::{grid} 1 1 2 2
-:class-container: prerequisites-grid
+:::
 
-:::{grid-item-card} Programming Fundamentals
-:class-header: prereq-card-header
-:class-body: prereq-card-body
+::::
+
+::::{grid} 1 1 1 3
+:class-container: text-center
+:gutter: 3
+
+:::{grid-item-card}
+:link: basics/organize
+:link-type: doc
+:class-header: bg-light
+
+Programming Fundamentals ✏️
+^^^
+
 
 - Variables, data types, and operators
 - Control flow (loops, conditionals)
@@ -31,20 +41,13 @@ Before diving into this course, make sure you're equipped with the right foundat
 
 :::
 
-:::{grid-item-card} Mathematics Background
-:class-header: prereq-card-header
-:class-body: prereq-card-body
+:::{grid-item-card}
+:link: content/myst
+:link-type: doc
+:class-header: bg-light
 
-- Basic algebra and linear equations
-- Understanding of functions and graphs
-- Elementary statistics concepts
-- Logical thinking and problem-solving
-
-:::
-
-:::{grid-item-card} Technical Setup
-:class-header: prereq-card-header
-:class-body: prereq-card-body
+Technical Setup ✨
+^^^
 
 - Computer with internet access
 - Python 3.8+ installed
@@ -53,16 +56,19 @@ Before diving into this course, make sure you're equipped with the right foundat
 
 :::
 
-:::{grid-item-card} Learning Mindset
-:class-header: prereq-card-header
-:class-body: prereq-card-body
+:::{grid-item-card}
+:link: content/executable/index
+:link-type: doc
+:class-header: bg-light
+
+Learning Mindset 🔁
+^^^
 
 - Curiosity and willingness to experiment
 - Patience with debugging and errors
 - ~5-8 hours per week commitment
 - Openness to collaborative learning
 
-:::
 
 ::::
 
@@ -76,11 +82,7 @@ If you're missing some prerequisites, don't worry! Here are some resources to he
 - **Math Review**: Khan Academy's Algebra and Statistics courses
 - **Setup Help**: Check our [Installation Guide](#) for step-by-step instructions
 
-
-:class: success prereq-success
-
-If you checked most of these boxes, you're ready to start! Don't worry if you're not 100% confident—you'll learn by doing, and we'll support you throughout the course.
-
+```
 
 ```{code-cell} ipython3
 :tags: ["remove-input"]
