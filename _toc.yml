@@ -14,4 +14,5 @@ parts:
     - file: stack_tracing
     - file: dynamic_execution
     - file: concurrency_and_parallelism
+    - file: generics
     - file: weakref

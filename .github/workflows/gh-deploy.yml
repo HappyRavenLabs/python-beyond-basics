@@ -1,0 +1,31 @@
+name: Deploy Jupyter Book
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'  
+
+      - name: Install dependencies
+        run: |
+          pip install -U pip
+          pip install -r requirements.txt
+          pip install ghp-import
+
+      - name: Build the book
+        run: jupyter-book build .
+
+      - name: Deploy to GitHub Pages
+        run: |
+          ghp-import -n -p -f _build/html

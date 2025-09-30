@@ -173,10 +173,212 @@
       font-size: 12px; /* Smaller font for better fit */
     }
 
+/* ========================================
+   Prerequisites Section Styles
+   ======================================== */
+
+/* Grid Container */
+.prerequisites-grid {
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+/* Card Styling */
+.prereq-card-header {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  font-weight: 600;
+  font-size: 1.1rem;
+  padding: 1rem 1.25rem;
+  border-radius: 8px 8px 0 0;
+  border-bottom: 3px solid #5a67d8;
+}
+
+.prereq-card-body {
+  padding: 1.5rem 1.25rem;
+  background: #f8f9fa;
+  border-radius: 0 0 8px 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Card Hover Effect */
+.sd-card:has(.prereq-card-header):hover .prereq-card-body {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+}
+
+/* List Items in Cards */
+.prereq-card-body ul {
+  margin: 0;
+  padding-left: 1.5rem;
+  list-style-type: none;
+}
+
+.prereq-card-body ul li {
+  margin-bottom: 0.75rem;
+  position: relative;
+  line-height: 1.6;
+  color: #2d3748;
+}
+
+.prereq-card-body ul li::before {
+  content: "✓";
+  position: absolute;
+  left: -1.5rem;
+  color: #667eea;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+/* Admonition Boxes */
+.prereq-tip {
+  border-left: 4px solid #48bb78;
+  background: #f0fff4;
+  padding: 1.25rem;
+  border-radius: 4px;
+  margin: 1.5rem 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.prereq-tip .admonition-title {
+  color: #2f855a;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  font-size: 1.05rem;
+}
+
+.prereq-tip p {
+  color: #2d3748;
+  margin-bottom: 0.5rem;
+}
+
+.prereq-success {
+  border-left: 4px solid #667eea;
+  background: #eef2ff;
+  padding: 1.25rem;
+  border-radius: 4px;
+  margin: 1.5rem 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.prereq-success .admonition-title {
+  color: #5a67d8;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  font-size: 1.05rem;
+}
+
+.prereq-success p {
+  color: #2d3748;
+}
+
+/* Self-Assessment Checklist */
+.self-assessment-checklist ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.self-assessment-checklist li {
+  margin-bottom: 0.75rem;
+  padding-left: 2rem;
+  position: relative;
+  line-height: 1.6;
+}
+
+/* Checkbox Styling */
+input[type="checkbox"] {
+  position: absolute;
+  left: 0;
+  top: 0.2rem;
+  width: 1.25rem;
+  height: 1.25rem;
+  cursor: pointer;
+  accent-color: #667eea;
+}
+
+/* Section Headers */
+#prerequisites + p,
+#what-you-should-know,
+#recommended-preparation,
+#self-assessment-checklist {
+  color: #1a202c;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+/* Intro Paragraph */
+#prerequisites + p {
+  font-size: 1.1rem;
+  color: #4a5568;
+  margin-bottom: 2rem;
+  line-height: 1.7;
+}
+
+/* Horizontal Rule */
+hr {
+  border: none;
+  border-top: 2px solid #e2e8f0;
+  margin: 2.5rem 0;
+}
+
+/* Footer Text */
+hr + p {
+  text-align: center;
+  color: #718096;
+  font-style: italic;
+  margin-top: 2rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .prerequisites-grid {
+    gap: 1rem;
+  }
+  
+  .prereq-card-header {
+    font-size: 1rem;
+    padding: 0.875rem 1rem;
+  }
+  
+  .prereq-card-body {
+    padding: 1.25rem 1rem;
+  }
+}
+
+/* Dark Mode Support (Optional) */
+@media (prefers-color-scheme: dark) {
+  .prereq-card-body {
+    background: #2d3748;
+    color: #e2e8f0;
+  }
+  
+  .prereq-card-body ul li {
+    color: #e2e8f0;
+  }
+  
+  .prereq-tip {
+    background: #1a3a2a;
+    border-left-color: #48bb78;
+  }
+  
+  .prereq-tip .admonition-title {
+    color: #68d391;
+  }
+  
+  .prereq-success {
+    background: #2d2d4a;
+    border-left-color: #667eea;
+  }
+  
+  .prereq-success .admonition-title {
+    color: #818cf8;
+  }
+}
 </style>
 
 
 
 <script type="text/javascript" async
   src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.0/es5/tex-mml-chtml.js">
-</script>
+</script>   

@@ -45,9 +45,16 @@ repository:
 # Add GitHub buttons to your book
 # See https://jupyterbook.org/customize/config.html#add-a-link-to-your-repository
 html:
-  favicon: ""
+  favicon: "figs/favicon.ico"
   use_multitoc_numbering: true
-  extra_footer: "Copyright © 2025 Jakub Walczak, PhD"
   home_page_in_navbar: true
   use_issues_button: true
   use_repository_button: true
+  extra_navbar: |
+    <div>
+    <a href="https://github.com/HappyRavenLabs/python-beyond-basics/issues/new?template=request-topic.md" 
+       target="_blank" 
+       class="btn btn-primary">
+       📘 Request Topic
+    </a>  
+    </div>
