@@ -1,0 +1,182 @@
+<style>
+    p {
+        /* font-family: 'Ubuntu'; */
+        /* font-size: 20px; */
+        line-height: 1.5;
+        padding: 10px;
+        /* text-align: justify; */
+        box-sizing: border-box;
+        overflow: hidden;
+    }
+
+
+    .text {
+        font-size: 20px;
+        line-height: 1.5; 
+        padding: 10px; 
+        text-align: justify;
+        box-sizing: border-box;  
+        overflow: hidden; 
+    }
+    
+    h1 {
+        font-size: 36px; /* Set font size for H1 */
+        color: #2c3e50; /* Set color for H1 */
+        margin: 20px 0; /* Margin around H1 */
+        text-align: center; /* Center align H1 */
+    }
+    
+    h2 {
+        font-size: 30px; /* Set font size for H2 */
+        color: #34495e; /* Set color for H2 */
+        margin: 15px 0; /* Margin around H2 */
+        text-align: left; /* Left align H2 */
+        border-bottom: 2px solid #bdc3c7; /* Optional: Underline for H2 */
+        padding-bottom: 5px; /* Padding below H2 */
+    }
+    
+    h3 {
+        font-size: 24px; /* Set font size for H3 */
+        color: #7f8c8d; /* Set color for H3 */
+        margin: 10px 0; /* Margin around H3 */
+        text-align: left; /* Left align H3 */
+    }
+
+    h4 {
+        font-size: 22px; /* Set font size for H3 */
+        color: #7f8ddd; /* Set color for H3 */
+        margin: 10px 0; /* Margin around H3 */
+        text-align: left; /* Left align H3 */
+    }
+
+    .text-content {
+        overflow: hidden; 
+        min-width: 300px
+    }
+    
+    .image-container {
+        justify-content: center;
+	    text-align: center;
+    }
+
+    .image-container img {
+        border-radius: 150px;
+        margin: 10px;
+        width: 200px; /* Adjust the width as needed */
+        height: auto; /* Maintains aspect ratio */
+        border: 10px solid black; /* Adds a black border */
+    }
+
+    .styled-list-container {
+        width: 100%;
+        max-width: 600px;
+        background: #ffffff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Specific Styles for the Styled List */
+    .styled-list {
+        counter-reset: list-counter;
+        padding: 0;
+        list-style-type: none;
+    }
+
+    .styled-list li {
+        position: relative;
+        padding: 12px 0 12px 50px;
+        margin: 8px 0;
+        background-color: #e9eff6;
+        border-radius: 5px;
+    }
+
+    .styled-list li:before {
+        counter-increment: list-counter;
+        content: counter(list-counter);
+        position: absolute;
+        left: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+        background: #4a90e2;
+        color: #ffffff;
+        font-weight: bold;
+        width: 24px;
+        height: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        font-size: 1rem;
+    }
+
+    /* Item text */
+    .styled-list li .item-text {
+        font-size: 1rem;
+        color: #333;
+    }
+
+    /* Hover effect */
+    .styled-list li:hover {
+        background-color: #dce7f2;
+        cursor: pointer;
+    }
+
+    .table-container {
+            max-width: 100%; /* Makes the table container responsive */
+            overflow-x: auto; /* Adds horizontal scrolling to the table if needed */
+            margin: 20px 0;
+        }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 16px;
+        min-width: 600px; /* Ensures table does not shrink too much */
+        table-layout: fixed;
+    }
+    table th, table td {
+        border: 1px solid #ddd;
+        text-align: left;
+        vertical-align: top;
+        padding: 10px;
+    }
+    table th {
+        background-color: #f4f4f4;
+    }
+    table tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+
+    .color-square {
+        width: 20px;
+        height: 20px;
+        display: inline-block;
+        border: 1px solid #000;
+    }
+    .code-cell {
+      width: 40%; /* Set strict width */
+    }
+
+    /* Second column for description */
+    .description-cell {
+      width: 60%; /* Allow remaining space to this column */
+    }
+
+    /* Style for the scrollable <pre> block */
+    .code-cell pre {
+      white-space: pre; /* Preserve code formatting */
+      overflow-x: scroll; /* Enable horizontal scrolling */
+      margin: 0; /* Remove extra margins */
+      max-width: 100%; /* Prevent overflow beyond cell width */
+      background-color: #f4f4f4; /* Light gray background */
+      font-family: monospace; /* Use a monospace font for code */
+      font-size: 12px; /* Smaller font for better fit */
+    }
+
+</style>
+
+
+
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.0/es5/tex-mml-chtml.js">
+</script>

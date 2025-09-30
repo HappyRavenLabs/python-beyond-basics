@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=61.0", "setuptools-scm>=8.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "python-beyond-basics"
+dynamic = ["version"]
+authors = [
+    {name = "Happy Raven Labs"},
+]
+
+description = "Beyond Basics: Mastering Advanced Python — a book to learn expert aspects of Python language "
+readme = "./README-pypi.md"
+license-files= ["./LICENSE"]
+
+keywords = [
+    "python",
+    "software engineering",
+    "book",
+    "teaching",
+    "mastering python"
+]
+
+requires-python = ">=3.13"
+dependencies = [
+    "numpy",
+    "jupyter-book",
+    "matplotlib",
+    "seaborn",
+    "rich",
+    "scipy",
+    "tqdm"
+]

@@ -1,0 +1,53 @@
+# Book settings
+# Learn more at https://jupyterbook.org/customize/config.html
+
+title: "Beyond Basics: Mastering Advanced Python — a book to learn expert aspects of Python language"
+author: Jakub Walczak, PhD
+logo: figs/logo_noname.svg
+copyright: "2025"
+language: "en"
+
+launch_buttons:
+  notebook_interface: "classic"
+  binderhub_url: ""
+  colab_url: "https://colab.research.google.com"
+
+sphinx:
+  html_context:
+    default_mode: light
+  config:
+    language: en
+    bibtex_reference_style: label
+    bibtex_bibfiles: 
+      - references.bib
+
+# Force re-execution of notebooks on each build.
+# See https://jupyterbook.org/content/execute.html
+execute:
+  timeout: 10000
+  execute_notebooks: cache
+
+# Define the name of the latex output file for PDF builds
+latex:
+  latex_documents:
+    targetname: book.tex
+
+# Add a bibtex file so that we can create citations
+bibtex_bibfiles:
+  - references.bib
+
+# Information about where the book exists on the web
+repository:
+  url: https://github.com/HappyRavenLabs/python-beyond-basics # Online location of your book
+#  path_to_book: docs  # Optional path to your book, relative to the repository root
+#  branch: master  # Which branch of the repository should be used when creating links (optional)
+
+# Add GitHub buttons to your book
+# See https://jupyterbook.org/customize/config.html#add-a-link-to-your-repository
+html:
+  favicon: ""
+  use_multitoc_numbering: true
+  extra_footer: "Copyright © 2025 Jakub Walczak, PhD"
+  home_page_in_navbar: true
+  use_issues_button: true
+  use_repository_button: true
