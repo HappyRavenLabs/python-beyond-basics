@@ -1,6 +1,5 @@
----
 name: "📘 Request a new topic"
-about: Suggest a new topic to be added to this book
+description: Suggest a new topic to be added to this book
 title: "[Topic Request]: "
 labels: "enhancement, topic-request"
 assignees: "jamesWalczak"
@@ -17,4 +16,3 @@ body:
       placeholder: Tell us what you want to learn more!
     validations:
       required: true
----
