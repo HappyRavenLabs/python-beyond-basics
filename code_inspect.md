@@ -10,4 +10,6 @@ kernelspec:
   name: python3
 ---
 
-# Stack Tracing
+# Code Inspection
+
+## Stack Tracing

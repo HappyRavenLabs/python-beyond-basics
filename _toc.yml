@@ -8,11 +8,11 @@ parts:
     - file: higher_order_functions
     - file: decorators
     - file: generators
-    - file: coroutines
     - file: metaclasses
     - file: descriptors
-    - file: stack_tracing
+    - file: code_inspect
     - file: dynamic_execution
+    - file: coroutines
     - file: concurrency_and_parallelism
     - file: generics
     - file: weakref
