@@ -1,8 +1,12 @@
 name: Deploy Jupyter Book
 
 on:
-  release:
-    types: [published]
+  push:
+    tags:
+      - 'v*' 
+
+permissions:
+  contents: write      
 
 jobs:
   build-deploy:
@@ -20,12 +24,14 @@ jobs:
       - name: Install dependencies
         run: |
           pip install -U pip
-          pip install -r requirements.txt
+          pip install .
           pip install ghp-import
 
       - name: Build the book
         run: jupyter-book build .
 
       - name: Deploy to GitHub Pages
-        run: |
-          ghp-import -n -p -f _build/html
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./_build/html
