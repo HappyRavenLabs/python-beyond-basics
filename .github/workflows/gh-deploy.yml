@@ -30,6 +30,13 @@ jobs:
       - name: Build the book
         run: jupyter-book build .
 
+      - name: Check build output
+        run: |
+          echo "Files in _build/html:"
+          ls -la _build/html/
+          echo "Looking for .bib files:"
+          find _build/html/ -name "*.bib"        
+
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:

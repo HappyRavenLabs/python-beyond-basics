@@ -47,7 +47,7 @@ def multiply(a: int, b: int) -> int:
 
 Now, if we import this module:
 
-```{code-cell} ipython3
+```python
 import my_math
 print(my_math.__name__)
 ```
@@ -140,4 +140,8 @@ Now compare the two cases:
 If you are already experienced in Python, you probably know that literally **all data** in the Python ecosystem are **objects** {cite}`python:datamodel`. This means that modules, functions, methods, and classes **are themselves objects**, not just instances of classes (that, by the way, are objects too).
 
 In this section, the "Of Objects" subsection covers the **core special attributes** that are fundamental to **all** Python objects. The previous subsections (Modules, Functions, Methods, Classes) describe **additional specialized attributes** specific to those object types. Therefore, objects of those types will have both the general object attributes listed here and their type-specific attributes described above.
+```
+
+## References
+```{bibliography}
 ```

@@ -6,6 +6,8 @@ author: Jakub Walczak, PhD
 logo: figs/logo_noname.svg
 copyright: "2025"
 language: "en"
+exclude_patterns:
+  - _build
 
 launch_buttons:
   notebook_interface: "classic"
@@ -17,7 +19,7 @@ sphinx:
     language: en
     bibtex_reference_style: author_year
     bibtex_bibfiles: 
-      - references.bib
+      - ./references.bib
     html_context:
       default_mode: light
       
