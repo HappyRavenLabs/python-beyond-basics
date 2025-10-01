@@ -412,6 +412,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#of-methods">Of Methods</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#of-classes">Of Classes</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#of-objects">Of Objects</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
 </ul>
             </nav>
         </div>
@@ -427,7 +428,7 @@ document.write(`
 <h1>Special Attributes<a class="headerlink" href="#special-attributes" title="Link to this heading">#</a></h1>
 <p>In Python, all data types have a set of special attributes, commonly referred to as <strong>dunder attributes</strong><a class="footnote-reference brackets" href="#dunder" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>.<br />
 These attributes provide developers with useful metadata about Python objects. They follow the naming pattern <code class="docutils literal notranslate"><span class="pre">__attribute__</span></code> — with two leading and two trailing underscores where <code class="docutils literal notranslate"><span class="pre">attribute</span></code> is the name of the given dunder attribute.</p>
-<p>Python’s built-in objects come with many such attributes. Some external libraries also define their own custom dunder attributes, but this practice is generally discouraged unless it is truly necessary and thoroughly documented <span id="id2">[]</span>.</p>
+<p>Python’s built-in objects come with many such attributes. Some external libraries also define their own custom dunder attributes, but this practice is generally discouraged unless it is truly necessary and thoroughly documented <span id="id2">[<a class="reference internal" href="#id9" title="Python Software Foundation. The python language reference: 2.4.3. reserved classes of identifiers. 2025. URL: https://docs.python.org/3/reference/lexical_analysis.html#reserved-classes-of-identifiers (visited on 2025-10-01).">Python Software Foundation, 2025</a>]</span>.</p>
 <p>In this section, we will explore the most important core dunder attributes across different types of Python objects.</p>
 <section id="of-modules">
 <h2>Of Modules<a class="headerlink" href="#of-modules" title="Link to this heading">#</a></h2>
@@ -437,9 +438,9 @@ These attributes provide developers with useful metadata about Python objects. T
 <div class="hint admonition">
 <p class="admonition-title">What is a Python module?</p>
 <p>Not sure what a Python module is? According to the official Python tutorial, a module is simply<br />
-“[…] <strong>a file</strong> containing Python definitions and statements” <span id="id3">[]</span>.</p>
+“[…] <strong>a file</strong> containing Python definitions and statements” <span id="id3">[<a class="reference internal" href="#id10" title="Python Software Foundation. The python tutorial: 6. modules. 2025. URL: https://docs.python.org/3/tutorial/modules.html (visited on 2025-10-01).">Python Software Foundation, 2025</a>]</span>.</p>
 </div>
-<p>By default, the module name corresponds to the filename without the <code class="docutils literal notranslate"><span class="pre">.py</span></code> suffix <span id="id4">[]</span>.</p>
+<p>By default, the module name corresponds to the filename without the <code class="docutils literal notranslate"><span class="pre">.py</span></code> suffix <span id="id4">[<a class="reference internal" href="#id10" title="Python Software Foundation. The python tutorial: 6. modules. 2025. URL: https://docs.python.org/3/tutorial/modules.html (visited on 2025-10-01).">Python Software Foundation, 2025</a>]</span>.</p>
 <p>For example, consider the file <code class="docutils literal notranslate"><span class="pre">my_math.py</span></code></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># file my_math.py</span>
 
@@ -448,30 +449,15 @@ These attributes provide developers with useful metadata about Python objects. T
 </pre></div>
 </div>
 <p>Now, if we import this module:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">my_math</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">my_math</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">my_math</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
 </pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">import</span><span class="w"> </span><span class="nn">my_math</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="nb">print</span><span class="p">(</span><span class="n">my_math</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;my_math&#39;
-</pre></div>
-</div>
-</div>
 </div>
 <p>The output will be:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>my_math
 </pre></div>
 </div>
-<p><strong>However</strong>, there is a special case: the <code class="docutils literal notranslate"><span class="pre">__mame__</span></code> attribute takes the value: <code class="docutils literal notranslate"><span class="pre">__main__</span></code> when a module is executed directly <span id="id5">[]</span></p>
+<p><strong>However</strong>, there is a special case: the <code class="docutils literal notranslate"><span class="pre">__mame__</span></code> attribute takes the value: <code class="docutils literal notranslate"><span class="pre">__main__</span></code> when a module is executed directly <span id="id5">[<a class="reference internal" href="#id11" title="Python Software Foundation. The python language reference: 3.3. special method names. 2025. URL: https://docs.python.org/3/reference/datamodel.html#specialnames (visited on 2025-10-01).">Python Software Foundation, 2025</a>]</span></p>
 <p>Let’s modify <code class="docutils literal notranslate"><span class="pre">my_math.py</span></code> to display the value of <code class="docutils literal notranslate"><span class="pre">__name__</span></code>:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># file my_math.py</span>
 <span class="nb">print</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
@@ -526,8 +512,32 @@ Let’s investigate with an example:</p>
 <h2>Of Objects<a class="headerlink" href="#of-objects" title="Link to this heading">#</a></h2>
 <div class="warning admonition">
 <p class="admonition-title">Everything is an Object in Python</p>
-<p>If you are already experienced in Python, you probably know that literally <strong>all data</strong> in the Python ecosystem are <strong>objects</strong> <span id="id6">[]</span>. This means that modules, functions, methods, and classes <strong>are themselves objects</strong>, not just instances of classes (that, by the way, are objects too).</p>
+<p>If you are already experienced in Python, you probably know that literally <strong>all data</strong> in the Python ecosystem are <strong>objects</strong> <span id="id6">[<a class="reference internal" href="#id8" title="Python Software Foundation. The python language reference: 3. data model. 2025. URL: https://docs.python.org/3/reference/datamodel.html (visited on 2025-10-01).">Python Software Foundation, 2025</a>]</span>. This means that modules, functions, methods, and classes <strong>are themselves objects</strong>, not just instances of classes (that, by the way, are objects too).</p>
 <p>In this section, the “Of Objects” subsection covers the <strong>core special attributes</strong> that are fundamental to <strong>all</strong> Python objects. The previous subsections (Modules, Functions, Methods, Classes) describe <strong>additional specialized attributes</strong> specific to those object types. Therefore, objects of those types will have both the general object attributes listed here and their type-specific attributes described above.</p>
+</div>
+</section>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
+<div class="docutils container" id="id7">
+<div role="list" class="citation-list">
+<div class="citation" id="id9" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">PythonSFoundation25a</a><span class="fn-bracket">]</span></span>
+<p>Python Software Foundation. The python language reference: 2.4.3. reserved classes of identifiers. 2025. URL: <a class="reference external" href="https://docs.python.org/3/reference/lexical_analysis.html#reserved-classes-of-identifiers">https://docs.python.org/3/reference/lexical_analysis.html#reserved-classes-of-identifiers</a> (visited on 2025-10-01).</p>
+</div>
+<div class="citation" id="id8" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id6">PythonSFoundation25b</a><span class="fn-bracket">]</span></span>
+<p>Python Software Foundation. The python language reference: 3. data model. 2025. URL: <a class="reference external" href="https://docs.python.org/3/reference/datamodel.html">https://docs.python.org/3/reference/datamodel.html</a> (visited on 2025-10-01).</p>
+</div>
+<div class="citation" id="id11" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id5">PythonSFoundation25c</a><span class="fn-bracket">]</span></span>
+<p>Python Software Foundation. The python language reference: 3.3. special method names. 2025. URL: <a class="reference external" href="https://docs.python.org/3/reference/datamodel.html#specialnames">https://docs.python.org/3/reference/datamodel.html#specialnames</a> (visited on 2025-10-01).</p>
+</div>
+<div class="citation" id="id10" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>PythonSFoundation25d<span class="fn-bracket">]</span></span>
+<span class="backrefs">(<a role="doc-backlink" href="#id3">1</a>,<a role="doc-backlink" href="#id4">2</a>)</span>
+<p>Python Software Foundation. The python tutorial: 6. modules. 2025. URL: <a class="reference external" href="https://docs.python.org/3/tutorial/modules.html">https://docs.python.org/3/tutorial/modules.html</a> (visited on 2025-10-01).</p>
+</div>
+</div>
 </div>
 <hr class="footnotes docutils" />
 <aside class="footnote-list brackets">
@@ -611,6 +621,7 @@ Let’s investigate with an example:</p>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#of-methods">Of Methods</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#of-classes">Of Classes</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#of-objects">Of Objects</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
 </ul>
   </nav></div>
 

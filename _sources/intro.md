@@ -116,7 +116,7 @@ Learning Mindset 🔁
 If you're missing some prerequisites, don't worry! Here are some resources to help you catch up:
 
 - **Python Basics**: [Python.org Tutorial](https://docs.python.org/3/tutorial/)
-- **Software Engineering Basics**: If you can ready in **polish**, my book about software engineering fundamentals in Python may be helpful:
+- **Software Engineering Basics**: If you can read in **polish**, my book about software engineering fundamentals in Python may be helpful:
 > Walczak, J. (2023). Elementy inżynierii oprogramowania w Pythonie. Helion.
 - **Python Bootcamps**: Many online platforms offer intensive Python bootcamps for beginners
 - **Python Online Courses**: There is a variety of free online resources that will help you get acquainted with Python
