@@ -1,0 +1,1190 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" data-theme="light">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Preface &#8212; Beyond Basics: Mastering Advanced Python — a book to learn expert aspects of Python language</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'intro';</script>
+    <link rel="icon" href="_static/favicon.ico"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Special Attributes" href="special_attributes.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="light">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="#">
+  
+  
+  
+  
+  
+    
+    
+    
+    <img src="_static/logo_noname.svg" class="logo__image only-light" alt="Beyond Basics: Mastering Advanced Python — a book to learn expert aspects of Python language - Home"/>
+    <script>document.write(`<img src="_static/logo_noname.svg" class="logo__image only-dark" alt="Beyond Basics: Mastering Advanced Python — a book to learn expert aspects of Python language - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1 current active">
+                <a class="reference internal" href="#">
+                    Preface
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Beyond Basics: Mastering Advanced Python — a book to learn expert aspects of Python language</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="special_attributes.html">Special Attributes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="context_managers.html">Context Managers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="higher_order_functions.html">Higher-order Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="decorators.html">Decorators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generators.html">Generators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="metaclasses.html">Metaclasses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="descriptors.html">Descriptors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="code_inspect.html">Code Inspection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dynamic_execution.html">Dynamic Code Execution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="coroutines.html">Coroutines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="concurrency_and_parallelism.html">Concurrency and Parallelism</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generics.html">Generics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="weakref.html">Weak References</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/HappyRavenLabs/python-beyond-basics/blob/master/intro.md" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+<a href="https://github.com/HappyRavenLabs/python-beyond-basics/issues/new?title=Issue%20on%20page%20%2Fintro.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button"
+   title="Open an issue"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/intro.ipynb" target="_blank"
+   class="btn btn-sm btn-download-notebook-button dropdown-item"
+   title="Download notebook file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-code"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="_sources/intro.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Preface</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#about-the-author">About the Author</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites">Prerequisites</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recommended-preparation">Recommended Preparation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-is-this-book-organized">How Is This Book Organized?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-will-you-learn-from-this-book">What Will You Learn from This Book?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#requesting-topics-reporting-errors">Requesting Topics &amp; Reporting Errors</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="preface">
+<h1>Preface<a class="headerlink" href="#preface" title="Link to this heading">#</a></h1>
+<figure class="align-center">
+<a class="reference internal image-reference" href="_images/logo.svg"><img alt="Beyond the Basics: Mastering Advanced Python" src="_images/logo.svg" style="width: 512.0px; height: 512.0px;" />
+</a>
+</figure>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<p>Welcome to <strong>“Beyond the Basics: Mastering Advanced Python,”</strong> your guide to unlocking the expert-level capabilities of the Python language. This book is designed to take you on a journey through sophisticated concepts and techniques valuable not only in software engineering but across any domain where high-level Python proficiency is a critical asset. 🐍</p>
+<p>Whether your work is in data science, academic research, or cloud infrastructure, the skills you acquire here will empower you to write more efficient, robust, and elegant code.</p>
+<div class="note admonition">
+<p class="admonition-title">Who is this book for?</p>
+<p>This book is intended for those who are already comfortable with programming in general, but also with Python’s fundamentals and object oriented programming. If you have a solid grasp of variables, control flow, functions, classes, and objects, you are ready to dive in!</p>
+</div>
+</section>
+<section id="about-the-author">
+<h2>About the Author<a class="headerlink" href="#about-the-author" title="Link to this heading">#</a></h2>
+<figure class="align-right">
+<a class="reference internal image-reference" href="_images/jwalczak.png"><img alt="_images/jwalczak.png" src="_images/jwalczak.png" style="width: 244.4px; height: 244.4px;" />
+</a>
+</figure>
+<p>My name is <strong>Jakub Walczak</strong>, and I am an academic and artificial intelligence researcher.</p>
+<p>My journey in education began in 2019 when I started my doctorate, which I completed in 2022 after graduating from Lodz University of Technology. Since then, I have had the pleasure of teaching students Python fundamentals and delivering advanced courses on machine learning and data science.</p>
+<p>Parallel to my academic career, I have been active in the industry since 2016. This practical experience has been invaluable and includes roles such as:</p>
+<ul class="simple">
+<li><p><strong>Software Developer</strong> at Comarch in Poland</p></li>
+<li><p><strong>Scientific Software Developer</strong> at the CMCC Foundation in Italy</p></li>
+<li><p><strong>Cloud System Developer</strong> for AI Operations at OpenNebula Systems</p></li>
+</ul>
+<p>This blend of academic theory and real-world application has shaped my approach to teaching and is the foundation upon which this book is built.</p>
+<div class="tip admonition">
+<p class="admonition-title">A Note from the Author</p>
+<p>My goal is to help you move beyond basic Python knowledge and gain real control over your code. This book focuses on practical techniques, clever tricks, and deep insights that will transform how you approach development. These are the concepts that separate developers who <em>use</em> Python from those who truly <em>master</em> it. I hope this journey empowers you to write more elegant, efficient, and controlled code. Happy coding!</p>
+</div>
+</section>
+<section id="prerequisites">
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this heading">#</a></h2>
+<p>As this is a course to master Python, I need to make some assumptions about the knowledge you possess. Before diving in, make sure you’re equipped with the right foundation. Here’s what you’ll need to get the most out of your learning journey. Below, you can find what you should know before starting reading this book.</p>
+<div class="sd-container-fluid sd-sphinx-override sd-mb-4 text-center docutils">
+<div class="sd-row sd-row-cols-1 sd-row-cols-xs-1 sd-row-cols-sm-1 sd-row-cols-md-1 sd-row-cols-lg-3 sd-g-3 sd-g-xs-3 sd-g-sm-3 sd-g-md-3 sd-g-lg-3 docutils">
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
+<div class="sd-card-header bg-light docutils">
+<p class="sd-card-text">Programming Fundamentals ✏️</p>
+</div>
+<div class="sd-card-body docutils">
+<ul class="simple">
+<li><p class="sd-card-text">Variables, data types, and operators</p></li>
+<li><p class="sd-card-text">Control flow (loops, conditionals)</p></li>
+<li><p class="sd-card-text">Functions and basic algorithms</p></li>
+<li><p class="sd-card-text">Familiarity with Python syntax</p></li>
+<li><p class="sd-card-text">OOP<a class="footnote-reference brackets" href="#oop" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> experience</p></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
+<div class="sd-card-header bg-light docutils">
+<p class="sd-card-text">Technical Setup ✨</p>
+</div>
+<div class="sd-card-body docutils">
+<ul class="simple">
+<li><p class="sd-card-text">Computer with internet access</p></li>
+<li><p class="sd-card-text">Python installed<a class="footnote-reference brackets" href="#pythonv" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a></p></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
+<div class="sd-card-header bg-light docutils">
+<p class="sd-card-text">Learning Mindset 🔁</p>
+</div>
+<div class="sd-card-body docutils">
+<ul class="simple">
+<li><p class="sd-card-text">Curiosity and willingness to experiment</p></li>
+<li><p class="sd-card-text">Patience with debugging and errors</p></li>
+<li><p class="sd-card-text">A few hours per week for practice</p></li>
+<li><p class="sd-card-text">Openness to collaborative learning</p></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="recommended-preparation">
+<h2>Recommended Preparation<a class="headerlink" href="#recommended-preparation" title="Link to this heading">#</a></h2>
+<div class="tip prereq-tip admonition">
+<p class="admonition-title">Not quite ready?</p>
+<p>If you’re missing some prerequisites, don’t worry! Here are some resources to help you catch up:</p>
+<ul class="simple">
+<li><p><strong>Python Basics</strong>: <a class="reference external" href="https://docs.python.org/3/tutorial/">Python.org Tutorial</a></p></li>
+<li><p><strong>Software Engineering Basics</strong>: If you can ready in <strong>polish</strong>, my book about software engineering fundamentals in Python may be helpful:</p></li>
+</ul>
+<blockquote>
+<div><p>Walczak, J. (2023). Elementy inżynierii oprogramowania w Pythonie. Helion.</p>
+</div></blockquote>
+<ul class="simple">
+<li><p><strong>Python Bootcamps</strong>: Many online platforms offer intensive Python bootcamps for beginners</p></li>
+<li><p><strong>Python Online Courses</strong>: There is a variety of free online resources that will help you get acquainted with Python</p></li>
+</ul>
+</div>
+</section>
+<section id="how-is-this-book-organized">
+<h2>How Is This Book Organized?<a class="headerlink" href="#how-is-this-book-organized" title="Link to this heading">#</a></h2>
+<p>At the very beginning of each chapter, I will list specific prerequisites you should satisfy to fully understand the content. Then, I will go through the theory, enriching it with examples. At the end of each chapter, I will include exercises for you to practice and experiment with.</p>
+</section>
+<section id="what-will-you-learn-from-this-book">
+<h2>What Will You Learn from This Book?<a class="headerlink" href="#what-will-you-learn-from-this-book" title="Link to this heading">#</a></h2>
+<div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
+<div class="sd-row sd-row-cols-1 sd-row-cols-xs-1 sd-row-cols-sm-1 sd-row-cols-md-2 sd-row-cols-lg-2 sd-g-3 sd-g-xs-3 sd-g-sm-3 sd-g-md-3 sd-g-lg-3 docutils">
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+<a class="reference internal" href="special_attributes.html"><span class="std std-doc">Special Attributes</span></a> 🏷️</div>
+<p class="sd-card-text">Those famous <code class="docutils literal notranslate"><span class="pre">__dunder__</span></code> attributes for modules, classes, methods, and other Python objects</p>
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+<a class="reference internal" href="generators.html"><span class="std std-doc">Generators</span></a> ⚡️</div>
+<p class="sd-card-text">Generating content and <code class="docutils literal notranslate"><span class="pre">yield</span></code> keyword</p>
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+<a class="reference internal" href="context_managers.html"><span class="std std-doc">Context Managers</span></a> 🔒</div>
+<p class="sd-card-text">Usage of <code class="docutils literal notranslate"><span class="pre">with</span></code> keyword and their potential applications and limits</p>
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+<a class="reference internal" href="higher_order_functions.html"><span class="std std-doc">Higher-Order Functions</span></a> 🔄</div>
+<p class="sd-card-text">Functions that take or return a function</p>
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+<a class="reference internal" href="decorators.html"><span class="std std-doc">Decorators</span></a> 🎨</div>
+<p class="sd-card-text">Syntactic sugar, preceded by closures</p>
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+<a class="reference internal" href="metaclasses.html"><span class="std std-doc">Metaclasses</span></a> 🏗️</div>
+<p class="sd-card-text">A vital element in dynamic programming</p>
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+<a class="reference internal" href="descriptors.html"><span class="std std-doc">Descriptors</span></a> 📋</div>
+<p class="sd-card-text">Including the popular <code class="docutils literal notranslate"><span class="pre">&#64;property</span></code></p>
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+<a class="reference internal" href="code_inspect.html"><span class="std std-doc">Code Inspection</span></a> 🔍</div>
+<p class="sd-card-text">Stack tracing, callable signature management, and more</p>
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+<a class="reference internal" href="dynamic_execution.html"><span class="std std-doc">Dynamic Code Execution</span></a> ⚡</div>
+<p class="sd-card-text">And its pros and cons</p>
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+<a class="reference internal" href="generics.html"><span class="std std-doc">Generic Collections</span></a> 📦</div>
+<p class="sd-card-text">Type-safe collection handling</p>
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+<a class="reference internal" href="weakref.html"><span class="std std-doc">Weak References</span></a> 🔗</div>
+<p class="sd-card-text">For caching and other purposes</p>
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+<a class="reference internal" href="coroutines.html"><span class="std std-doc">Coroutines</span></a> ⏭️</div>
+<p class="sd-card-text">And their applications</p>
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+<a class="reference internal" href="concurrency_and_parallelism.html"><span class="std std-doc">Concurrent &amp; Parallel Execution</span></a> 🚀</div>
+<p class="sd-card-text">Mastering multi-threaded and multi-process programming</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="requesting-topics-reporting-errors">
+<h2>Requesting Topics &amp; Reporting Errors<a class="headerlink" href="#requesting-topics-reporting-errors" title="Link to this heading">#</a></h2>
+<p>If you come across an error or would like to suggest a new topic, simply click the 💡 icon in the top menu bar.<br />
+From there, select proper issue template:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/HappyRavenLabs/python-beyond-basics/issues/new?template=request-topic.yml"><code class="docutils literal notranslate"><span class="pre">[Topic</span> <span class="pre">Request]</span></code></a> – if you want to propose a new topic</p></li>
+<li><p><a class="reference external" href="https://github.com/HappyRavenLabs/python-beyond-basics/issues/new?template=report-error.yml"><code class="docutils literal notranslate"><span class="pre">[Report</span> <span class="pre">Error]</span></code></a> – if you’ve found a mistake</p></li>
+</ul>
+<p>This helps keep everything organized and ensures we can address your request quickly.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="output text_html"><style>
+    p {
+        /* font-family: 'Ubuntu'; */
+        /* font-size: 20px; */
+        line-height: 1.5;
+        padding: 10px;
+        /* text-align: justify; */
+        box-sizing: border-box;
+        overflow: hidden;
+    }
+
+
+    .text {
+        font-size: 20px;
+        line-height: 1.5; 
+        padding: 10px; 
+        text-align: justify;
+        box-sizing: border-box;  
+        overflow: hidden; 
+    }
+    
+    h1 {
+        font-size: 36px; /* Set font size for H1 */
+        color: #2c3e50; /* Set color for H1 */
+        margin: 20px 0; /* Margin around H1 */
+        text-align: center; /* Center align H1 */
+    }
+    
+    h2 {
+        font-size: 30px; /* Set font size for H2 */
+        color: #34495e; /* Set color for H2 */
+        margin: 15px 0; /* Margin around H2 */
+        text-align: left; /* Left align H2 */
+        border-bottom: 2px solid #bdc3c7; /* Optional: Underline for H2 */
+        padding-bottom: 5px; /* Padding below H2 */
+    }
+    
+    h3 {
+        font-size: 24px; /* Set font size for H3 */
+        color: #7f8c8d; /* Set color for H3 */
+        margin: 10px 0; /* Margin around H3 */
+        text-align: left; /* Left align H3 */
+    }
+
+    h4 {
+        font-size: 22px; /* Set font size for H3 */
+        color: #7f8ddd; /* Set color for H3 */
+        margin: 10px 0; /* Margin around H3 */
+        text-align: left; /* Left align H3 */
+    }
+
+    .text-content {
+        overflow: hidden; 
+        min-width: 300px
+    }
+    
+    .image-container {
+        justify-content: center;
+	    text-align: center;
+    }
+
+    .image-container img {
+        border-radius: 150px;
+        margin: 10px;
+        width: 200px; /* Adjust the width as needed */
+        height: auto; /* Maintains aspect ratio */
+        border: 10px solid black; /* Adds a black border */
+    }
+
+    .styled-list-container {
+        width: 100%;
+        max-width: 600px;
+        background: #ffffff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Specific Styles for the Styled List */
+    .styled-list {
+        counter-reset: list-counter;
+        padding: 0;
+        list-style-type: none;
+    }
+
+    .styled-list li {
+        position: relative;
+        padding: 12px 0 12px 50px;
+        margin: 8px 0;
+        background-color: #e9eff6;
+        border-radius: 5px;
+    }
+
+    .styled-list li:before {
+        counter-increment: list-counter;
+        content: counter(list-counter);
+        position: absolute;
+        left: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+        background: #4a90e2;
+        color: #ffffff;
+        font-weight: bold;
+        width: 24px;
+        height: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        font-size: 1rem;
+    }
+
+    /* Item text */
+    .styled-list li .item-text {
+        font-size: 1rem;
+        color: #333;
+    }
+
+    /* Hover effect */
+    .styled-list li:hover {
+        background-color: #dce7f2;
+        cursor: pointer;
+    }
+
+    .table-container {
+            max-width: 100%; /* Makes the table container responsive */
+            overflow-x: auto; /* Adds horizontal scrolling to the table if needed */
+            margin: 20px 0;
+        }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 16px;
+        min-width: 600px; /* Ensures table does not shrink too much */
+        table-layout: fixed;
+    }
+    table th, table td {
+        border: 1px solid #ddd;
+        text-align: left;
+        vertical-align: top;
+        padding: 10px;
+    }
+    table th {
+        background-color: #f4f4f4;
+    }
+    table tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+
+    .color-square {
+        width: 20px;
+        height: 20px;
+        display: inline-block;
+        border: 1px solid #000;
+    }
+    .code-cell {
+      width: 40%; /* Set strict width */
+    }
+
+    /* Second column for description */
+    .description-cell {
+      width: 60%; /* Allow remaining space to this column */
+    }
+
+    /* Style for the scrollable <pre> block */
+    .code-cell pre {
+      white-space: pre; /* Preserve code formatting */
+      overflow-x: scroll; /* Enable horizontal scrolling */
+      margin: 0; /* Remove extra margins */
+      max-width: 100%; /* Prevent overflow beyond cell width */
+      background-color: #f4f4f4; /* Light gray background */
+      font-family: monospace; /* Use a monospace font for code */
+      font-size: 12px; /* Smaller font for better fit */
+    }
+
+/* ========================================
+   Prerequisites Section Styles
+   ======================================== */
+
+/* Grid Container */
+.prerequisites-grid {
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+/* Card Styling */
+.prereq-card-header {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  font-weight: 600;
+  font-size: 1.1rem;
+  padding: 1rem 1.25rem;
+  border-radius: 8px 8px 0 0;
+  border-bottom: 3px solid #5a67d8;
+}
+
+.prereq-card-body {
+  padding: 1.5rem 1.25rem;
+  background: #f8f9fa;
+  border-radius: 0 0 8px 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Card Hover Effect */
+.sd-card:has(.prereq-card-header):hover .prereq-card-body {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+}
+
+/* List Items in Cards */
+.prereq-card-body ul {
+  margin: 0;
+  padding-left: 1.5rem;
+  list-style-type: none;
+}
+
+.prereq-card-body ul li {
+  margin-bottom: 0.75rem;
+  position: relative;
+  line-height: 1.6;
+  color: #2d3748;
+}
+
+.prereq-card-body ul li::before {
+  content: "✓";
+  position: absolute;
+  left: -1.5rem;
+  color: #667eea;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+/* Admonition Boxes */
+.prereq-tip {
+  border-left: 4px solid #48bb78;
+  background: #f0fff4;
+  padding: 1.25rem;
+  border-radius: 4px;
+  margin: 1.5rem 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.prereq-tip .admonition-title {
+  color: #2f855a;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  font-size: 1.05rem;
+}
+
+.prereq-tip p {
+  color: #2d3748;
+  margin-bottom: 0.5rem;
+}
+
+.prereq-success {
+  border-left: 4px solid #667eea;
+  background: #eef2ff;
+  padding: 1.25rem;
+  border-radius: 4px;
+  margin: 1.5rem 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.prereq-success .admonition-title {
+  color: #5a67d8;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  font-size: 1.05rem;
+}
+
+.prereq-success p {
+  color: #2d3748;
+}
+
+/* Self-Assessment Checklist */
+.self-assessment-checklist ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.self-assessment-checklist li {
+  margin-bottom: 0.75rem;
+  padding-left: 2rem;
+  position: relative;
+  line-height: 1.6;
+}
+
+/* Checkbox Styling */
+input[type="checkbox"] {
+  position: absolute;
+  left: 0;
+  top: 0.2rem;
+  width: 1.25rem;
+  height: 1.25rem;
+  cursor: pointer;
+  accent-color: #667eea;
+}
+
+/* Section Headers */
+#prerequisites + p,
+#what-you-should-know,
+#recommended-preparation,
+#self-assessment-checklist {
+  color: #1a202c;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+/* Intro Paragraph */
+#prerequisites + p {
+  font-size: 1.1rem;
+  color: #4a5568;
+  margin-bottom: 2rem;
+  line-height: 1.7;
+}
+
+/* Horizontal Rule */
+hr {
+  border: none;
+  border-top: 2px solid #e2e8f0;
+  margin: 2.5rem 0;
+}
+
+/* Footer Text */
+hr + p {
+  text-align: center;
+  color: #718096;
+  font-style: italic;
+  margin-top: 2rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .prerequisites-grid {
+    gap: 1rem;
+  }
+  
+  .prereq-card-header {
+    font-size: 1rem;
+    padding: 0.875rem 1rem;
+  }
+  
+  .prereq-card-body {
+    padding: 1.25rem 1rem;
+  }
+}
+
+/* Dark Mode Support (Optional) */
+@media (prefers-color-scheme: dark) {
+  .prereq-card-body {
+    background: #2d3748;
+    color: #e2e8f0;
+  }
+  
+  .prereq-card-body ul li {
+    color: #e2e8f0;
+  }
+  
+  .prereq-tip {
+    background: #1a3a2a;
+    border-left-color: #48bb78;
+  }
+  
+  .prereq-tip .admonition-title {
+    color: #68d391;
+  }
+  
+  .prereq-success {
+    background: #2d2d4a;
+    border-left-color: #667eea;
+  }
+  
+  .prereq-success .admonition-title {
+    color: #818cf8;
+  }
+}
+</style>
+
+
+
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.0/es5/tex-mml-chtml.js">
+</script>   </div></div>
+</div>
+<hr class="footnotes docutils" />
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="oop" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>If you don’t know what <em>OOP</em> is, this book is not for you yet.</p>
+</aside>
+<aside class="footnote brackets" id="pythonv" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">2</a><span class="fn-bracket">]</span></span>
+<p>I will use the most recent version (as of the time of writing) Python 3.13. However, most of the knowledge here will be valid also for previous versions, otehrwise I will notify you explicitly.</p>
+</aside>
+</aside>
+</section>
+<div class="toctree-wrapper compound">
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="right-next"
+       href="special_attributes.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Special Attributes</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#about-the-author">About the Author</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites">Prerequisites</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recommended-preparation">Recommended Preparation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-is-this-book-organized">How Is This Book Organized?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-will-you-learn-from-this-book">What Will You Learn from This Book?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#requesting-topics-reporting-errors">Requesting Topics &amp; Reporting Errors</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Jakub Walczak, PhD
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
