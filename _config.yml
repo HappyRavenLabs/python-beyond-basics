@@ -13,13 +13,14 @@ launch_buttons:
   colab_url: "https://colab.research.google.com"
 
 sphinx:
-  html_context:
-    default_mode: light
   config:
     language: en
-    bibtex_reference_style: label
+    bibtex_reference_style: author_year
     bibtex_bibfiles: 
       - references.bib
+    html_context:
+      default_mode: light
+      
 
 # Force re-execution of notebooks on each build.
 # See https://jupyterbook.org/content/execute.html
@@ -39,22 +40,11 @@ bibtex_bibfiles:
 # Information about where the book exists on the web
 repository:
   url: https://github.com/HappyRavenLabs/python-beyond-basics # Online location of your book
-#  path_to_book: docs  # Optional path to your book, relative to the repository root
-#  branch: master  # Which branch of the repository should be used when creating links (optional)
 
 # Add GitHub buttons to your book
-# See https://jupyterbook.org/customize/config.html#add-a-link-to-your-repository
 html:
   favicon: "figs/favicon.ico"
   use_multitoc_numbering: true
   home_page_in_navbar: true
   use_issues_button: true
-  use_repository_button: true
-  extra_navbar: |
-    <div>
-    <a href="https://github.com/HappyRavenLabs/python-beyond-basics/issues/new?template=request-topic.md" 
-       target="_blank" 
-       class="btn btn-primary">
-       📘 Request Topic
-    </a>  
-    </div>
+  use_repository_button: false

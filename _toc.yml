@@ -1,5 +1,7 @@
 format: jb-book
 root: intro
+options:
+  numbered: true
 parts:
   - caption: "Beyond Basics: Mastering Advanced Python — a book to learn expert aspects of Python language"
     chapters:

@@ -11,6 +11,14 @@ kernelspec:
 ---
 # Preface
 
+```{figure} ./figs/logo.svg
+---
+scale: 50%
+align: center
+alt: "Beyond the Basics: Mastering Advanced Python"
+---
+```
+
 ## Introduction
 
 Welcome to **"Beyond the Basics: Mastering Advanced Python,"** your guide to unlocking the expert-level capabilities of the Python language. This book is designed to take you on a journey through sophisticated concepts and techniques valuable not only in software engineering but across any domain where high-level Python proficiency is a critical asset. 🐍
@@ -24,18 +32,18 @@ This book is intended for those who are already comfortable with programming in 
 
 ## About the Author
 
-```{figure} ./figs/logo_noname.png
+```{figure} ./figs/jwalczak.png
 ---
-scale: 50%
+scale: 20%
 align: right
 ---
 ```
-My name is Jakub Walczak, and I am an academic and artificial intelligence researcher.
+My name is **Jakub Walczak**, and I am an academic and artificial intelligence researcher.
 
 My journey in education began in 2019 when I started my doctorate, which I completed in 2022 after graduating from Lodz University of Technology. Since then, I have had the pleasure of teaching students Python fundamentals and delivering advanced courses on machine learning and data science.
 
 Parallel to my academic career, I have been active in the industry since 2016. This practical experience has been invaluable and includes roles such as:
-* **Software Developer** at Comarch
+* **Software Developer** at Comarch in Poland
 * **Scientific Software Developer** at the CMCC Foundation in Italy
 * **Cloud System Developer** for AI Operations at OpenNebula Systems
 
@@ -56,7 +64,6 @@ As this is a course to master Python, I need to make some assumptions about the 
 :gutter: 3
 
 :::{grid-item-card}
-:link: basics/organize
 :link-type: doc
 :class-header: bg-light
 
@@ -72,7 +79,6 @@ Programming Fundamentals ✏️
 :::
 
 :::{grid-item-card}
-:link: content/myst
 :link-type: doc
 :class-header: bg-light
 
@@ -85,7 +91,6 @@ Technical Setup ✨
 :::
 
 :::{grid-item-card}
-:link: content/executable/index
 :link-type: doc
 :class-header: bg-light
 
@@ -102,7 +107,7 @@ Learning Mindset 🔁
 ::::
 
 [^oop]: If you don't know what *OOP* is, this book is not for you yet.
-[^pythonv]: I will use the most recent version (as of the time of writing) Python 3.13. However, you can use any version from 3.10 onwards. I will point out important differences where relevant.
+[^pythonv]: I will use the most recent version (as of the time of writing) Python 3.13. However, most of the knowledge here will be valid also for previous versions, otehrwise I will notify you explicitly. 
 
 ## Recommended Preparation
 ```{admonition} Not quite ready?
@@ -126,79 +131,95 @@ At the very beginning of each chapter, I will list specific prerequisites you sh
 ::::{grid} 1 1 2 2
 :gutter: 3
 
-:::{grid-item-card} Special Attributes 🏷️
+:::{grid-item-card} [Special Attributes](special_attributes.md) 🏷️
 :class-header: bg-light
 
 Those famous `__dunder__` attributes for modules, classes, methods, and other Python objects
 :::
 
-:::{grid-item-card} Context Managers 🔒
+:::{grid-item-card} [Generators](generators.md) ⚡️
+:class-header: bg-light
+Generating content and `yield` keyword
+:::
+
+:::{grid-item-card} [Context Managers](context_managers.md) 🔒
 :class-header: bg-light
 
 Usage of `with` keyword and their potential applications and limits
 :::
 
-:::{grid-item-card} Higher-Order Functions 🔄
+:::{grid-item-card} [Higher-Order Functions](higher_order_functions.md) 🔄
 :class-header: bg-light
 
 Functions that take or return a function
 :::
 
-:::{grid-item-card} Decorators 🎨
+:::{grid-item-card} [Decorators](decorators.md) 🎨
 :class-header: bg-light
 
 Syntactic sugar, preceded by closures
 :::
 
-:::{grid-item-card} Metaclasses 🏗️
+:::{grid-item-card} [Metaclasses](metaclasses.md) 🏗️
 :class-header: bg-light
 
 A vital element in dynamic programming
 :::
 
-:::{grid-item-card} Descriptors 📋
+:::{grid-item-card} [Descriptors](descriptors.md) 📋
 :class-header: bg-light
 
 Including the popular `@property`
 :::
 
-:::{grid-item-card} Code Inspection 🔍
+:::{grid-item-card} [Code Inspection](code_inspect.md) 🔍
 :class-header: bg-light
 
 Stack tracing, callable signature management, and more
 :::
 
-:::{grid-item-card} Dynamic Code Execution ⚡
+:::{grid-item-card} [Dynamic Code Execution](dynamic_execution.md) ⚡
 :class-header: bg-light
 
 And its pros and cons
 :::
 
-:::{grid-item-card} Generic Collections 📦
+:::{grid-item-card} [Generic Collections](generics.md) 📦
 :class-header: bg-light
 
 Type-safe collection handling
 :::
 
-:::{grid-item-card} Weak References 🔗
+:::{grid-item-card} [Weak References](weakref.md) 🔗
 :class-header: bg-light
 
 For caching and other purposes
 :::
 
-:::{grid-item-card} Coroutines ⏭️
+:::{grid-item-card} [Coroutines](coroutines.md) ⏭️
 :class-header: bg-light
 
 And their applications
 :::
 
-:::{grid-item-card} Concurrent & Parallel Execution 🚀
+:::{grid-item-card} [Concurrent & Parallel Execution](concurrency_and_parallelism.md) 🚀
 :class-header: bg-light
 
 Mastering multi-threaded and multi-process programming
 :::
 
 ::::
+
+
+## Requesting Topics & Reporting Errors
+
+If you come across an error or would like to suggest a new topic, simply click the 💡 icon in the top menu bar.  
+From there, select proper issue template:
+
+- [`[Topic Request]`](https://github.com/HappyRavenLabs/python-beyond-basics/issues/new?template=request-topic.yml) – if you want to propose a new topic  
+- [`[Report Error]`](https://github.com/HappyRavenLabs/python-beyond-basics/issues/new?template=report-error.yml) – if you’ve found a mistake  
+
+This helps keep everything organized and ensures we can address your request quickly.
 
 
 ```{code-cell} ipython3
