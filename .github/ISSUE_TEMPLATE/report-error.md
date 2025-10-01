@@ -4,10 +4,49 @@ about: Found an error? Report it
 title: "[Report Error]: "
 labels: "bug, report-error"
 assignees: "jamesWalczak"
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to fill out this bug report!
+  - type: input
+    id: contact
+    attributes:
+      label: Contact Details
+      description: How can we get in touch with you if we need more info?
+      placeholder: ex. email@example.com
+    validations:
+      required: false
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What is wrong?
+      description: Also tell us, what is wrong?
+      placeholder: What's wrong!
+      value: "The chapter X is deprecated!"
+    validations:
+      required: true
+  - type: dropdown
+    id: chapter
+    attributes:
+      label: Chapter
+      description: Where the error was found?
+      options:
+        - Special Attributes
+        - Context Managers
+        - Higehr Order Functions
+        - Decorators
+        - Generators
+        - Metaclasses
+        - Descriptors
+        - Code Inspect
+        - Dynamic Code Execution
+        - Coroutines
+        - Concurrency & Parallelism
+        - Generics
+        - Weak references
+      default: 0
+    validations:
+      required: true
 ---
-## What?: 
-...
-## Where?: 
-...
-## Why?:
-...
+
