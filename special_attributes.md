@@ -59,9 +59,19 @@ my_math
 ```
 
 
-**However**, there is a special case: the `__mame__` attribute takes the value: `__main__` when a module is executed directly {cite}`python:datamodel_specialnames`
+**However**, there is a special case: the `__mame__` attribute takes the value: `__main__` when a module is executed directly {cite}`python:datamodel_specialnames`.
+This covers a few cases {ref}`python-ref-import-mainspec`:
 
-Let's modify `my_math.py` to display the value of `__name__`:
+#### 1. Running from interactive shell (Python REPL, IPython),
+
+```{code-cell} ipython3
+print( __name__)
+```
+
+
+#### 2. Running from source file:
+
+Let's modify `my_math.py` to display the value `__main__`.
 
 ```python
 # file my_math.py
@@ -80,9 +90,9 @@ python3 my_math.py
 The output will be:
 
 ```
-__name__
+__main__
 ```
-
+#### 3. Running directly code text
 The same happens when you execute code passed as a string:
 
 ```bash
@@ -91,8 +101,21 @@ python -c "print(__name__)"
 
 Output:
 ```
-__name__
+__main__
 ```
+
+#### 4. Running code passed from standard input:
+
+```bash
+echo "print(__name__)" | python
+```
+
+Output:
+
+```
+__main__
+```
+
 
 ````{admonition} Did you know?
 :class: hint
@@ -122,17 +145,140 @@ Now compare the two cases:
 - importing it inside a Python shell (or any module) with `import my_math` will print nothing
 ````
 
+### `__spec__`
+
+The `__spec__` attribute is an instance of [`ModuleSpec`](https://docs.python.org/3/library/importlib.html#importlib.machinery.ModuleSpec).  
+It contains the specification for the module and is central to the import system.  
+Some of its most relevant attributes are listed below ({numref}`module-spec`):
+
+```{list-table} Some of the main attributes of the <a href="https://docs.python.org/3/library/importlib.html#importlib.machinery.ModuleSpec"><code>ModuleSpec</code></a>
+:name: module-spec
+
+* - **Attribute**
+  - **Meaning**
+* - `name` 
+  - The module's fully qualified name.
+* - `origin`
+  - Path to the file (`.py`) where the module is defined.  
+    May be `None` (e.g., for namespace packages; see  {cite}`pep-0420`.
+* - `loader`
+  - The [`Loader`](https://docs.python.org/3/library/importlib.html#importlib.abc.Loader) implementation 
+* - `cached`
+  - The path of the compiled module's code (can be `None`)
+```
+
+
+````{admonition} Did you know?
+:class: attention
+
+For code executed directly (see [`__name__`](#__name__)), `__spec__` is usually `None` {ref}`python-ref-import-mainspec`.  
+There are two main exceptions:
+
+1. **When running as a module using the `-m` option**:
+
+   ```bash
+   python -m my_module
+   ```
+
+2. **When executing a directory or a zip file containing a `__main__.py` file**:
+
+   Example project structure:
+
+   ```text
+   my_project/
+   ├── __main__.py
+   └── utils.py
+   ```
+
+   Contents of `__main__.py`:
+
+   ```python
+   import sys
+
+   print(f"Running {__name__=}")
+   print(f"{__spec__=}")
+   ```
+
+   Running the directory as a script:
+
+   ```bash
+   python my_project
+   ```
+
+   Output (simplified):
+
+   ```
+   Running __name__='__main__'
+   __spec__=ModuleSpec(name='__main__', loader=..., origin='my_project/__main__.py')
+   ```
+
+````
+
+
+### `__package___`
+
+
+### `__loader__`
+
+
+### `__path__`
+
+
+### `__doc__`
+
+
+### `__annotations__`
+
+
+### `__dict__`
+
 
 
 ## Of Functions
 
 
+### `__globals__`
+
+### `__closure__`
+
+
+### `__doc__`
+
+### `__name__`
+
+### `__qualname__`
+
+
+
+
+### `__defaults__`
+
+### `__code__`
+
+### `__dict__`
+
+### `__annotations__`
+
+### `__kwdefaults__`
+
+### `__type_params__`
+
+
 ## Of Methods
+
+### `__self__`
+
+### `__func__`
+
+
 
 
 ## Of Classes
 
 ## Of Objects
+
+### `__module__`
+
 
 ```{admonition} Everything is an Object in Python
 :class: warning
