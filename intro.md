@@ -30,6 +30,12 @@ Whether your work is in data science, academic research, or cloud infrastructure
 This book is intended for those who are already comfortable with programming in general, but also with Python's fundamentals and object oriented programming. If you have a solid grasp of variables, control flow, functions, classes, and objects, you are ready to dive in!
 ````
 
+
+````{admonition} Important
+:class: important
+If you find this book useful, please give a star 🌟🌟🌟 to [the book's repo](https://github.com/HappyRavenLabs/python-beyond-basics). 
+````
+
 ## About the Author
 
 ```{figure} ./figs/jwalczak.png
@@ -222,12 +228,5 @@ From there, select proper issue template:
 This helps keep everything organized and ensures we can address your request quickly.
 
 
-```{code-cell} ipython3
-:tags: ["remove-input"]
-import styles
-print()
-
-styles.apply_style()
-```
 
 
