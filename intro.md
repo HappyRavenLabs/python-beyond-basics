@@ -9,7 +9,7 @@ kernelspec:
   language: python
   name: python3
 ---
-# Preface
+# Introduction
 
 ```{figure} ./figs/logo.svg
 ---
@@ -129,7 +129,7 @@ If you're missing some prerequisites, don't worry! Here are some resources to he
 ```
 
 ## How Is This Book Organized?
-At the very beginning of each chapter, I will list specific prerequisites you should satisfy to fully understand the content. Then, I will go through the theory, enriching it with examples. At the end of each chapter, I will include exercises for you to practice and experiment with.
+At the very beginning of each chapter, I will list specific prerequisites you should satisfy to fully understand the content. Then, I will go through the theory, enriching it with examples. 
 
 
 ## What Will You Learn from This Book?
