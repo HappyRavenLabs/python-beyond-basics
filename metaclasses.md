@@ -12,10 +12,7 @@ kernelspec:
 
 # Metaclasses
 
-```{code-cell} ipython3
-:tags: ["remove-input"]
-import styles
-print()
-
-styles.apply_style()
-```
+````{admonition} Thsis chapter is not ready yet?
+:class: important
+Writing a book takes time and for that chapter I did not have enough of it. Please, return later.
+````
