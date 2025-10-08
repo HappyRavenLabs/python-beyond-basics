@@ -62,7 +62,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Context Managers" href="context_managers.html" />
-    <link rel="prev" title="Preface" href="intro.html" />
+    <link rel="prev" title="Introduction" href="intro.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -174,7 +174,7 @@
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="intro.html">
-                    Preface
+                    Introduction
                 </a>
             </li>
         </ul>
@@ -189,10 +189,10 @@
 <li class="toctree-l1"><a class="reference internal" href="descriptors.html">Descriptors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="code_inspect.html">Code Inspection</a></li>
 <li class="toctree-l1"><a class="reference internal" href="dynamic_execution.html">Dynamic Code Execution</a></li>
-<li class="toctree-l1"><a class="reference internal" href="coroutines.html">Coroutines</a></li>
-<li class="toctree-l1"><a class="reference internal" href="concurrency_and_parallelism.html">Concurrency and Parallelism</a></li>
 <li class="toctree-l1"><a class="reference internal" href="generics.html">Generics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="weakref.html">Weak References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="coroutines.html">Coroutines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="concurrency_and_parallelism.html">Concurrency and Parallelism</a></li>
 </ul>
 
     </div>
@@ -405,13 +405,46 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#of-modules">Of Modules</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#name"><code class="docutils literal notranslate"><span class="pre">__name__</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#name"><code class="docutils literal notranslate"><span class="pre">__name__</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#running-from-interactive-shell-python-repl-ipython">1. Running from interactive shell (Python REPL, IPython),</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#running-from-source-file">2. Running from source file:</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#running-directly-code-text">3. Running directly code text</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#running-code-passed-from-standard-input">4. Running code passed from standard input:</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#of-functions">Of Functions</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#of-methods">Of Methods</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spec"><code class="docutils literal notranslate"><span class="pre">__spec__</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#package"><code class="docutils literal notranslate"><span class="pre">__package___</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#loader"><code class="docutils literal notranslate"><span class="pre">__loader__</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#path"><code class="docutils literal notranslate"><span class="pre">__path__</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#doc"><code class="docutils literal notranslate"><span class="pre">__doc__</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#annotations"><code class="docutils literal notranslate"><span class="pre">__annotations__</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dict"><code class="docutils literal notranslate"><span class="pre">__dict__</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#of-functions">Of Functions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#globals"><code class="docutils literal notranslate"><span class="pre">__globals__</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#closure"><code class="docutils literal notranslate"><span class="pre">__closure__</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7"><code class="docutils literal notranslate"><span class="pre">__doc__</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8"><code class="docutils literal notranslate"><span class="pre">__name__</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#qualname"><code class="docutils literal notranslate"><span class="pre">__qualname__</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#defaults"><code class="docutils literal notranslate"><span class="pre">__defaults__</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#code"><code class="docutils literal notranslate"><span class="pre">__code__</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9"><code class="docutils literal notranslate"><span class="pre">__dict__</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10"><code class="docutils literal notranslate"><span class="pre">__annotations__</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kwdefaults"><code class="docutils literal notranslate"><span class="pre">__kwdefaults__</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#type-params"><code class="docutils literal notranslate"><span class="pre">__type_params__</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#of-methods">Of Methods</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#self"><code class="docutils literal notranslate"><span class="pre">__self__</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#func"><code class="docutils literal notranslate"><span class="pre">__func__</span></code></a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#of-classes">Of Classes</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#of-objects">Of Objects</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#of-objects">Of Objects</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#module"><code class="docutils literal notranslate"><span class="pre">__module__</span></code></a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
 </ul>
             </nav>
@@ -428,7 +461,7 @@ document.write(`
 <h1>Special Attributes<a class="headerlink" href="#special-attributes" title="Link to this heading">#</a></h1>
 <p>In Python, all data types have a set of special attributes, commonly referred to as <strong>dunder attributes</strong><a class="footnote-reference brackets" href="#dunder" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>.<br />
 These attributes provide developers with useful metadata about Python objects. They follow the naming pattern <code class="docutils literal notranslate"><span class="pre">__attribute__</span></code> — with two leading and two trailing underscores where <code class="docutils literal notranslate"><span class="pre">attribute</span></code> is the name of the given dunder attribute.</p>
-<p>Python’s built-in objects come with many such attributes. Some external libraries also define their own custom dunder attributes, but this practice is generally discouraged unless it is truly necessary and thoroughly documented <span id="id2">[<a class="reference internal" href="#id9" title="Python Software Foundation. The python language reference: 2.4.3. reserved classes of identifiers. 2025. URL: https://docs.python.org/3/reference/lexical_analysis.html#reserved-classes-of-identifiers (visited on 2025-10-01).">Python Software Foundation, 2025</a>]</span>.</p>
+<p>Python’s built-in objects come with many such attributes. Some external libraries also define their own custom dunder attributes, but this practice is generally discouraged unless it is truly necessary and thoroughly documented <span id="id2">[<a class="reference internal" href="#id14" title="Python Software Foundation. The python language reference: 2.4.3. reserved classes of identifiers. 2025. URL: https://docs.python.org/3/reference/lexical_analysis.html#reserved-classes-of-identifiers (visited on 2025-10-01).">Python Software Foundation, 2025</a>]</span>.</p>
 <p>In this section, we will explore the most important core dunder attributes across different types of Python objects.</p>
 <section id="of-modules">
 <h2>Of Modules<a class="headerlink" href="#of-modules" title="Link to this heading">#</a></h2>
@@ -438,9 +471,9 @@ These attributes provide developers with useful metadata about Python objects. T
 <div class="hint admonition">
 <p class="admonition-title">What is a Python module?</p>
 <p>Not sure what a Python module is? According to the official Python tutorial, a module is simply<br />
-“[…] <strong>a file</strong> containing Python definitions and statements” <span id="id3">[<a class="reference internal" href="#id10" title="Python Software Foundation. The python tutorial: 6. modules. 2025. URL: https://docs.python.org/3/tutorial/modules.html (visited on 2025-10-01).">Python Software Foundation, 2025</a>]</span>.</p>
+“[…] <strong>a file</strong> containing Python definitions and statements” <span id="id3">[<a class="reference internal" href="#id15" title="Python Software Foundation. The python tutorial: 6. modules. 2025. URL: https://docs.python.org/3/tutorial/modules.html (visited on 2025-10-01).">Python Software Foundation, 2025</a>]</span>.</p>
 </div>
-<p>By default, the module name corresponds to the filename without the <code class="docutils literal notranslate"><span class="pre">.py</span></code> suffix <span id="id4">[<a class="reference internal" href="#id10" title="Python Software Foundation. The python tutorial: 6. modules. 2025. URL: https://docs.python.org/3/tutorial/modules.html (visited on 2025-10-01).">Python Software Foundation, 2025</a>]</span>.</p>
+<p>By default, the module name corresponds to the filename without the <code class="docutils literal notranslate"><span class="pre">.py</span></code> suffix <span id="id4">[<a class="reference internal" href="#id15" title="Python Software Foundation. The python tutorial: 6. modules. 2025. URL: https://docs.python.org/3/tutorial/modules.html (visited on 2025-10-01).">Python Software Foundation, 2025</a>]</span>.</p>
 <p>For example, consider the file <code class="docutils literal notranslate"><span class="pre">my_math.py</span></code></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># file my_math.py</span>
 
@@ -457,8 +490,26 @@ These attributes provide developers with useful metadata about Python objects. T
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>my_math
 </pre></div>
 </div>
-<p><strong>However</strong>, there is a special case: the <code class="docutils literal notranslate"><span class="pre">__mame__</span></code> attribute takes the value: <code class="docutils literal notranslate"><span class="pre">__main__</span></code> when a module is executed directly <span id="id5">[<a class="reference internal" href="#id11" title="Python Software Foundation. The python language reference: 3.3. special method names. 2025. URL: https://docs.python.org/3/reference/datamodel.html#specialnames (visited on 2025-10-01).">Python Software Foundation, 2025</a>]</span></p>
-<p>Let’s modify <code class="docutils literal notranslate"><span class="pre">my_math.py</span></code> to display the value of <code class="docutils literal notranslate"><span class="pre">__name__</span></code>:</p>
+<p><strong>However</strong>, there is a special case: the <code class="docutils literal notranslate"><span class="pre">__mame__</span></code> attribute takes the value: <code class="docutils literal notranslate"><span class="pre">__main__</span></code> when a module is executed directly <span id="id5">[<a class="reference internal" href="#id16" title="Python Software Foundation. The python language reference: 3.3. special method names. 2025. URL: https://docs.python.org/3/reference/datamodel.html#specialnames (visited on 2025-10-01).">Python Software Foundation, 2025</a>]</span>.
+This covers a few cases <span class="xref std std-ref">python-ref-import-mainspec</span>:</p>
+<section id="running-from-interactive-shell-python-repl-ipython">
+<h4>1. Running from interactive shell (Python REPL, IPython),<a class="headerlink" href="#running-from-interactive-shell-python-repl-ipython" title="Link to this heading">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span> <span class="vm">__name__</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>__main__
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="running-from-source-file">
+<h4>2. Running from source file:<a class="headerlink" href="#running-from-source-file" title="Link to this heading">#</a></h4>
+<p>Let’s modify <code class="docutils literal notranslate"><span class="pre">my_math.py</span></code> to display the value <code class="docutils literal notranslate"><span class="pre">__main__</span></code>.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># file my_math.py</span>
 <span class="nb">print</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
 
@@ -471,15 +522,28 @@ These attributes provide developers with useful metadata about Python objects. T
 </pre></div>
 </div>
 <p>The output will be:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="vm">__name__</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">__main__</span>
 </pre></div>
 </div>
+</section>
+<section id="running-directly-code-text">
+<h4>3. Running directly code text<a class="headerlink" href="#running-directly-code-text" title="Link to this heading">#</a></h4>
 <p>The same happens when you execute code passed as a string:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;print(__name__)&quot;</span>
 </pre></div>
 </div>
 <p>Output:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="vm">__name__</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">__main__</span>
+</pre></div>
+</div>
+</section>
+<section id="running-code-passed-from-standard-input">
+<h4>4. Running code passed from standard input:<a class="headerlink" href="#running-code-passed-from-standard-input" title="Link to this heading">#</a></h4>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;print(__name__)&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>python
+</pre></div>
+</div>
+<p>Output:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">__main__</span>
 </pre></div>
 </div>
 <div class="hint admonition">
@@ -499,43 +563,192 @@ Let’s investigate with an example:</p>
 </div>
 </section>
 </section>
+<section id="spec">
+<h3><code class="docutils literal notranslate"><span class="pre">__spec__</span></code><a class="headerlink" href="#spec" title="Link to this heading">#</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">__spec__</span></code> attribute is an instance of <a class="reference external" href="https://docs.python.org/3/library/importlib.html#importlib.machinery.ModuleSpec"><code class="docutils literal notranslate"><span class="pre">ModuleSpec</span></code></a>.<br />
+It contains the specification for the module and is central to the import system.<br />
+Some of its most relevant attributes are listed below (<a class="reference internal" href="#module-spec"><span class="std std-numref">Table 1</span></a>):</p>
+<div class="pst-scrollable-table-container"><table class="table" id="module-spec">
+<caption><span class="caption-number">Table 1 </span><span class="caption-text">Some of the main attributes of the <a href="https://docs.python.org/3/library/importlib.html#importlib.machinery.ModuleSpec"><code>ModuleSpec</code></a></span><a class="headerlink" href="#module-spec" title="Link to this table">#</a></caption>
+<tbody>
+<tr class="row-odd"><td><p><strong>Attribute</strong></p></td>
+<td><p><strong>Meaning</strong></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">name</span></code></p></td>
+<td><p>The module’s fully qualified name.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">origin</span></code></p></td>
+<td><p>Path to the file (<code class="docutils literal notranslate"><span class="pre">.py</span></code>) where the module is defined.<br />
+May be <code class="docutils literal notranslate"><span class="pre">None</span></code> (e.g., for namespace packages; see  <span id="id6">[<a class="reference internal" href="#id19" title="Eric V. Smith. PEP 420 – implicit namespace packages. Python Enhancement Proposal 420, Python Software Foundation, May 2012. URL: https://peps.python.org/pep-0420/ (visited on 2025-10-03).">Smith, 2012</a>]</span>.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">loader</span></code></p></td>
+<td><p>The <a class="reference external" href="https://docs.python.org/3/library/importlib.html#importlib.abc.Loader"><code class="docutils literal notranslate"><span class="pre">Loader</span></code></a> implementation</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">cached</span></code></p></td>
+<td><p>The path of the compiled module’s code (can be <code class="docutils literal notranslate"><span class="pre">None</span></code>)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="attention admonition">
+<p class="admonition-title">Did you know?</p>
+<p>For code executed directly (see <a class="reference internal" href="#__name__"><span class="xref myst"><code class="docutils literal notranslate"><span class="pre">__name__</span></code></span></a>), <code class="docutils literal notranslate"><span class="pre">__spec__</span></code> is usually <code class="docutils literal notranslate"><span class="pre">None</span></code> <span class="xref std std-ref">python-ref-import-mainspec</span>.<br />
+There are two main exceptions:</p>
+<ol class="arabic">
+<li><p><strong>When running as a module using the <code class="docutils literal notranslate"><span class="pre">-m</span></code> option</strong>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>-m<span class="w"> </span>my_module
+</pre></div>
+</div>
+</li>
+<li><p><strong>When executing a directory or a zip file containing a <code class="docutils literal notranslate"><span class="pre">__main__.py</span></code> file</strong>:</p>
+<p>Example project structure:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>my_project/
+├── __main__.py
+└── utils.py
+</pre></div>
+</div>
+<p>Contents of <code class="docutils literal notranslate"><span class="pre">__main__.py</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Running </span><span class="si">{</span><span class="vm">__name__</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">__spec__</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Running the directory as a script:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>my_project
+</pre></div>
+</div>
+<p>Output (simplified):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Running</span> <span class="vm">__name__</span><span class="o">=</span><span class="s1">&#39;__main__&#39;</span>
+<span class="n">__spec__</span><span class="o">=</span><span class="n">ModuleSpec</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;__main__&#39;</span><span class="p">,</span> <span class="n">loader</span><span class="o">=...</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s1">&#39;my_project/__main__.py&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</div>
+</section>
+<section id="package">
+<h3><code class="docutils literal notranslate"><span class="pre">__package___</span></code><a class="headerlink" href="#package" title="Link to this heading">#</a></h3>
+</section>
+<section id="loader">
+<h3><code class="docutils literal notranslate"><span class="pre">__loader__</span></code><a class="headerlink" href="#loader" title="Link to this heading">#</a></h3>
+</section>
+<section id="path">
+<h3><code class="docutils literal notranslate"><span class="pre">__path__</span></code><a class="headerlink" href="#path" title="Link to this heading">#</a></h3>
+</section>
+<section id="doc">
+<h3><code class="docutils literal notranslate"><span class="pre">__doc__</span></code><a class="headerlink" href="#doc" title="Link to this heading">#</a></h3>
+</section>
+<section id="annotations">
+<h3><code class="docutils literal notranslate"><span class="pre">__annotations__</span></code><a class="headerlink" href="#annotations" title="Link to this heading">#</a></h3>
+</section>
+<section id="dict">
+<h3><code class="docutils literal notranslate"><span class="pre">__dict__</span></code><a class="headerlink" href="#dict" title="Link to this heading">#</a></h3>
+</section>
+</section>
 <section id="of-functions">
 <h2>Of Functions<a class="headerlink" href="#of-functions" title="Link to this heading">#</a></h2>
+<section id="globals">
+<h3><code class="docutils literal notranslate"><span class="pre">__globals__</span></code><a class="headerlink" href="#globals" title="Link to this heading">#</a></h3>
+</section>
+<section id="closure">
+<h3><code class="docutils literal notranslate"><span class="pre">__closure__</span></code><a class="headerlink" href="#closure" title="Link to this heading">#</a></h3>
+</section>
+<section id="id7">
+<h3><code class="docutils literal notranslate"><span class="pre">__doc__</span></code><a class="headerlink" href="#id7" title="Link to this heading">#</a></h3>
+</section>
+<section id="id8">
+<h3><code class="docutils literal notranslate"><span class="pre">__name__</span></code><a class="headerlink" href="#id8" title="Link to this heading">#</a></h3>
+</section>
+<section id="qualname">
+<h3><code class="docutils literal notranslate"><span class="pre">__qualname__</span></code><a class="headerlink" href="#qualname" title="Link to this heading">#</a></h3>
+</section>
+<section id="defaults">
+<h3><code class="docutils literal notranslate"><span class="pre">__defaults__</span></code><a class="headerlink" href="#defaults" title="Link to this heading">#</a></h3>
+</section>
+<section id="code">
+<h3><code class="docutils literal notranslate"><span class="pre">__code__</span></code><a class="headerlink" href="#code" title="Link to this heading">#</a></h3>
+</section>
+<section id="id9">
+<h3><code class="docutils literal notranslate"><span class="pre">__dict__</span></code><a class="headerlink" href="#id9" title="Link to this heading">#</a></h3>
+</section>
+<section id="id10">
+<h3><code class="docutils literal notranslate"><span class="pre">__annotations__</span></code><a class="headerlink" href="#id10" title="Link to this heading">#</a></h3>
+</section>
+<section id="kwdefaults">
+<h3><code class="docutils literal notranslate"><span class="pre">__kwdefaults__</span></code><a class="headerlink" href="#kwdefaults" title="Link to this heading">#</a></h3>
+</section>
+<section id="type-params">
+<h3><code class="docutils literal notranslate"><span class="pre">__type_params__</span></code><a class="headerlink" href="#type-params" title="Link to this heading">#</a></h3>
+</section>
 </section>
 <section id="of-methods">
 <h2>Of Methods<a class="headerlink" href="#of-methods" title="Link to this heading">#</a></h2>
+<section id="self">
+<h3><code class="docutils literal notranslate"><span class="pre">__self__</span></code><a class="headerlink" href="#self" title="Link to this heading">#</a></h3>
+</section>
+<section id="func">
+<h3><code class="docutils literal notranslate"><span class="pre">__func__</span></code><a class="headerlink" href="#func" title="Link to this heading">#</a></h3>
+</section>
 </section>
 <section id="of-classes">
 <h2>Of Classes<a class="headerlink" href="#of-classes" title="Link to this heading">#</a></h2>
 </section>
 <section id="of-objects">
 <h2>Of Objects<a class="headerlink" href="#of-objects" title="Link to this heading">#</a></h2>
+<section id="module">
+<h3><code class="docutils literal notranslate"><span class="pre">__module__</span></code><a class="headerlink" href="#module" title="Link to this heading">#</a></h3>
 <div class="warning admonition">
 <p class="admonition-title">Everything is an Object in Python</p>
-<p>If you are already experienced in Python, you probably know that literally <strong>all data</strong> in the Python ecosystem are <strong>objects</strong> <span id="id6">[<a class="reference internal" href="#id8" title="Python Software Foundation. The python language reference: 3. data model. 2025. URL: https://docs.python.org/3/reference/datamodel.html (visited on 2025-10-01).">Python Software Foundation, 2025</a>]</span>. This means that modules, functions, methods, and classes <strong>are themselves objects</strong>, not just instances of classes (that, by the way, are objects too).</p>
+<p>If you are already experienced in Python, you probably know that literally <strong>all data</strong> in the Python ecosystem are <strong>objects</strong> <span id="id11">[<a class="reference internal" href="#id13" title="Python Software Foundation. The python language reference: 3. data model. 2025. URL: https://docs.python.org/3/reference/datamodel.html (visited on 2025-10-01).">Python Software Foundation, 2025</a>]</span>. This means that modules, functions, methods, and classes <strong>are themselves objects</strong>, not just instances of classes (that, by the way, are objects too).</p>
 <p>In this section, the “Of Objects” subsection covers the <strong>core special attributes</strong> that are fundamental to <strong>all</strong> Python objects. The previous subsections (Modules, Functions, Methods, Classes) describe <strong>additional specialized attributes</strong> specific to those object types. Therefore, objects of those types will have both the general object attributes listed here and their type-specific attributes described above.</p>
 </div>
 </section>
+</section>
 <section id="references">
 <h2>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
-<div class="docutils container" id="id7">
+<div class="docutils container" id="id12">
 <div role="list" class="citation-list">
-<div class="citation" id="id9" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">PythonSFoundation25a</a><span class="fn-bracket">]</span></span>
+<div class="citation" id="id19" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id6">Smi12</a><span class="fn-bracket">]</span></span>
+<p>Eric V. Smith. PEP 420 – implicit namespace packages. Python Enhancement Proposal 420, Python Software Foundation, May 2012. URL: <a class="reference external" href="https://peps.python.org/pep-0420/">https://peps.python.org/pep-0420/</a> (visited on 2025-10-03).</p>
+</div>
+<div class="citation" id="id24" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>PythonSFoundation25a<span class="fn-bracket">]</span></span>
+<p>Python Software Foundation. Built-in types — truth value testing. <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#truth-value-testing">https://docs.python.org/3/library/stdtypes.html#truth-value-testing</a>, October 2025. <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#truth-value-testing">https://docs.python.org/3/library/stdtypes.html#truth-value-testing</a>.</p>
+</div>
+<div class="citation" id="id25" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>PythonSFoundation25b<span class="fn-bracket">]</span></span>
+<p>Python Software Foundation. Data model — asynchronous context managers. <a class="reference external" href="https://docs.python.org/3/reference/datamodel.html#asynchronous-context-managers">https://docs.python.org/3/reference/datamodel.html#asynchronous-context-managers</a>, October 2025. <a class="reference external" href="https://docs.python.org/3/reference/datamodel.html#asynchronous-context-managers">https://docs.python.org/3/reference/datamodel.html#asynchronous-context-managers</a>.</p>
+</div>
+<div class="citation" id="id22" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>PythonSFoundation25c<span class="fn-bracket">]</span></span>
+<p>Python Software Foundation. Glossary — python 3 documentation: generator. <a class="reference external" href="https://docs.python.org/3/glossary.html#term-generator">https://docs.python.org/3/glossary.html#term-generator</a>, 2025. Accessed: 2025-10-07.</p>
+</div>
+<div class="citation" id="id14" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">PythonSFoundation25d</a><span class="fn-bracket">]</span></span>
 <p>Python Software Foundation. The python language reference: 2.4.3. reserved classes of identifiers. 2025. URL: <a class="reference external" href="https://docs.python.org/3/reference/lexical_analysis.html#reserved-classes-of-identifiers">https://docs.python.org/3/reference/lexical_analysis.html#reserved-classes-of-identifiers</a> (visited on 2025-10-01).</p>
 </div>
-<div class="citation" id="id8" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id6">PythonSFoundation25b</a><span class="fn-bracket">]</span></span>
+<div class="citation" id="id13" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id11">PythonSFoundation25e</a><span class="fn-bracket">]</span></span>
 <p>Python Software Foundation. The python language reference: 3. data model. 2025. URL: <a class="reference external" href="https://docs.python.org/3/reference/datamodel.html">https://docs.python.org/3/reference/datamodel.html</a> (visited on 2025-10-01).</p>
 </div>
-<div class="citation" id="id11" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id5">PythonSFoundation25c</a><span class="fn-bracket">]</span></span>
+<div class="citation" id="id16" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id5">PythonSFoundation25f</a><span class="fn-bracket">]</span></span>
 <p>Python Software Foundation. The python language reference: 3.3. special method names. 2025. URL: <a class="reference external" href="https://docs.python.org/3/reference/datamodel.html#specialnames">https://docs.python.org/3/reference/datamodel.html#specialnames</a> (visited on 2025-10-01).</p>
 </div>
-<div class="citation" id="id10" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span>PythonSFoundation25d<span class="fn-bracket">]</span></span>
+<div class="citation" id="id21" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>PythonSFoundation25g<span class="fn-bracket">]</span></span>
+<p>Python Software Foundation. The python language reference: 8. compound statements — the with statement. 2025. URL: <a class="reference external" href="https://docs.python.org/3/reference/compound_stmts.html#the-with-statement">https://docs.python.org/3/reference/compound_stmts.html#the-with-statement</a> (visited on 2025-10-07).</p>
+</div>
+<div class="citation" id="id15" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>PythonSFoundation25h<span class="fn-bracket">]</span></span>
 <span class="backrefs">(<a role="doc-backlink" href="#id3">1</a>,<a role="doc-backlink" href="#id4">2</a>)</span>
 <p>Python Software Foundation. The python tutorial: 6. modules. 2025. URL: <a class="reference external" href="https://docs.python.org/3/tutorial/modules.html">https://docs.python.org/3/tutorial/modules.html</a> (visited on 2025-10-01).</p>
+</div>
+<div class="citation" id="id23" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>PythonSFoundation25i<span class="fn-bracket">]</span></span>
+<p>Python Software Foundation. Contextlib — utilities for with-statement contexts: contextlib.contextmanager. 2025. URL: <a class="reference external" href="https://docs.python.org/3/library/contextlib.html#contextlib.contextmanager">https://docs.python.org/3/library/contextlib.html#contextlib.contextmanager</a> (visited on 2025-10-07).</p>
 </div>
 </div>
 </div>
@@ -585,7 +798,7 @@ Let’s investigate with an example:</p>
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Preface</p>
+        <p class="prev-next-title">Introduction</p>
       </div>
     </a>
     <a class="right-next"
@@ -614,13 +827,46 @@ Let’s investigate with an example:</p>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#of-modules">Of Modules</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#name"><code class="docutils literal notranslate"><span class="pre">__name__</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#name"><code class="docutils literal notranslate"><span class="pre">__name__</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#running-from-interactive-shell-python-repl-ipython">1. Running from interactive shell (Python REPL, IPython),</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#running-from-source-file">2. Running from source file:</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#running-directly-code-text">3. Running directly code text</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#running-code-passed-from-standard-input">4. Running code passed from standard input:</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#of-functions">Of Functions</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#of-methods">Of Methods</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spec"><code class="docutils literal notranslate"><span class="pre">__spec__</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#package"><code class="docutils literal notranslate"><span class="pre">__package___</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#loader"><code class="docutils literal notranslate"><span class="pre">__loader__</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#path"><code class="docutils literal notranslate"><span class="pre">__path__</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#doc"><code class="docutils literal notranslate"><span class="pre">__doc__</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#annotations"><code class="docutils literal notranslate"><span class="pre">__annotations__</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dict"><code class="docutils literal notranslate"><span class="pre">__dict__</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#of-functions">Of Functions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#globals"><code class="docutils literal notranslate"><span class="pre">__globals__</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#closure"><code class="docutils literal notranslate"><span class="pre">__closure__</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7"><code class="docutils literal notranslate"><span class="pre">__doc__</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8"><code class="docutils literal notranslate"><span class="pre">__name__</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#qualname"><code class="docutils literal notranslate"><span class="pre">__qualname__</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#defaults"><code class="docutils literal notranslate"><span class="pre">__defaults__</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#code"><code class="docutils literal notranslate"><span class="pre">__code__</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9"><code class="docutils literal notranslate"><span class="pre">__dict__</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10"><code class="docutils literal notranslate"><span class="pre">__annotations__</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kwdefaults"><code class="docutils literal notranslate"><span class="pre">__kwdefaults__</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#type-params"><code class="docutils literal notranslate"><span class="pre">__type_params__</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#of-methods">Of Methods</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#self"><code class="docutils literal notranslate"><span class="pre">__self__</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#func"><code class="docutils literal notranslate"><span class="pre">__func__</span></code></a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#of-classes">Of Classes</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#of-objects">Of Objects</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#of-objects">Of Objects</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#module"><code class="docutils literal notranslate"><span class="pre">__module__</span></code></a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
 </ul>
   </nav></div>

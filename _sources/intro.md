@@ -9,7 +9,7 @@ kernelspec:
   language: python
   name: python3
 ---
-# Preface
+# Introduction
 
 ```{figure} ./figs/logo.svg
 ---
@@ -28,6 +28,12 @@ Whether your work is in data science, academic research, or cloud infrastructure
 ````{admonition} Who is this book for?
 :class: note
 This book is intended for those who are already comfortable with programming in general, but also with Python's fundamentals and object oriented programming. If you have a solid grasp of variables, control flow, functions, classes, and objects, you are ready to dive in!
+````
+
+
+````{admonition} Important
+:class: important
+If you find this book useful, please give a star 🌟🌟🌟 to [the book's repo](https://github.com/HappyRavenLabs/python-beyond-basics). 
 ````
 
 ## About the Author
@@ -123,7 +129,7 @@ If you're missing some prerequisites, don't worry! Here are some resources to he
 ```
 
 ## How Is This Book Organized?
-At the very beginning of each chapter, I will list specific prerequisites you should satisfy to fully understand the content. Then, I will go through the theory, enriching it with examples. At the end of each chapter, I will include exercises for you to practice and experiment with.
+At the very beginning of each chapter, I will list specific prerequisites you should satisfy to fully understand the content. Then, I will go through the theory, enriching it with examples. 
 
 
 ## What Will You Learn from This Book?
@@ -222,12 +228,5 @@ From there, select proper issue template:
 This helps keep everything organized and ensures we can address your request quickly.
 
 
-```{code-cell} ipython3
-:tags: ["remove-input"]
-import styles
-print()
-
-styles.apply_style()
-```
 
 
