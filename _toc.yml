@@ -5,9 +5,10 @@ parts:
     chapters:
     - file: special_attributes
     - file: context_managers
+    - file: iterators
+    - file: generators
     - file: higher_order_functions
     - file: decorators
-    - file: generators
     - file: metaclasses
     - file: descriptors
     - file: code_inspect
