@@ -61,8 +61,8 @@
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Metaclasses" href="metaclasses.html" />
-    <link rel="prev" title="Decorators" href="decorators.html" />
+    <link rel="next" title="Structural Subtyping" href="structural_subtyping.html" />
+    <link rel="prev" title="Iterators" href="iterators.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -182,9 +182,11 @@
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="special_attributes.html">Special Attributes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="context_managers.html">Context Managers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="iterators.html">Iterators</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Generators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="structural_subtyping.html">Structural Subtyping</a></li>
 <li class="toctree-l1"><a class="reference internal" href="higher_order_functions.html">Higher-order Functions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="decorators.html">Decorators</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Generators</a></li>
 <li class="toctree-l1"><a class="reference internal" href="metaclasses.html">Metaclasses</a></li>
 <li class="toctree-l1"><a class="reference internal" href="descriptors.html">Descriptors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="code_inspect.html">Code Inspection</a></li>
@@ -239,46 +241,47 @@
 
 
 
-<div class="dropdown dropdown-launch-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
-    <i class="fas fa-rocket"></i>
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
   </button>
   <ul class="dropdown-menu">
       
       
       
-      <li><a href="https://colab.research.google.com/github/HappyRavenLabs/python-beyond-basics/blob/master/generators.md" target="_blank"
-   class="btn btn-sm dropdown-item"
-   title="Launch on Colab"
+      <li><a href="https://github.com/HappyRavenLabs/python-beyond-basics" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
 <span class="btn__icon-container">
-  
-    <img alt="Colab logo" src="_static/images/logo_colab.png">
+  <i class="fab fa-github"></i>
   </span>
-<span class="btn__text-container">Colab</span>
+<span class="btn__text-container">Repository</span>
 </a>
 </li>
       
-  </ul>
-</div>
-
-
-
-<a href="https://github.com/HappyRavenLabs/python-beyond-basics/issues/new?title=Issue%20on%20page%20%2Fgenerators.html&body=Your%20issue%20content%20here." target="_blank"
-   class="btn btn-sm btn-source-issues-button"
+      
+      
+      
+      <li><a href="https://github.com/HappyRavenLabs/python-beyond-basics/issues/new?title=Issue%20on%20page%20%2Fgenerators.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
-   data-bs-placement="bottom" data-bs-toggle="tooltip"
+   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
 <span class="btn__icon-container">
   <i class="fas fa-lightbulb"></i>
   </span>
-
+<span class="btn__text-container">Open issue</span>
 </a>
+</li>
+      
+  </ul>
+</div>
 
 
 
@@ -290,23 +293,6 @@
     <i class="fas fa-download"></i>
   </button>
   <ul class="dropdown-menu">
-      
-      
-      
-      <li><a href="_sources/generators.ipynb" target="_blank"
-   class="btn btn-sm btn-download-notebook-button dropdown-item"
-   title="Download notebook file"
-   data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fas fa-code"></i>
-  </span>
-<span class="btn__text-container">.ipynb</span>
-</a>
-</li>
-      
       
       
       
@@ -381,7 +367,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -397,6 +385,25 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-are-generators">What Are Generators?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#can-a-generator-return">Can a Generator <code class="docutils literal notranslate"><span class="pre">return</span></code>?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-return-values-with-subgenerators">Using Return Values with Subgenerators</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#synchronous-coroutines">Synchronous Coroutines</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-simple-coroutine">Creating a Simple Coroutine</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#throwing-exceptions-into-coroutines">Throwing Exceptions into Coroutines</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#closing-coroutines">Closing Coroutines</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -409,9 +416,510 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="generators">
 <h1>Generators<a class="headerlink" href="#generators" title="Link to this heading">#</a></h1>
 <div class="important admonition">
-<p class="admonition-title">Thsis chapter is not ready yet?</p>
-<p>Writing a book takes time and for that chapter I did not have enough of it. Please, return later.</p>
+<p class="admonition-title">Meet iterators first?</p>
+<p>To get the most out of this chapter, learn about <a class="reference internal" href="iterators.html"><span class="std std-doc">iterators</span></a>.</p>
 </div>
+<section id="what-are-generators">
+<h2>What Are Generators?<a class="headerlink" href="#what-are-generators" title="Link to this heading">#</a></h2>
+<p>Generators were introduced in Python 2.2 with PEP255 <span id="id1">[<a class="reference internal" href="special_attributes.html#id27" title="Neil Schemenauer, Tim Peters, and Lie H. Magnus. PEP 255 – simple generators. Python Enhancement Proposal 255, Python Software Foundation, May 2001. URL: https://peps.python.org/pep-0255/ (visited on 2025-10-13).">Schemenauer <em>et al.</em>, 2001</a>]</span>.
+The name is already quite self-explanatory: <strong>something that generates</strong>.
+In fact, they are a particular kind of <strong>iterators</strong> (see <a class="reference internal" href="iterators.html"><span class="std std-doc">Iterators</span></a> chapter):
+a kind of <strong>resumable functions</strong> able to “remember” their current state so the next value can be computed and provided <strong>on demand</strong>. Syntactically, generators
+are created as ordinary (<code class="docutils literal notranslate"><span class="pre">def</span></code>) or asynchronous (<code class="docutils literal notranslate"><span class="pre">async</span> <span class="pre">def</span></code>) functions having at least one <code class="docutils literal notranslate"><span class="pre">yield</span></code> statement.
+So in its simplest form, it can look like the example below.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">def</span><span class="w"> </span><span class="nf">generate_multiplier</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+<span class="linenos">2</span>    <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="linenos">3</span>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;We have created a generator. Variable &#39;i&#39; is set to&quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+<span class="linenos">4</span>    <span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">:</span>
+<span class="linenos">5</span>        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Let us yield some value&quot;</span><span class="p">)</span>
+<span class="hll"><span class="linenos">6</span>        <span class="k">yield</span> <span class="n">x</span> <span class="o">*</span> <span class="n">i</span>
+</span><span class="linenos">7</span>        <span class="n">i</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="linenos">8</span>        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;We now increment &#39;i&#39;. It now has value&quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># We first create &quot;an instance&quot; of generator (generator iterator)</span>
+<span class="n">generator</span> <span class="o">=</span> <span class="n">generate_multiplier</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="c1"># We generate one value</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;We&#39;ve yielded:&quot;</span><span class="p">,</span> <span class="nb">next</span><span class="p">(</span><span class="n">generator</span><span class="p">))</span>
+<span class="c1"># ... and another one</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;We&#39;ve yielded:&quot;</span><span class="p">,</span> <span class="nb">next</span><span class="p">(</span><span class="n">generator</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>We have created a generator. Variable &#39;i&#39; is set to 1
+Let us yield some value
+We&#39;ve yielded: 5
+We now increment &#39;i&#39;. It now has value 2
+Let us yield some value
+We&#39;ve yielded: 10
+</pre></div>
+</div>
+</div>
+</div>
+<div class="important admonition">
+<p class="admonition-title">Yielding?</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">yield</span></code> statement (or expression) can be used only <strong>within</strong> a function’s definition <span id="id2">[<a class="reference internal" href="special_attributes.html#id30" title="Python Software Foundation. The yield statement. 2025. URL: https://docs.python.org/3/reference/simple_stmts.html#the-yield-statement (visited on 2025-10-16).">Python Software Foundation, 2025</a>]</span>!</p>
+</div>
+<div class="note admonition">
+<p class="admonition-title">Generator vs Generator Iterator</p>
+<p><strong>Generator</strong>, by definition (in Python), is a function with a <code class="docutils literal notranslate"><span class="pre">yield</span></code> statement.
+<strong>Generator iterator</strong> is an <strong>iterator</strong> produced when invoking a generator function.
+Sometimes the name <strong>generator</strong> is used in either case!</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># my_gen is a generator function (generator)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">my_gen</span><span class="p">():</span>
+    <span class="o">...</span>
+
+<span class="c1"># gen is a generator iterator</span>
+<span class="n">gen</span> <span class="o">=</span> <span class="n">my_gen</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="important admonition">
+<p class="admonition-title">Exhausted Generator Iterator</p>
+<p>Generator function can execute <code class="docutils literal notranslate"><span class="pre">yield</span></code> statement multiple time (explicitly or in loop). When all of them have been already executed, generator (iterator) is said to be <strong>exhausted</strong>, and requesting the next value will raise a <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#StopIteration"><code class="docutils literal notranslate"><span class="pre">StopIteration</span></code></a> exception:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">next</span><span class="p">(</span><span class="n">generator</span><span class="p">)</span> <span class="c1"># StopIteration</span>
+</pre></div>
+</div>
+<p>produces:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">We</span> <span class="n">now</span> <span class="n">increment</span> <span class="s1">&#39;i&#39;</span><span class="o">.</span> <span class="n">It</span> <span class="n">now</span> <span class="n">has</span> <span class="n">value</span> <span class="mi">3</span>
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+  <span class="n">File</span> <span class="s2">&quot;&lt;stdin&gt;&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">StopIteration</span>
+</pre></div>
+</div>
+</div>
+<div class="hint admonition">
+<p class="admonition-title">Infinite Generator</p>
+<p>There is nothing against creating an infinite generator. To achieve that you can use an infinite loop (<code class="docutils literal notranslate"><span class="pre">while</span> <span class="pre">True</span></code>).</p>
+</div>
+</section>
+<section id="can-a-generator-return">
+<h2>Can a Generator <code class="docutils literal notranslate"><span class="pre">return</span></code>?<a class="headerlink" href="#can-a-generator-return" title="Link to this heading">#</a></h2>
+<p>Well, yes, but it does not work as you might expect. We already know that executing
+the generator function produces a generator iterator. But we can have a <code class="docutils literal notranslate"><span class="pre">return</span></code> statement inside such a function:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">def</span><span class="w"> </span><span class="nf">sample_gen</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+<span class="linenos">2</span>    <span class="k">yield</span> <span class="mi">1</span>
+<span class="linenos">3</span>    <span class="k">yield</span> <span class="mi">2</span>
+<span class="hll"><span class="linenos">4</span>    <span class="k">return</span> <span class="mi">100</span>
+</span></pre></div>
+</div>
+<p>As the <code class="docutils literal notranslate"><span class="pre">yield</span></code> statement will be executed twice (in the example above), we can run the <code class="docutils literal notranslate"><span class="pre">next</span></code> method twice
+for the generator iterator. Another call will raise a
+<a class="reference external" href="https://docs.python.org/3/library/exceptions.html#StopIteration"><code class="docutils literal notranslate"><span class="pre">StopIteration</span></code></a> exception, and if our generator function has a <code class="docutils literal notranslate"><span class="pre">return</span></code> statement, the returned value will become part of the <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#StopIteration"><code class="docutils literal notranslate"><span class="pre">StopIteration</span></code></a> exception:</p>
+<div class="cell tag_raises-exception docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">generator</span> <span class="o">=</span> <span class="n">sample_gen</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;We&#39;ve yielded:&quot;</span><span class="p">,</span> <span class="nb">next</span><span class="p">(</span><span class="n">generator</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;We&#39;ve yielded:&quot;</span><span class="p">,</span> <span class="nb">next</span><span class="p">(</span><span class="n">generator</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;We&#39;ve yielded:&quot;</span><span class="p">,</span> <span class="nb">next</span><span class="p">(</span><span class="n">generator</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>We&#39;ve yielded: 1
+We&#39;ve yielded: 2
+</pre></div>
+</div>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">StopIteration</span><span class="g g-Whitespace">                             </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="n">line</span> <span class="mi">4</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;We&#39;ve yielded:&quot;</span><span class="p">,</span> <span class="nb">next</span><span class="p">(</span><span class="n">generator</span><span class="p">))</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;We&#39;ve yielded:&quot;</span><span class="p">,</span> <span class="nb">next</span><span class="p">(</span><span class="n">generator</span><span class="p">))</span>
+<span class="ne">----&gt; </span><span class="mi">4</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;We&#39;ve yielded:&quot;</span><span class="p">,</span> <span class="nb">next</span><span class="p">(</span><span class="n">generator</span><span class="p">))</span>
+
+<span class="ne">StopIteration</span>: 100
+</pre></div>
+</div>
+</div>
+</div>
+<p>So we can explicitly catch the <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#StopIteration"><code class="docutils literal notranslate"><span class="pre">StopIteration</span></code></a> exception and extract the return value:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+    <span class="n">generator</span> <span class="o">=</span> <span class="n">sample_gen</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+    <span class="nb">next</span><span class="p">(</span><span class="n">generator</span><span class="p">)</span>
+    <span class="nb">next</span><span class="p">(</span><span class="n">generator</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;We&#39;ve yielded:&quot;</span><span class="p">,</span> <span class="nb">next</span><span class="p">(</span><span class="n">generator</span><span class="p">))</span>
+<span class="k">except</span> <span class="ne">StopIteration</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The generator returned: </span><span class="si">{</span><span class="n">e</span><span class="o">.</span><span class="n">value</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The generator returned: 100
+</pre></div>
+</div>
+</div>
+</div>
+<section id="using-return-values-with-subgenerators">
+<h3>Using Return Values with Subgenerators<a class="headerlink" href="#using-return-values-with-subgenerators" title="Link to this heading">#</a></h3>
+<p>Another case is when using subgenerators <span id="id3">[<a class="reference internal" href="special_attributes.html#id29" title="Gregory Ewing. PEP 380 – syntax for delegating to a subgenerator. Python Enhancement Proposal 380, Python Software Foundation, February 2016. URL: https://peps.python.org/pep-0380/ (visited on 2025-10-16).">Ewing, 2016</a>]</span>. Following the PEP380 document, the expression of the form:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">result</span> <span class="o">=</span> <span class="k">yield from</span> <span class="n">expression</span>
+</pre></div>
+</div>
+<p>will:</p>
+<ol class="arabic simple">
+<li><p>Yield the successive values of the <code class="docutils literal notranslate"><span class="pre">expression</span></code> generator,</p></li>
+<li><p>Assign the return value from the <code class="docutils literal notranslate"><span class="pre">expression</span></code> generator function to <code class="docutils literal notranslate"><span class="pre">result</span></code>.</p></li>
+</ol>
+<p>Let us see that in a simple example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="k">def</span><span class="w"> </span><span class="nf">fetch_data</span><span class="p">():</span>
+<span class="linenos"> 2</span>    <span class="c1"># Simulate acquiring JSON data via HTTP</span>
+<span class="linenos"> 3</span>    <span class="n">load</span> <span class="o">=</span> <span class="p">[</span>
+<span class="linenos"> 4</span>        <span class="p">{</span>
+<span class="linenos"> 5</span>            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+<span class="linenos"> 6</span>            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;User Random 1&quot;</span><span class="p">,</span>
+<span class="linenos"> 7</span>            <span class="s2">&quot;age&quot;</span><span class="p">:</span> <span class="mi">20</span>
+<span class="linenos"> 8</span>        <span class="p">},</span>
+<span class="linenos"> 9</span>        <span class="p">{</span>
+<span class="linenos">10</span>            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+<span class="linenos">11</span>            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;User Random 2&quot;</span><span class="p">,</span>
+<span class="linenos">12</span>            <span class="s2">&quot;age&quot;</span><span class="p">:</span> <span class="mi">14</span>
+<span class="linenos">13</span>        <span class="p">},</span>
+<span class="linenos">14</span>        <span class="p">{</span>
+<span class="linenos">15</span>            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+<span class="linenos">16</span>            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;User Random 3&quot;</span><span class="p">,</span>
+<span class="linenos">17</span>            <span class="s2">&quot;age&quot;</span><span class="p">:</span> <span class="mi">56</span>
+<span class="linenos">18</span>        <span class="p">}</span>
+<span class="linenos">19</span>    <span class="p">]</span>
+<span class="linenos">20</span>    
+<span class="linenos">21</span>    <span class="n">adult_count</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="linenos">22</span>    
+<span class="linenos">23</span>    <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">load</span><span class="p">:</span>
+<span class="hll"><span class="linenos">24</span>        <span class="k">yield</span> <span class="n">d</span>  <span class="c1"># Stream each user record</span>
+</span><span class="linenos">25</span>        
+<span class="linenos">26</span>        <span class="c1"># Count adult users</span>
+<span class="linenos">27</span>        <span class="k">if</span> <span class="n">d</span><span class="p">[</span><span class="s2">&quot;age&quot;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">18</span><span class="p">:</span>
+<span class="hll"><span class="linenos">28</span>            <span class="n">adult_count</span> <span class="o">+=</span> <span class="mi">1</span> <span class="c1"># We count adults</span>
+</span><span class="linenos">29</span>    
+<span class="hll"><span class="linenos">30</span>    <span class="k">return</span> <span class="n">adult_count</span>  <span class="c1"># Return summary</span>
+</span><span class="linenos">31</span>
+<span class="linenos">32</span><span class="k">def</span><span class="w"> </span><span class="nf">process_users</span><span class="p">():</span>
+<span class="linenos">33</span><span class="w">    </span><span class="sd">&quot;&quot;&quot;Process users and use the count&quot;&quot;&quot;</span>
+<span class="linenos">34</span>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Fetching users...&quot;</span><span class="p">)</span>
+<span class="linenos">35</span>    
+<span class="linenos">36</span>    <span class="c1"># Get both the yielded data AND the return value</span>
+<span class="hll"><span class="linenos">37</span>    <span class="n">adult_users</span> <span class="o">=</span> <span class="k">yield from</span> <span class="n">fetch_data</span><span class="p">()</span>
+</span><span class="linenos">38</span>    
+<span class="linenos">39</span>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">✓ Found </span><span class="si">{</span><span class="n">adult_users</span><span class="si">}</span><span class="s2"> adult users&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="pst-scrollable-table-container"><table class="table" id="code-explanation-subgenerator">
+<caption><span class="caption-number">Table 3 </span><span class="caption-text">An explanation of lines of code with subgenerator</span><a class="headerlink" href="#code-explanation-subgenerator" title="Link to this table">#</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Line</strong></p></th>
+<th class="head"><p><strong>Code</strong></p></th>
+<th class="head"><p><strong>Explanation</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>24</p></td>
+<td><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">yield</span> <span class="n">d</span>
+</pre></div>
+</div>
+</td>
+<td><p>Here, we stream the value prepared by the generator</p></td>
+</tr>
+<tr class="row-odd"><td><p>30</p></td>
+<td><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">return</span> <span class="n">adult_count</span>
+</pre></div>
+</div>
+</td>
+<td><p>After counting all adults, we return the count</p></td>
+</tr>
+<tr class="row-even"><td><p>37</p></td>
+<td><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">adult_users</span> <span class="o">=</span> <span class="k">yield from</span> <span class="n">fetch_data</span><span class="p">()</span>
+</pre></div>
+</div>
+</td>
+<td><p>We stream data produced by the <code class="docutils literal notranslate"><span class="pre">fetch_data()</span></code> generator iterator and assign to <code class="docutils literal notranslate"><span class="pre">adult_users</span></code> the value returned by the generator function</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>You can see that generators, as a kind of “resumable functions,” tend to be useful. They can be seen as <strong>data producers</strong>, especially practical for heavy operations requiring significant computational or time resources, so each value is produced <strong>on demand</strong>. But the <code class="docutils literal notranslate"><span class="pre">yield</span></code> expression can also serve as a medium for two-way communication! See section below for details <a class="reference internal" href="#synchronous-coroutines"><span class="xref myst">Synchronous Coroutines</span></a>.</p>
+</section>
+</section>
+<section id="synchronous-coroutines">
+<h2>Synchronous Coroutines<a class="headerlink" href="#synchronous-coroutines" title="Link to this heading">#</a></h2>
+<p>Here, we’ve arrived at the place where we first meet <strong>coroutines</strong>.</p>
+<div class="important admonition">
+<p class="admonition-title">Curious about modern coroutines?</p>
+<p>Here, we are about to talk about simple synchronous coroutines by means of generator functions. The topic of coroutines in the modern sense is elaborated in the chapter <a class="reference internal" href="coroutines.html"><span class="std std-doc">Coroutines</span></a>.</p>
+</div>
+<div class="hint admonition">
+<p class="admonition-title">What is a Coroutine?</p>
+<p>A <strong>coroutine</strong>, by definition, is a subroutine (a function) that can be paused and resumed.</p>
+</div>
+<section id="creating-a-simple-coroutine">
+<h3>Creating a Simple Coroutine<a class="headerlink" href="#creating-a-simple-coroutine" title="Link to this heading">#</a></h3>
+<p>To create a coroutine, let us first create a simple generator. Let it yield successive odd numbers.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">def</span><span class="w"> </span><span class="nf">odd_generator</span><span class="p">():</span>
+<span class="linenos">2</span>    <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="linenos">3</span>    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+<span class="linenos">4</span>        <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="linenos">5</span>        <span class="n">i</span> <span class="o">+=</span> <span class="mi">2</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># We create a generator iterator</span>
+<span class="n">gen</span> <span class="o">=</span> <span class="n">odd_generator</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="nb">next</span><span class="p">(</span><span class="n">gen</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">next</span><span class="p">(</span><span class="n">gen</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">next</span><span class="p">(</span><span class="n">gen</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
+3
+5
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now, let us use the <code class="docutils literal notranslate"><span class="pre">yield</span></code> expression so that the result of <code class="docutils literal notranslate"><span class="pre">yield</span> <span class="pre">i</span></code> is assigned to a variable:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">def</span><span class="w"> </span><span class="nf">odd_generator</span><span class="p">():</span>
+<span class="linenos">2</span>    <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="linenos">3</span>    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+<span class="hll"><span class="linenos">4</span>        <span class="n">x</span> <span class="o">=</span> <span class="k">yield</span> <span class="n">i</span>
+</span><span class="linenos">5</span>        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;x=</span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="linenos">6</span>        <span class="n">i</span> <span class="o">+=</span> <span class="mi">2</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># We create a generator iterator</span>
+<span class="n">gen</span> <span class="o">=</span> <span class="n">odd_generator</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="nb">next</span><span class="p">(</span><span class="n">gen</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">next</span><span class="p">(</span><span class="n">gen</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">next</span><span class="p">(</span><span class="n">gen</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
+x=None
+3
+x=None
+5
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can see some <code class="docutils literal notranslate"><span class="pre">None</span></code>s are displayed (due to the <code class="docutils literal notranslate"><span class="pre">print(x)</span></code> statement). So <code class="docutils literal notranslate"><span class="pre">yield</span> <span class="pre">i</span></code> streams the value of the <code class="docutils literal notranslate"><span class="pre">i</span></code> variable and evaluates to <code class="docutils literal notranslate"><span class="pre">None</span></code>. But our generator iterator <strong>can consume some data</strong> too! We can send data to the generator iterator via the <code class="docutils literal notranslate"><span class="pre">send()</span></code> method:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">yielded_val</span> <span class="o">=</span> <span class="n">gen</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">yielded_val</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>x=100
+7
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can see that 100 was displayed (<code class="docutils literal notranslate"><span class="pre">print(x)</span></code> as <code class="docutils literal notranslate"><span class="pre">x</span></code> takes the sent value) and <code class="docutils literal notranslate"><span class="pre">yielded_val</span></code> takes another odd value, as this is the value produced by our coroutine. We can always resign from yielding any value and just rely on values sent to the coroutine:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">def</span><span class="w"> </span><span class="nf">my_coroutine</span><span class="p">():</span>
+<span class="linenos">2</span>    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+<span class="hll"><span class="linenos">3</span>        <span class="n">x</span> <span class="o">=</span> <span class="k">yield</span>
+</span><span class="linenos">4</span>        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;x=</span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># We create a generator iterator</span>
+<span class="n">cor</span> <span class="o">=</span> <span class="n">my_coroutine</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="nb">next</span><span class="p">(</span><span class="n">cor</span><span class="p">))</span>  <span class="c1"># Notice the coroutine does not produce any value</span>
+<span class="n">cor</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>None
+x=100
+</pre></div>
+</div>
+</div>
+</div>
+<div class="warning admonition">
+<p class="admonition-title">Coroutine Needs to Be “Started”</p>
+<p>To be able to send any value to a coroutine, you need to run <code class="docutils literal notranslate"><span class="pre">next()</span></code> once to initialize the coroutine (represented as generator iterator) properly and reach the <code class="docutils literal notranslate"><span class="pre">yield</span></code> statement where the coroutine expects input. If you do <code class="docutils literal notranslate"><span class="pre">cor.send()</span></code> before calling <code class="docutils literal notranslate"><span class="pre">next()</span></code>, it will result in a <code class="docutils literal notranslate"><span class="pre">TypeError</span></code> with the message “<em>can’t send non-None value to a just-started generator</em>”.</p>
+</div>
+</section>
+<section id="throwing-exceptions-into-coroutines">
+<h3>Throwing Exceptions into Coroutines<a class="headerlink" href="#throwing-exceptions-into-coroutines" title="Link to this heading">#</a></h3>
+<p>Similarly to sending data, we may force an exception to be raised. To achieve that, we will use the <code class="docutils literal notranslate"><span class="pre">throw</span></code> method of a coroutine:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">def</span><span class="w"> </span><span class="nf">my_coroutine</span><span class="p">():</span>
+<span class="linenos">2</span>    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+<span class="linenos">3</span>        <span class="k">try</span><span class="p">:</span>
+<span class="hll"><span class="linenos">4</span>            <span class="n">x</span> <span class="o">=</span> <span class="k">yield</span> <span class="c1"># Here the error will be thrown</span>
+</span><span class="linenos">5</span>        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+<span class="linenos">6</span>            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Caught an exception: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="linenos">7</span>        <span class="k">else</span><span class="p">:</span>
+<span class="linenos">8</span>            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Received: </span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cor</span> <span class="o">=</span> <span class="n">my_coroutine</span><span class="p">()</span>
+
+<span class="nb">next</span><span class="p">(</span><span class="n">cor</span><span class="p">)</span>  <span class="c1"># remember! </span>
+<span class="n">cor</span><span class="o">.</span><span class="n">throw</span><span class="p">(</span><span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;my exception&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Caught an exception: my exception
+</pre></div>
+</div>
+</div>
+</div>
+<div class="warning admonition">
+<p class="admonition-title">Throw Only Exceptions!</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">throw</span></code> method of a coroutine accepts only subclasses of <code class="docutils literal notranslate"><span class="pre">BaseException</span></code>!</p>
+</div>
+</section>
+<section id="closing-coroutines">
+<h3>Closing Coroutines<a class="headerlink" href="#closing-coroutines" title="Link to this heading">#</a></h3>
+<p>A coroutine (hence a generator iterator with which we interact via <code class="docutils literal notranslate"><span class="pre">send</span></code>, <code class="docutils literal notranslate"><span class="pre">throw</span></code>, and <code class="docutils literal notranslate"><span class="pre">close</span></code> methods) can be closed, meaning it is flagged as not consuming values anymore. You close a coroutine using the <code class="docutils literal notranslate"><span class="pre">close</span></code> method, which internally raises the <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#GeneratorExit"><code class="docutils literal notranslate"><span class="pre">GeneratorExit</span></code></a> exception.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="k">def</span><span class="w"> </span><span class="nf">my_coroutine</span><span class="p">():</span>
+<span class="hll"><span class="linenos"> 2</span>    <span class="k">try</span><span class="p">:</span>
+</span><span class="linenos"> 3</span>        <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+<span class="linenos"> 4</span>            <span class="k">try</span><span class="p">:</span>
+<span class="linenos"> 5</span>                <span class="n">x</span> <span class="o">=</span> <span class="k">yield</span>
+<span class="linenos"> 6</span>            <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+<span class="linenos"> 7</span>                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Caught an exception: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="linenos"> 8</span>            <span class="k">else</span><span class="p">:</span>
+<span class="linenos"> 9</span>                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Received: </span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="hll"><span class="linenos">10</span>    <span class="k">except</span> <span class="ne">GeneratorExit</span><span class="p">:</span>
+</span><span class="linenos">11</span>        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Generator is closing&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cor</span> <span class="o">=</span> <span class="n">my_coroutine</span><span class="p">()</span>
+
+<span class="nb">next</span><span class="p">(</span><span class="n">cor</span><span class="p">)</span> 
+<span class="n">cor</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Generator is closing
+</pre></div>
+</div>
+</div>
+</div>
+<div class="warning admonition">
+<p class="admonition-title">Do Not Operate on Closed Coroutines!</p>
+<p>When you <code class="docutils literal notranslate"><span class="pre">close()</span></code> a coroutine, you cannot <code class="docutils literal notranslate"><span class="pre">send()</span></code> to it anymore.</p>
+</div>
+<p>You can see that sending data into a closed coroutine raises an error:</p>
+<div class="cell tag_raises-exception docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cor</span> <span class="o">=</span> <span class="n">my_coroutine</span><span class="p">()</span>
+<span class="nb">next</span><span class="p">(</span><span class="n">cor</span><span class="p">)</span> 
+<span class="n">cor</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<span class="n">cor</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="s2">&quot;Some message&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Generator is closing
+</pre></div>
+</div>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">StopIteration</span><span class="g g-Whitespace">                             </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">18</span><span class="p">],</span> <span class="n">line</span> <span class="mi">4</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="nb">next</span><span class="p">(</span><span class="n">cor</span><span class="p">)</span> 
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">cor</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<span class="ne">----&gt; </span><span class="mi">4</span> <span class="n">cor</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="s2">&quot;Some message&quot;</span><span class="p">)</span>
+
+<span class="ne">StopIteration</span>: 
+</pre></div>
+</div>
+</div>
+</div>
+<div class="important admonition">
+<p class="admonition-title">Async Generators</p>
+<p>Generators can also be asynchronous. The semantics were proposed in PEP 525 <span id="id4">[<a class="reference internal" href="special_attributes.html#id28" title="Yury Selivanov. PEP 525 – asynchronous generators. Python Enhancement Proposal 525, Python Software Foundation, July 2016. URL: https://peps.python.org/pep-0525/ (visited on 2025-10-15).">Selivanov, 2016</a>]</span> and they rely on asynchronous functions (<code class="docutils literal notranslate"><span class="pre">async</span> <span class="pre">def</span></code>).</p>
+</div>
+</section>
+</section>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
+<div class="docutils container" id="id5">
+<div role="list" class="citation-list">
+<div class="citation" id="id22" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">Ewi16</a><span class="fn-bracket">]</span></span>
+<p>Gregory Ewing. PEP 380 – syntax for delegating to a subgenerator. Python Enhancement Proposal 380, Python Software Foundation, February 2016. URL: <a class="reference external" href="https://peps.python.org/pep-0380/">https://peps.python.org/pep-0380/</a> (visited on 2025-10-16).</p>
+</div>
+<div class="citation" id="id20" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">SPM01</a><span class="fn-bracket">]</span></span>
+<p>Neil Schemenauer, Tim Peters, and Lie H. Magnus. PEP 255 – simple generators. Python Enhancement Proposal 255, Python Software Foundation, May 2001. URL: <a class="reference external" href="https://peps.python.org/pep-0255/">https://peps.python.org/pep-0255/</a> (visited on 2025-10-13).</p>
+</div>
+<div class="citation" id="id21" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id4">Sel16</a><span class="fn-bracket">]</span></span>
+<p>Yury Selivanov. PEP 525 – asynchronous generators. Python Enhancement Proposal 525, Python Software Foundation, July 2016. URL: <a class="reference external" href="https://peps.python.org/pep-0525/">https://peps.python.org/pep-0525/</a> (visited on 2025-10-15).</p>
+</div>
+<div class="citation" id="id12" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>Smi12<span class="fn-bracket">]</span></span>
+<p>Eric V. Smith. PEP 420 – implicit namespace packages. Python Enhancement Proposal 420, Python Software Foundation, May 2012. URL: <a class="reference external" href="https://peps.python.org/pep-0420/">https://peps.python.org/pep-0420/</a> (visited on 2025-10-03).</p>
+</div>
+<div class="citation" id="id17" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>PythonSFoundation25a<span class="fn-bracket">]</span></span>
+<p>Python Software Foundation. Built-in types — truth value testing. <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#truth-value-testing">https://docs.python.org/3/library/stdtypes.html#truth-value-testing</a>, October 2025. <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#truth-value-testing">https://docs.python.org/3/library/stdtypes.html#truth-value-testing</a>.</p>
+</div>
+<div class="citation" id="id18" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>PythonSFoundation25b<span class="fn-bracket">]</span></span>
+<p>Python Software Foundation. Data model — asynchronous context managers. <a class="reference external" href="https://docs.python.org/3/reference/datamodel.html#asynchronous-context-managers">https://docs.python.org/3/reference/datamodel.html#asynchronous-context-managers</a>, October 2025. <a class="reference external" href="https://docs.python.org/3/reference/datamodel.html#asynchronous-context-managers">https://docs.python.org/3/reference/datamodel.html#asynchronous-context-managers</a>.</p>
+</div>
+<div class="citation" id="id15" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>PythonSFoundation25c<span class="fn-bracket">]</span></span>
+<p>Python Software Foundation. Glossary — python 3 documentation: generator. <a class="reference external" href="https://docs.python.org/3/glossary.html#term-generator">https://docs.python.org/3/glossary.html#term-generator</a>, 2025. Accessed: 2025-10-07.</p>
+</div>
+<div class="citation" id="id7" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>PythonSFoundation25d<span class="fn-bracket">]</span></span>
+<p>Python Software Foundation. The python language reference: 2.4.3. reserved classes of identifiers. 2025. URL: <a class="reference external" href="https://docs.python.org/3/reference/lexical_analysis.html#reserved-classes-of-identifiers">https://docs.python.org/3/reference/lexical_analysis.html#reserved-classes-of-identifiers</a> (visited on 2025-10-01).</p>
+</div>
+<div class="citation" id="id6" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>PythonSFoundation25e<span class="fn-bracket">]</span></span>
+<p>Python Software Foundation. The python language reference: 3. data model. 2025. URL: <a class="reference external" href="https://docs.python.org/3/reference/datamodel.html">https://docs.python.org/3/reference/datamodel.html</a> (visited on 2025-10-01).</p>
+</div>
+<div class="citation" id="id9" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>PythonSFoundation25f<span class="fn-bracket">]</span></span>
+<p>Python Software Foundation. The python language reference: 3.3. special method names. 2025. URL: <a class="reference external" href="https://docs.python.org/3/reference/datamodel.html#specialnames">https://docs.python.org/3/reference/datamodel.html#specialnames</a> (visited on 2025-10-01).</p>
+</div>
+<div class="citation" id="id14" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>PythonSFoundation25g<span class="fn-bracket">]</span></span>
+<p>Python Software Foundation. The python language reference: 8. compound statements — the with statement. 2025. URL: <a class="reference external" href="https://docs.python.org/3/reference/compound_stmts.html#the-with-statement">https://docs.python.org/3/reference/compound_stmts.html#the-with-statement</a> (visited on 2025-10-07).</p>
+</div>
+<div class="citation" id="id8" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>PythonSFoundation25h<span class="fn-bracket">]</span></span>
+<p>Python Software Foundation. The python tutorial: 6. modules. 2025. URL: <a class="reference external" href="https://docs.python.org/3/tutorial/modules.html">https://docs.python.org/3/tutorial/modules.html</a> (visited on 2025-10-01).</p>
+</div>
+<div class="citation" id="id23" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">PythonSFoundation25i</a><span class="fn-bracket">]</span></span>
+<p>Python Software Foundation. The yield statement. 2025. URL: <a class="reference external" href="https://docs.python.org/3/reference/simple_stmts.html#the-yield-statement">https://docs.python.org/3/reference/simple_stmts.html#the-yield-statement</a> (visited on 2025-10-16).</p>
+</div>
+<div class="citation" id="id16" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>PythonSFoundation25j<span class="fn-bracket">]</span></span>
+<p>Python Software Foundation. Contextlib — utilities for with-statement contexts: contextlib.contextmanager. 2025. URL: <a class="reference external" href="https://docs.python.org/3/library/contextlib.html#contextlib.contextmanager">https://docs.python.org/3/library/contextlib.html#contextlib.contextmanager</a> (visited on 2025-10-07).</p>
+</div>
+</div>
+</div>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -445,20 +953,20 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="decorators.html"
+       href="iterators.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Decorators</p>
+        <p class="prev-next-title">Iterators</p>
       </div>
     </a>
     <a class="right-next"
-       href="metaclasses.html"
+       href="structural_subtyping.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Metaclasses</p>
+        <p class="prev-next-title">Structural Subtyping</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -468,6 +976,32 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-are-generators">What Are Generators?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#can-a-generator-return">Can a Generator <code class="docutils literal notranslate"><span class="pre">return</span></code>?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-return-values-with-subgenerators">Using Return Values with Subgenerators</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#synchronous-coroutines">Synchronous Coroutines</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-simple-coroutine">Creating a Simple Coroutine</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#throwing-exceptions-into-coroutines">Throwing Exceptions into Coroutines</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#closing-coroutines">Closing Coroutines</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>

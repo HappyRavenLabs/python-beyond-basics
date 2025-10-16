@@ -182,9 +182,11 @@
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="special_attributes.html">Special Attributes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="context_managers.html">Context Managers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="iterators.html">Iterators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generators.html">Generators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="structural_subtyping.html">Structural Subtyping</a></li>
 <li class="toctree-l1"><a class="reference internal" href="higher_order_functions.html">Higher-order Functions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="decorators.html">Decorators</a></li>
-<li class="toctree-l1"><a class="reference internal" href="generators.html">Generators</a></li>
 <li class="toctree-l1"><a class="reference internal" href="metaclasses.html">Metaclasses</a></li>
 <li class="toctree-l1"><a class="reference internal" href="descriptors.html">Descriptors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="code_inspect.html">Code Inspection</a></li>
@@ -239,46 +241,47 @@
 
 
 
-<div class="dropdown dropdown-launch-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
-    <i class="fas fa-rocket"></i>
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
   </button>
   <ul class="dropdown-menu">
       
       
       
-      <li><a href="https://colab.research.google.com/github/HappyRavenLabs/python-beyond-basics/blob/master/coroutines.md" target="_blank"
-   class="btn btn-sm dropdown-item"
-   title="Launch on Colab"
+      <li><a href="https://github.com/HappyRavenLabs/python-beyond-basics" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
 <span class="btn__icon-container">
-  
-    <img alt="Colab logo" src="_static/images/logo_colab.png">
+  <i class="fab fa-github"></i>
   </span>
-<span class="btn__text-container">Colab</span>
+<span class="btn__text-container">Repository</span>
 </a>
 </li>
       
-  </ul>
-</div>
-
-
-
-<a href="https://github.com/HappyRavenLabs/python-beyond-basics/issues/new?title=Issue%20on%20page%20%2Fcoroutines.html&body=Your%20issue%20content%20here." target="_blank"
-   class="btn btn-sm btn-source-issues-button"
+      
+      
+      
+      <li><a href="https://github.com/HappyRavenLabs/python-beyond-basics/issues/new?title=Issue%20on%20page%20%2Fcoroutines.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
-   data-bs-placement="bottom" data-bs-toggle="tooltip"
+   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
 <span class="btn__icon-container">
   <i class="fas fa-lightbulb"></i>
   </span>
-
+<span class="btn__text-container">Open issue</span>
 </a>
+</li>
+      
+  </ul>
+</div>
 
 
 
@@ -290,23 +293,6 @@
     <i class="fas fa-download"></i>
   </button>
   <ul class="dropdown-menu">
-      
-      
-      
-      <li><a href="_sources/coroutines.ipynb" target="_blank"
-   class="btn btn-sm btn-download-notebook-button dropdown-item"
-   title="Download notebook file"
-   data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fas fa-code"></i>
-  </span>
-<span class="btn__text-container">.ipynb</span>
-</a>
-</li>
-      
       
       
       
@@ -409,10 +395,14 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="coroutines">
 <h1>Coroutines<a class="headerlink" href="#coroutines" title="Link to this heading">#</a></h1>
 <div class="important admonition">
-<p class="admonition-title">Thsis chapter is not ready yet?</p>
+<p class="admonition-title">This chapter is not ready yet?</p>
 <p>Writing a book takes time and for that chapter I did not have enough of it. Please, return later.</p>
 </div>
-</section>
+<!-- ````{admonition} What is a Coroutine?
+:class: hint
+
+A **coroutine**, by definition, is a subroutine (a function) that can be paused and resumed.
+```` --></section>
 
     <script type="text/x-thebe-config">
     {

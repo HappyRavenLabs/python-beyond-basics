@@ -10,7 +10,7 @@ kernelspec:
   name: python3
 ---
 
-# Decorators
+# Iterators
 
 ````{admonition} This chapter is not ready yet?
 :class: important

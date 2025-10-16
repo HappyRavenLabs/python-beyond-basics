@@ -61,7 +61,7 @@
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Generators" href="generators.html" />
+    <link rel="next" title="Metaclasses" href="metaclasses.html" />
     <link rel="prev" title="Higher-order Functions" href="higher_order_functions.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -182,9 +182,11 @@
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="special_attributes.html">Special Attributes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="context_managers.html">Context Managers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="iterators.html">Iterators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generators.html">Generators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="structural_subtyping.html">Structural Subtyping</a></li>
 <li class="toctree-l1"><a class="reference internal" href="higher_order_functions.html">Higher-order Functions</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Decorators</a></li>
-<li class="toctree-l1"><a class="reference internal" href="generators.html">Generators</a></li>
 <li class="toctree-l1"><a class="reference internal" href="metaclasses.html">Metaclasses</a></li>
 <li class="toctree-l1"><a class="reference internal" href="descriptors.html">Descriptors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="code_inspect.html">Code Inspection</a></li>
@@ -239,46 +241,47 @@
 
 
 
-<div class="dropdown dropdown-launch-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
-    <i class="fas fa-rocket"></i>
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
   </button>
   <ul class="dropdown-menu">
       
       
       
-      <li><a href="https://colab.research.google.com/github/HappyRavenLabs/python-beyond-basics/blob/master/decorators.md" target="_blank"
-   class="btn btn-sm dropdown-item"
-   title="Launch on Colab"
+      <li><a href="https://github.com/HappyRavenLabs/python-beyond-basics" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
 <span class="btn__icon-container">
-  
-    <img alt="Colab logo" src="_static/images/logo_colab.png">
+  <i class="fab fa-github"></i>
   </span>
-<span class="btn__text-container">Colab</span>
+<span class="btn__text-container">Repository</span>
 </a>
 </li>
       
-  </ul>
-</div>
-
-
-
-<a href="https://github.com/HappyRavenLabs/python-beyond-basics/issues/new?title=Issue%20on%20page%20%2Fdecorators.html&body=Your%20issue%20content%20here." target="_blank"
-   class="btn btn-sm btn-source-issues-button"
+      
+      
+      
+      <li><a href="https://github.com/HappyRavenLabs/python-beyond-basics/issues/new?title=Issue%20on%20page%20%2Fdecorators.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
-   data-bs-placement="bottom" data-bs-toggle="tooltip"
+   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
 <span class="btn__icon-container">
   <i class="fas fa-lightbulb"></i>
   </span>
-
+<span class="btn__text-container">Open issue</span>
 </a>
+</li>
+      
+  </ul>
+</div>
 
 
 
@@ -290,23 +293,6 @@
     <i class="fas fa-download"></i>
   </button>
   <ul class="dropdown-menu">
-      
-      
-      
-      <li><a href="_sources/decorators.ipynb" target="_blank"
-   class="btn btn-sm btn-download-notebook-button dropdown-item"
-   title="Download notebook file"
-   data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fas fa-code"></i>
-  </span>
-<span class="btn__text-container">.ipynb</span>
-</a>
-</li>
-      
       
       
       
@@ -409,7 +395,7 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="decorators">
 <h1>Decorators<a class="headerlink" href="#decorators" title="Link to this heading">#</a></h1>
 <div class="important admonition">
-<p class="admonition-title">Thsis chapter is not ready yet?</p>
+<p class="admonition-title">This chapter is not ready yet?</p>
 <p>Writing a book takes time and for that chapter I did not have enough of it. Please, return later.</p>
 </div>
 </section>
@@ -454,11 +440,11 @@ document.write(`
       </div>
     </a>
     <a class="right-next"
-       href="generators.html"
+       href="metaclasses.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Generators</p>
+        <p class="prev-next-title">Metaclasses</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

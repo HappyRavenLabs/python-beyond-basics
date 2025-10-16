@@ -12,7 +12,13 @@ kernelspec:
 
 # Coroutines
 
-````{admonition} Thsis chapter is not ready yet?
+````{admonition} This chapter is not ready yet?
 :class: important
 Writing a book takes time and for that chapter I did not have enough of it. Please, return later.
 ````
+
+<!-- ````{admonition} What is a Coroutine?
+:class: hint
+
+A **coroutine**, by definition, is a subroutine (a function) that can be paused and resumed.
+```` -->
