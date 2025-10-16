@@ -7,6 +7,7 @@ parts:
     - file: context_managers
     - file: iterators
     - file: generators
+    - file: structural_subtyping
     - file: higher_order_functions
     - file: decorators
     - file: metaclasses

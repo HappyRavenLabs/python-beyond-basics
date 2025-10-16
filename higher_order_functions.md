@@ -12,7 +12,7 @@ kernelspec:
 
 # Higher-order Functions
 
-````{admonition} Thsis chapter is not ready yet?
+````{admonition} This chapter is not ready yet?
 :class: important
 Writing a book takes time and for that chapter I did not have enough of it. Please, return later.
 ````
