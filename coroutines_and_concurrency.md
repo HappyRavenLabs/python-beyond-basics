@@ -22,3 +22,5 @@ Writing a book takes time and for that chapter I did not have enough of it. Plea
 
 A **coroutine**, by definition, is a subroutine (a function) that can be paused and resumed.
 ```` -->
+
+<iframe src="../../_static/interactives/async.html" width="850" height="280" frameborder="0"></iframe>

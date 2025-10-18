@@ -21,6 +21,7 @@ sphinx:
       - ./references.bib
     html_context:
       default_mode: light
+    html_static_path: ['_static']       
       
 
 # Force re-execution of notebooks on each build.
