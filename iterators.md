@@ -12,7 +12,17 @@ kernelspec:
 
 # Iterators
 
-**Iterating** means doing something again and again {cite}`CambridgeDict_iteration` and in the context of software development it usually means accessing the piece of data one by one. **Iterator** hence, is an object which enables iterating over some collection or stream of data {cite}`PythonDocs_Iterator`. So, in short, iterators equip us with the mechanism to **access sequentially items** (one-by-one) from some source of data such as a stream or a collection (e.g. a dictionary or a list).
+**Iterating** means doing something again and again {cite}`CambridgeDict_iteration` and in the context of software development it usually means accessing the piece of data one by one. **Iterator** hence, is an object which enables iterating over some collection or stream of data {cite}`PythonDocs_Iterator`. 
+
+````{admonition} Iterator
+:class: tip
+
+In short, an iterators equip us with the mechanism to **access sequentially items** (one-by-one) from some source of data such as a stream or a collection (e.g. a dictionary or a list).
+````
+
+The iterator protocol was officially introduced with PEP234 {cite}`pep-0234` document.
+
+When we use loops, an iterator for a collection is created implciitly
 
 Look at the figure below to see some interactive visualisation of iterating process. We have some source of data we want to iterate over to query sequentially item by item. Our source can be an ordinary Python `list` or unbounded stream of data received over HTTP. 
 
