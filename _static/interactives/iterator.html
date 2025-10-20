@@ -1,30 +1,3 @@
----
-jupytext:
-  formats: md:myst
-  text_representation:
-    extension: .md
-    format_name: myst
-kernelspec:
-  display_name: Python 3
-  language: python
-  name: python3
----
-
-# Iterators
-
-**Iterating** means doing something again and again {cite}`CambridgeDict_iteration` and in the context of software development it usually means accessing the piece of data one by one. **Iterator** hence, is an object which enables iterating over some collection or stream of data {cite}`PythonDocs_Iterator`. So, in short, iterators equip us with the mechanism to **access sequentially items** (one-by-one) from some source of data such as a stream or a collection (e.g. a dictionary or a list).
-
-Look at the figure below to see some interactive visualisation of iterating process. We have some source of data we want to iterate over to query sequentially item by item. Our source can be an ordinary Python `list` or unbounded stream of data received over HTTP. 
-
-````{admonition} Iteraetion does not change collection
-:class: warning
-
-Process of iteration does not alter the underlying source of data. It is completly different object.
-````
-
-
-
-```{raw} html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -51,7 +24,7 @@ Process of iteration does not alter the underlying source of data. It is complet
             background: white;
             border-radius: 20px;
             padding: 40px;
-            box-shadow: 0 0 0 rgba(0, 0, 0, 0.3);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
             max-width: 800px;
             width: 100%;
         }
@@ -416,29 +389,3 @@ Process of iteration does not alter the underlying source of data. It is complet
     </script>
 </body>
 </html>
-```
-
-
-## Iterator Protocol
-Formally, in Python, iterator protocol is constituted by two dunder [^dunder] methods:
-
-1. `__iter__`
-2. `__next__`
-
-
-[^dunder]: Don't remember what dunder methods are? See [Special Attributes](./special_attributes.md).
-
-
-
-````{admonition} StopIteration"
-:class: warning
-
-When an iterator is exhausted and does not provide data anymore, it must raise [`StopIterator`](https://docs.python.org/3/library/exceptions.html#StopIteration) exception and keep raising it for subsequent calls.
-````
-
-
-
-
-## References
-```{bibliography}
-```
