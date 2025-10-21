@@ -12,25 +12,48 @@ kernelspec:
 
 # Iterators
 
-**Iterating** means doing something again and again {cite}`CambridgeDict_iteration` and in the context of software development it usually means accessing the piece of data one by one. **Iterator** hence, is an object which enables iterating over some collection or stream of data {cite}`PythonDocs_Iterator`. 
+**Iterating** means doing something again and again {cite}`CambridgeDict_iteration` and in the context of software development it usually means accessing the piece of data one by one. **Iterator** hence, is an object which enables **iterating** over some collection or stream of data {cite}`PythonDocs_Iterator`. 
 
 ````{admonition} Iterator
 :class: tip
 
-In short, an iterators equip us with the mechanism to **access sequentially items** (one-by-one) from some source of data such as a stream or a collection (e.g. a dictionary or a list).
+In short, an iterators equip us with the mechanism to **access sequentially items** (one-by-one) from some **iterable source of data** such as a stream or a collection (e.g. a dictionary or a list).
 ````
 
-The iterator protocol was officially introduced with PEP234 {cite}`pep-0234` document.
+We mentioned about *iterable source of data**, but what actually is it?
 
-When we use loops, an iterator for a collection is created implciitly
+````{admonition} Iterable source of data
+:class: hint
 
-Look at the figure below to see some interactive visualisation of iterating process. We have some source of data we want to iterate over to query sequentially item by item. Our source can be an ordinary Python `list` or unbounded stream of data received over HTTP. 
-
-````{admonition} Iteraetion does not change collection
-:class: warning
-
-Process of iteration does not alter the underlying source of data. It is completly different object.
+Iterable source of data is a source of data we can iterate over, so we can take one by one element. Syntahtically it is an object having implementation of `__iter__` method (see [Iterable source of data](#itreable-object))
 ````
+
+Iterators are commonly used in `for` loop. By convention, looping over some object (if supported):
+
+```{code-block} python
+:lineno-start: 1
+
+for item in my_collection:
+    print(item)
+```
+
+is equivalent to the code:
+
+```{code-block} python
+:lineno-start: 1
+:emphasize-lines: 1,4,6
+
+iterator = iter(my_collection)
+while True:
+    try:
+        item = next(iterator)
+        print(item)
+    except StopIteration:
+        break
+```
+
+That logic can be visible in the example below:
+
 
 
 
@@ -428,27 +451,191 @@ Process of iteration does not alter the underlying source of data. It is complet
 </html>
 ```
 
+And to access successive values we use an **iterator** object which needs to be compliant with iterator protocol.
+
+## Iterating over an object
+**Iterator** object has quite trivial requirement to be satisfied to be an iterator: it needs to implement a dunder `__next__` method. It has the following signature:
+
+
+```{code-block} python
+:lineno-start: 1
+
+
+from typing import Any
+
+class MyDummyIterator:
+
+    def __next__(self) -> Any:
+        pass
+
+```
+
+So it is argumentless[^argumentless] method whose purpose is to produce the successive element of a collection or stream of data and raises [`StopIteration`](https://docs.python.org/3/library/exceptions.html#StopIteration) exception when iterator is exhausted.
+
+
+````{admonition} Exhausted iterator
+:class: important
+
+If an iterotr is **exhausted** means it has no next data to return. If so, each successive call of `__next__` method must raise the built-in [`StopIteration`](https://docs.python.org/3/library/exceptions.html#StopIteration) exception. If you violate that requirement, iterator will not work properly and does not exit the `for` loop when iteration is finished! 
+````
+
+That would work, as visible in the example below:
+
+
+```{code-block} python
+:lineno-start: 1
+:emphasize-lines: 8
+
+class MyIterator:
+    def __next__(self):
+        return 1
+
+class SomeIterableCollection:
+
+    def __iter__(self):
+        return MyIterator()
+
+for item in SomeIterableCollection(): 
+    print(item) 
+```
+
+however, by convention, Python will not treat it as iterator:
+
+
+```{code-block} python
+:lineno-start: 1
+:tags: ["raises-exception"]
+
+from collection.abc import Iterator
+
+class MyIterator:
+
+    def __next__(self):
+        return 1
+
+assert isinstance(MyIterator, Iterator)
+```
+
+why? because Python expects ietrator to follow exactly the specified iterator protocol (see [Iterator Protocl](#iterator-protocol)) which requires **iterators to be iterable** objects themselves! so we can use iterator object in `for` loop seamlessly. For that case above it is not true:
+
+
+```{code-block} python
+:lineno-start: 1
+
+class MyIterator:
+
+    def __next__(self):
+        return 1
+
+for item in MyIterator():
+    print(item)
+```
+
+
+
+```{code-cell} python
+:tags: ["remove-input","raises-exception"]
+from collections.abc import Iterator
+
+class MyIterator:
+
+    def __next__(self):
+        return 1
+
+for item in MyIterator():
+    print(item)
+```
 
 ## Iterator Protocol
-Formally, in Python, iterator protocol is constituted by two dunder [^dunder] methods:
 
-1. `__iter__`
-2. `__next__`
+To make iterator an iterable object itself, two methods need to be implemented:
 
-
-[^dunder]: Don't remember what dunder methods are? See [Special Attributes](./special_attributes.md).
+1. `__next__(self)` to access the subseqent element
+2. `__iter__(self)` to return an iterator (usually itself)
 
 
+With those two method implemented properly the following piece of code will work smoothly:
 
-````{admonition} StopIteration"
-:class: warning
+```{code-block} python
+:lineno-start: 1
+:emphasize-lines: 4
 
-When an iterator is exhausted and does not provide data anymore, it must raise [`StopIterator`](https://docs.python.org/3/library/exceptions.html#StopIteration) exception and keep raising it for subsequent calls.
+class MyIterator:
+
+    def __iter__(self):
+        return self
+
+    def __next__(self):
+        # that's infinit iterator, it never raises StopIteration exception
+        return 1 
+
+for item in MyIterator():
+    print(item)
+```
+
+and we can verify that:
+
+```{code-block} python
+:lineno-start: 1
+
+from collections.abc import Iterator
+
+assert isinstance(MyIterator(), Iterator)
+```
+
+
+````{admonition} Iterator subclassing
+:class: important
+
+It is not necessery (as you've seen above) to subclass [`Iterator`](https://docs.python.org/3/library/collections.abc.html#collections.abc.Iterator) abstract class to make na iterator[^no_subclass] {cite}`python:abc_collections` but I will encourage you to explot [`collections.abc`](https://docs.python.org/3/library/collections.abc.html) package when dealing with collections ietrators and all similar stuff. If we explicitly subclass [`Iterator`](https://docs.python.org/3/library/collections.abc.html#collections.abc.Iterator), we don't need to implement `__iter__` method explicitly as it is provided by the superclass as mixin method.
+
+```{code-block} python
+:lineno-start: 1
+:emphasize-lines: 4
+
+from collections.abc import Iterator
+
+class MyIterator(Iterator):
+
+    def __next__(self):
+        # note, again we have an inifite iterator
+        # as it never raises StopIteration exception
+        return 1
+```
 ````
 
 
+[^argumentless]: I refer to argumentless method to methods which do not take any explicit arguments, namely they have only `self` or `cls` argument passed implicitly refering to the object or type invoking the given method. 
+
+[^abstract]: Don't know what abstract method is? It is a method which must be implemented (in subclass) in order to create an instance of this class. 
+
+[^no_subclass]: There is no magic behind checking against being an instace of [`Iterator`](https://docs.python.org/3/library/collections.abc.html#collections.abc.Iterator) without subclassing. The [`Iterator`](https://docs.python.org/3/library/collections.abc.html#collections.abc.Iterator) abstract class just implements special `__subclasshook__` which ckecks is a class implements `__iter__` and `__next__` methods. 
+
+## Itreable sources of data
+Let us explore a bit more iterables source of data. A source of data can be iterated over (**is iterable**) if at least one out of two below cases is satisfied {cite}`pep-0234`:
+
+1. an object implements a special (dunder) method `__getitem__` for accessing data (so in short, it is a sequenctail or mapping collection {cite}`python:abc_collections`),
 
 
-## References
-```{bibliography}
+```{code-cell} python
+my_list = [1, 2, 3]
+idx = 1
+item = my_list[idx] # equivalent to my_list.__getitem__(idx)
+assert item == 2
 ```
+
+2. it implements a dunder `__iter__` method returning an **iterator** object (an instance of a type compliant with the [Iterator Protocol](#iterator-protocol)):
+
+
+```{code-cell} python
+from collections.abc import Iterator
+
+my_list = [1, 2, 3]
+list_iter = iter(my_list) # or my_list.__iter__()
+assert isinstance(list_iter, Iterator)
+```
+
+
+
+````
+

@@ -516,7 +516,3 @@ cor.send("Some message")
 :class: important
 Generators can also be asynchronous. The semantics were proposed in PEP 525 {cite}`pep-0525` and they rely on asynchronous functions (`async def`).
 ````
-
-## References
-```{bibliography}
-```

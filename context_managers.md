@@ -354,10 +354,6 @@ async with Lock("/tmp/sample.txt"):
     await some_long_file_handling_func()
 ```
 
-## References
-```{bibliography}
-```
-
 
 
 

@@ -2,6 +2,7 @@ format: jb-book
 root: intro
 parts:
   - caption: "Beyond Basics: Mastering Advanced Python — a book to learn expert aspects of Python language"
+    numbered: true
     chapters:
     - file: special_attributes
     - file: context_managers
@@ -18,3 +19,4 @@ parts:
     - file: weakref
     - file: coroutines
     - file: concurrency_and_parallelism
+    - file: references
