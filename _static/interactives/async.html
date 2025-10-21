@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Async Operations Visualization</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            color: white;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .visualization {
+            background: rgba(30, 41, 59, 0.5);
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+        
+        .row {
+            margin-bottom: 25px;
+            position: relative;
+        }
+        
+        .row:last-of-type {
+            margin-bottom: 0;
+        }
+        
+        .row-label {
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .label-icon {
+            width: 16px;
+            height: 16px;
+            border-radius: 3px;
+        }
+        
+        .blocking { background: #ef4444; }
+        .async { background: #10b981; }
+        
+        .track {
+            height: 70px;
+            background: rgba(15, 23, 42, 0.6);
+            border-radius: 8px;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(96, 165, 250, 0.2);
+        }
+        
+        .operation {
+            position: absolute;
+            height: 40px;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+            transition: transform 0.3s ease;
+        }
+        
+        .operation:hover {
+            transform: scale(1.05);
+            z-index: 10;
+        }
+        
+        .op-blocking {
+            background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+            top: 15px;
+        }
+        
+        .op-async {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            top: 15px;
+        }
+        
+        .op-waiting {
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            top: 15px;
+            animation: pulse-waiting 2s ease-in-out infinite;
+        }
+        
+        @keyframes pulse-waiting {
+            0%, 100% { opacity: 0.6; }
+            50% { opacity: 1; }
+        }
+        
+        .op-label {
+            padding: 0 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="visualization">
+            <div class="row">
+                <div class="row-label">
+                    <div class="label-icon blocking"></div>
+                    <span>Blocking - One task at a time</span>
+                </div>
+                <div class="track" id="blockingTrack"></div>
+            </div>
+            
+            <div class="row">
+                <div class="row-label">
+                    <div class="label-icon async"></div>
+                    <span>Async - Concurrent execution</span>
+                </div>
+                <div class="track" id="asyncTrack"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        class AsyncSimulation {
+            constructor() {
+                this.blockingTrack = document.getElementById('blockingTrack');
+                this.asyncTrack = document.getElementById('asyncTrack');
+                
+                this.isRunning = true;
+                this.blockingTasks = [];
+                this.asyncTasks = [];
+                
+                this.taskId = 0;
+            }
+            
+            createTask(type) {
+                const task = document.createElement('div');
+                task.className = `operation op-${type}`;
+                task.style.width = '100px';
+                task.style.left = '-120px';
+                
+                const id = ++this.taskId;
+                task.dataset.id = id;
+                
+                return {
+                    element: task,
+                    id: id,
+                    position: -120,
+                    speed: 2 + Math.random() * 1,
+                    state: 'moving',
+                    waitStart: null,
+                    waitDuration: 1000 + Math.random() * 2000,
+                    width: 100
+                };
+            }
+            
+            start() {
+                this.animate();
+                
+                this.spawnInterval = setInterval(() => {
+                    if (this.isRunning) {
+                        if (this.blockingTasks.length === 0) {
+                            this.spawnBlockingTask();
+                        }
+                        
+                        if (Math.random() > 0.3) {
+                            this.spawnAsyncTask();
+                        }
+                    }
+                }, 1500);
+            }
+            
+            spawnBlockingTask() {
+                const task = this.createTask('blocking');
+                task.element.innerHTML = '<div class="op-label">Task</div>';
+                this.blockingTrack.appendChild(task.element);
+                this.blockingTasks.push(task);
+            }
+            
+            spawnAsyncTask() {
+                const task = this.createTask('async');
+                task.element.innerHTML = '<div class="op-label">Task</div>';
+                this.asyncTrack.appendChild(task.element);
+                this.asyncTasks.push(task);
+            }
+            
+            updateTask(task, trackWidth, isBlocking) {
+                if (task.state === 'moving') {
+                    task.position += task.speed;
+                    
+                    const waitPoint = trackWidth * 0.4;
+                    if (task.position >= waitPoint && !task.waitStart) {
+                        task.state = 'waiting';
+                        task.waitStart = Date.now();
+                        task.element.className = 'operation op-waiting';
+                        task.element.innerHTML = '<div class="op-label">⏳ Wait</div>';
+                    }
+                    
+                    task.element.style.left = task.position + 'px';
+                    
+                } else if (task.state === 'waiting') {
+                    if (!isBlocking) {
+                        task.position += task.speed * 0.3;
+                        task.element.style.left = task.position + 'px';
+                    }
+                    
+                    if (Date.now() - task.waitStart >= task.waitDuration) {
+                        task.state = 'moving';
+                        task.element.className = `operation op-${isBlocking ? 'blocking' : 'async'}`;
+                        task.element.innerHTML = '<div class="op-label">✓ Done</div>';
+                    }
+                }
+                
+                return task.position >= trackWidth + 20;
+            }
+            
+            animate() {
+                if (!this.isRunning) return;
+                
+                const blockingWidth = this.blockingTrack.offsetWidth;
+                const asyncWidth = this.asyncTrack.offsetWidth;
+                
+                this.blockingTasks = this.blockingTasks.filter(task => {
+                    const completed = this.updateTask(task, blockingWidth, true);
+                    if (completed) {
+                        task.element.remove();
+                        return false;
+                    }
+                    return true;
+                });
+                
+                this.asyncTasks = this.asyncTasks.filter(task => {
+                    const completed = this.updateTask(task, asyncWidth, false);
+                    if (completed) {
+                        task.element.remove();
+                        return false;
+                    }
+                    return true;
+                });
+                
+                requestAnimationFrame(() => this.animate());
+            }
+        }
+        
+        const simulation = new AsyncSimulation();
+        
+        window.addEventListener('load', () => {
+            setTimeout(() => simulation.start(), 500);
+        });
+    </script>
+</body>
+</html>

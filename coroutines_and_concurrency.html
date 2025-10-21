@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>7. Decorators &#8212; Beyond Basics: Mastering Advanced Python — a book to learn expert aspects of Python language</title>
+    <title>Coroutines &#8212; Beyond Basics: Mastering Advanced Python — a book to learn expert aspects of Python language</title>
   
   
   
@@ -59,12 +59,10 @@
     <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'decorators';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'coroutines_and_concurrency';</script>
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="8. Metaclasses" href="metaclasses.html" />
-    <link rel="prev" title="6. Higher-order Functions" href="higher_order_functions.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -127,6 +125,8 @@
       
       
       
+        
+      
       <div class="bd-sidebar-primary bd-sidebar">
         
 
@@ -181,14 +181,14 @@
             </li>
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Beyond Basics: Mastering Advanced Python — a book to learn expert aspects of Python language</span></p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="special_attributes.html">1. Special Attributes &amp; Methods</a></li>
 <li class="toctree-l1"><a class="reference internal" href="context_managers.html">2. Context Managers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="iterators.html">3. Iterators</a></li>
 <li class="toctree-l1"><a class="reference internal" href="generators.html">4. Generators</a></li>
 <li class="toctree-l1"><a class="reference internal" href="structural_subtyping.html">5. Structural Subtyping</a></li>
 <li class="toctree-l1"><a class="reference internal" href="higher_order_functions.html">6. Higher-order Functions</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">7. Decorators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="decorators.html">7. Decorators</a></li>
 <li class="toctree-l1"><a class="reference internal" href="metaclasses.html">8. Metaclasses</a></li>
 <li class="toctree-l1"><a class="reference internal" href="descriptors.html">9. Descriptors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="code_inspect.html">10. Code Inspection</a></li>
@@ -267,7 +267,7 @@
       
       
       
-      <li><a href="https://github.com/HappyRavenLabs/python-beyond-basics/issues/new?title=Issue%20on%20page%20%2Fdecorators.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/HappyRavenLabs/python-beyond-basics/issues/new?title=Issue%20on%20page%20%2Fcoroutines_and_concurrency.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -297,7 +297,7 @@
       
       
       
-      <li><a href="_sources/decorators.md" target="_blank"
+      <li><a href="_sources/coroutines_and_concurrency.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -379,7 +379,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Decorators</h1>
+    <h1>Coroutines</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -393,13 +393,18 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="decorators">
-<h1><span class="section-number">7. </span>Decorators<a class="headerlink" href="#decorators" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="coroutines">
+<h1>Coroutines<a class="headerlink" href="#coroutines" title="Link to this heading">#</a></h1>
 <div class="important admonition">
 <p class="admonition-title">This chapter is not ready yet?</p>
 <p>Writing a book takes time and for that chapter I did not have enough of it. Please, return later.</p>
 </div>
-</section>
+<!-- ````{admonition} What is a Coroutine?
+:class: hint
+
+A **coroutine**, by definition, is a subroutine (a function) that can be paused and resumed.
+```` -->
+<iframe src="../../_static/interactives/async.html" width="850" height="280" frameborder="0"></iframe></section>
 
     <script type="text/x-thebe-config">
     {
@@ -431,24 +436,6 @@ document.write(`
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
-    <a class="left-prev"
-       href="higher_order_functions.html"
-       title="previous page">
-      <i class="fa-solid fa-angle-left"></i>
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">6. </span>Higher-order Functions</p>
-      </div>
-    </a>
-    <a class="right-next"
-       href="metaclasses.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">8. </span>Metaclasses</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
-    </a>
 </div>
                 </footer>
               

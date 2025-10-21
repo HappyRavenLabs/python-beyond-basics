@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Generators &#8212; Beyond Basics: Mastering Advanced Python — a book to learn expert aspects of Python language</title>
+    <title>4. Generators &#8212; Beyond Basics: Mastering Advanced Python — a book to learn expert aspects of Python language</title>
   
   
   
@@ -35,6 +35,8 @@
     <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="_static/interactives/custom.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
@@ -61,8 +63,8 @@
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Structural Subtyping" href="structural_subtyping.html" />
-    <link rel="prev" title="Iterators" href="iterators.html" />
+    <link rel="next" title="5. Structural Subtyping" href="structural_subtyping.html" />
+    <link rel="prev" title="3. Iterators" href="iterators.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -180,21 +182,20 @@
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Beyond Basics: Mastering Advanced Python — a book to learn expert aspects of Python language</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="special_attributes.html">Special Attributes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="context_managers.html">Context Managers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="iterators.html">Iterators</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Generators</a></li>
-<li class="toctree-l1"><a class="reference internal" href="structural_subtyping.html">Structural Subtyping</a></li>
-<li class="toctree-l1"><a class="reference internal" href="higher_order_functions.html">Higher-order Functions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="decorators.html">Decorators</a></li>
-<li class="toctree-l1"><a class="reference internal" href="metaclasses.html">Metaclasses</a></li>
-<li class="toctree-l1"><a class="reference internal" href="descriptors.html">Descriptors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="code_inspect.html">Code Inspection</a></li>
-<li class="toctree-l1"><a class="reference internal" href="dynamic_execution.html">Dynamic Code Execution</a></li>
-<li class="toctree-l1"><a class="reference internal" href="generics.html">Generics</a></li>
-<li class="toctree-l1"><a class="reference internal" href="weakref.html">Weak References</a></li>
-<li class="toctree-l1"><a class="reference internal" href="coroutines.html">Coroutines</a></li>
-<li class="toctree-l1"><a class="reference internal" href="concurrency_and_parallelism.html">Concurrency and Parallelism</a></li>
+<li class="toctree-l1"><a class="reference internal" href="special_attributes.html">1. Special Attributes &amp; Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="context_managers.html">2. Context Managers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="iterators.html">3. Iterators</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">4. Generators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="structural_subtyping.html">5. Structural Subtyping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="higher_order_functions.html">6. Higher-order Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="decorators.html">7. Decorators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="metaclasses.html">8. Metaclasses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="descriptors.html">9. Descriptors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="code_inspect.html">10. Code Inspection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dynamic_execution.html">11. Dynamic Code Execution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generics.html">12. Generics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="weakref.html">13. Weak References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="references.html">14. References</a></li>
 </ul>
 
     </div>
@@ -390,18 +391,17 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-are-generators">What Are Generators?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#can-a-generator-return">Can a Generator <code class="docutils literal notranslate"><span class="pre">return</span></code>?</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-return-values-with-subgenerators">Using Return Values with Subgenerators</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-are-generators">4.1. What Are Generators?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#can-a-generator-return">4.2. Can a Generator <code class="docutils literal notranslate"><span class="pre">return</span></code>?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-return-values-with-subgenerators">4.2.1. Using Return Values with Subgenerators</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#synchronous-coroutines">Synchronous Coroutines</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-simple-coroutine">Creating a Simple Coroutine</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#throwing-exceptions-into-coroutines">Throwing Exceptions into Coroutines</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#closing-coroutines">Closing Coroutines</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#synchronous-coroutines">4.3. Synchronous Coroutines</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-simple-coroutine">4.3.1. Creating a Simple Coroutine</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#throwing-exceptions-into-coroutines">4.3.2. Throwing Exceptions into Coroutines</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#closing-coroutines">4.3.3. Closing Coroutines</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
 </ul>
             </nav>
         </div>
@@ -414,14 +414,14 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="generators">
-<h1>Generators<a class="headerlink" href="#generators" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">4. </span>Generators<a class="headerlink" href="#generators" title="Link to this heading">#</a></h1>
 <div class="important admonition">
 <p class="admonition-title">Meet iterators first?</p>
 <p>To get the most out of this chapter, learn about <a class="reference internal" href="iterators.html"><span class="std std-doc">iterators</span></a>.</p>
 </div>
 <section id="what-are-generators">
-<h2>What Are Generators?<a class="headerlink" href="#what-are-generators" title="Link to this heading">#</a></h2>
-<p>Generators were introduced in Python 2.2 with PEP255 <span id="id1">[<a class="reference internal" href="special_attributes.html#id27" title="Neil Schemenauer, Tim Peters, and Lie H. Magnus. PEP 255 – simple generators. Python Enhancement Proposal 255, Python Software Foundation, May 2001. URL: https://peps.python.org/pep-0255/ (visited on 2025-10-13).">Schemenauer <em>et al.</em>, 2001</a>]</span>.
+<h2><span class="section-number">4.1. </span>What Are Generators?<a class="headerlink" href="#what-are-generators" title="Link to this heading">#</a></h2>
+<p>Generators were introduced in Python 2.2 with PEP255 <span id="id1">[<a class="reference internal" href="references.html#id16" title="Neil Schemenauer, Tim Peters, and Lie H. Magnus. PEP 255 – simple generators. Python Enhancement Proposal 255, Python Software Foundation, May 2001. URL: https://peps.python.org/pep-0255/ (visited on 2025-10-13).">Schemenauer <em>et al.</em>, 2001</a>]</span>.
 The name is already quite self-explanatory: <strong>something that generates</strong>.
 In fact, they are a particular kind of <strong>iterators</strong> (see <a class="reference internal" href="iterators.html"><span class="std std-doc">Iterators</span></a> chapter):
 a kind of <strong>resumable functions</strong> able to “remember” their current state so the next value can be computed and provided <strong>on demand</strong>. Syntactically, generators
@@ -461,7 +461,7 @@ We&#39;ve yielded: 10
 </div>
 <div class="important admonition">
 <p class="admonition-title">Yielding?</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">yield</span></code> statement (or expression) can be used only <strong>within</strong> a function’s definition <span id="id2">[<a class="reference internal" href="special_attributes.html#id30" title="Python Software Foundation. The yield statement. 2025. URL: https://docs.python.org/3/reference/simple_stmts.html#the-yield-statement (visited on 2025-10-16).">Python Software Foundation, 2025</a>]</span>!</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">yield</span></code> statement (or expression) can be used only <strong>within</strong> a function’s definition <span id="id2">[<a class="reference internal" href="references.html#id19" title="Python Software Foundation. The yield statement. 2025. URL: https://docs.python.org/3/reference/simple_stmts.html#the-yield-statement (visited on 2025-10-16).">Python Software Foundation, 2025</a>]</span>!</p>
 </div>
 <div class="note admonition">
 <p class="admonition-title">Generator vs Generator Iterator</p>
@@ -491,13 +491,19 @@ Sometimes the name <strong>generator</strong> is used in either case!</p>
 </pre></div>
 </div>
 </div>
+<div class="important admonition">
+<p class="admonition-title">Never raise StopIteration manually in a generator!</p>
+<p>Starting with Python 3.5 (introduced by <a class="reference external" href="https://peps.python.org/pep-0479/">PEP 479</a>) and enforced by default since Python 3.7, any <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#StopIteration"><code class="docutils literal notranslate"><span class="pre">StopIteration</span></code></a> raised inside a generator is automatically converted into a <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#RuntimeError"><code class="docutils literal notranslate"><span class="pre">RuntimeError</span></code></a>.<br />
+For details, see <a class="reference external" href="https://peps.python.org/pep-0479/">PEP 479</a>.<br />
+Therefore, you should <strong>never explicitly raise</strong> a <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#StopIteration"><code class="docutils literal notranslate"><span class="pre">StopIteration</span></code></a> exception inside a <strong>generator</strong>.</p>
+</div>
 <div class="hint admonition">
 <p class="admonition-title">Infinite Generator</p>
 <p>There is nothing against creating an infinite generator. To achieve that you can use an infinite loop (<code class="docutils literal notranslate"><span class="pre">while</span> <span class="pre">True</span></code>).</p>
 </div>
 </section>
 <section id="can-a-generator-return">
-<h2>Can a Generator <code class="docutils literal notranslate"><span class="pre">return</span></code>?<a class="headerlink" href="#can-a-generator-return" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">4.2. </span>Can a Generator <code class="docutils literal notranslate"><span class="pre">return</span></code>?<a class="headerlink" href="#can-a-generator-return" title="Link to this heading">#</a></h2>
 <p>Well, yes, but it does not work as you might expect. We already know that executing
 the generator function produces a generator iterator. But we can have a <code class="docutils literal notranslate"><span class="pre">return</span></code> statement inside such a function:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">def</span><span class="w"> </span><span class="nf">sample_gen</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
@@ -555,8 +561,8 @@ We&#39;ve yielded: 2
 </div>
 </div>
 <section id="using-return-values-with-subgenerators">
-<h3>Using Return Values with Subgenerators<a class="headerlink" href="#using-return-values-with-subgenerators" title="Link to this heading">#</a></h3>
-<p>Another case is when using subgenerators <span id="id3">[<a class="reference internal" href="special_attributes.html#id29" title="Gregory Ewing. PEP 380 – syntax for delegating to a subgenerator. Python Enhancement Proposal 380, Python Software Foundation, February 2016. URL: https://peps.python.org/pep-0380/ (visited on 2025-10-16).">Ewing, 2016</a>]</span>. Following the PEP380 document, the expression of the form:</p>
+<h3><span class="section-number">4.2.1. </span>Using Return Values with Subgenerators<a class="headerlink" href="#using-return-values-with-subgenerators" title="Link to this heading">#</a></h3>
+<p>Another case is when using subgenerators <span id="id3">[<a class="reference internal" href="references.html#id18" title="Gregory Ewing. PEP 380 – syntax for delegating to a subgenerator. Python Enhancement Proposal 380, Python Software Foundation, February 2016. URL: https://peps.python.org/pep-0380/ (visited on 2025-10-16).">Ewing, 2016</a>]</span>. Following the PEP380 document, the expression of the form:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">result</span> <span class="o">=</span> <span class="k">yield from</span> <span class="n">expression</span>
 </pre></div>
 </div>
@@ -608,7 +614,7 @@ We&#39;ve yielded: 2
 </pre></div>
 </div>
 <div class="pst-scrollable-table-container"><table class="table" id="code-explanation-subgenerator">
-<caption><span class="caption-number">Table 3 </span><span class="caption-text">An explanation of lines of code with subgenerator</span><a class="headerlink" href="#code-explanation-subgenerator" title="Link to this table">#</a></caption>
+<caption><span class="caption-number">Table 4.1 </span><span class="caption-text">An explanation of lines of code with subgenerator</span><a class="headerlink" href="#code-explanation-subgenerator" title="Link to this table">#</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p><strong>Line</strong></p></th>
 <th class="head"><p><strong>Code</strong></p></th>
@@ -640,23 +646,24 @@ We&#39;ve yielded: 2
 </tbody>
 </table>
 </div>
-<p>You can see that generators, as a kind of “resumable functions,” tend to be useful. They can be seen as <strong>data producers</strong>, especially practical for heavy operations requiring significant computational or time resources, so each value is produced <strong>on demand</strong>. But the <code class="docutils literal notranslate"><span class="pre">yield</span></code> expression can also serve as a medium for two-way communication! See section below for details <a class="reference internal" href="#synchronous-coroutines"><span class="xref myst">Synchronous Coroutines</span></a>.</p>
+<p>You can see that generators, as a kind of “resumable functions,” tend to be useful. They can be seen as <strong>data producers</strong>, especially practical for heavy operations requiring significant computational or time resources, so each value is produced <strong>on demand</strong>. But the <code class="docutils literal notranslate"><span class="pre">yield</span></code> expression can also serve as a medium for two-way communication! See section below for details <a class="reference internal" href="#synchronous-coroutines">Synchronous Coroutines</a>.</p>
 </section>
 </section>
 <section id="synchronous-coroutines">
-<h2>Synchronous Coroutines<a class="headerlink" href="#synchronous-coroutines" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">4.3. </span>Synchronous Coroutines<a class="headerlink" href="#synchronous-coroutines" title="Link to this heading">#</a></h2>
 <p>Here, we’ve arrived at the place where we first meet <strong>coroutines</strong>.</p>
 <div class="important admonition">
 <p class="admonition-title">Curious about modern coroutines?</p>
-<p>Here, we are about to talk about simple synchronous coroutines by means of generator functions. The topic of coroutines in the modern sense is elaborated in the chapter <a class="reference internal" href="coroutines.html"><span class="std std-doc">Coroutines</span></a>.</p>
+<p>Here, we are about to talk about simple synchronous coroutines by means of generator functions. The topic of coroutines in the modern sense is elaborated in the chapter <a class="reference internal" href="#./coroutines.md"><span class="xref myst">Coroutines</span></a>.</p>
 </div>
 <div class="hint admonition">
 <p class="admonition-title">What is a Coroutine?</p>
 <p>A <strong>coroutine</strong>, by definition, is a subroutine (a function) that can be paused and resumed.</p>
 </div>
 <section id="creating-a-simple-coroutine">
-<h3>Creating a Simple Coroutine<a class="headerlink" href="#creating-a-simple-coroutine" title="Link to this heading">#</a></h3>
-<p>To create a coroutine, let us first create a simple generator. Let it yield successive odd numbers.</p>
+<h3><span class="section-number">4.3.1. </span>Creating a Simple Coroutine<a class="headerlink" href="#creating-a-simple-coroutine" title="Link to this heading">#</a></h3>
+<p>It is possible to create coroutines using Python generators. This concept was proposed in PEP 342 <span id="id4">[<a class="reference internal" href="references.html#id24" title="Guido van Rossum and Philip J. Eby. PEP 342 – coroutines via enhanced generators. Python Enhancement Proposal 342, Python Software Foundation, May 2005. URL: https://peps.python.org/pep-0342/ (visited on 2025-10-21).">van Rossum and Eby, 2005</a>]</span> and was introduced in Python version 2.5. The same PEP also introduced the <code class="docutils literal notranslate"><span class="pre">yield</span></code> expression (explained in more detail below), which serves as the underlying mechanism for coroutine behavior.</p>
+<p>To demonstrate this, let’s start by creating a simple generator that yields successive odd numbers.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">def</span><span class="w"> </span><span class="nf">odd_generator</span><span class="p">():</span>
 <span class="linenos">2</span>    <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="linenos">3</span>    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
@@ -758,7 +765,7 @@ x=100
 </div>
 </section>
 <section id="throwing-exceptions-into-coroutines">
-<h3>Throwing Exceptions into Coroutines<a class="headerlink" href="#throwing-exceptions-into-coroutines" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">4.3.2. </span>Throwing Exceptions into Coroutines<a class="headerlink" href="#throwing-exceptions-into-coroutines" title="Link to this heading">#</a></h3>
 <p>Similarly to sending data, we may force an exception to be raised. To achieve that, we will use the <code class="docutils literal notranslate"><span class="pre">throw</span></code> method of a coroutine:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">def</span><span class="w"> </span><span class="nf">my_coroutine</span><span class="p">():</span>
 <span class="linenos">2</span>    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
@@ -791,7 +798,7 @@ x=100
 </div>
 </section>
 <section id="closing-coroutines">
-<h3>Closing Coroutines<a class="headerlink" href="#closing-coroutines" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">4.3.3. </span>Closing Coroutines<a class="headerlink" href="#closing-coroutines" title="Link to this heading">#</a></h3>
 <p>A coroutine (hence a generator iterator with which we interact via <code class="docutils literal notranslate"><span class="pre">send</span></code>, <code class="docutils literal notranslate"><span class="pre">throw</span></code>, and <code class="docutils literal notranslate"><span class="pre">close</span></code> methods) can be closed, meaning it is flagged as not consuming values anymore. You close a coroutine using the <code class="docutils literal notranslate"><span class="pre">close</span></code> method, which internally raises the <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#GeneratorExit"><code class="docutils literal notranslate"><span class="pre">GeneratorExit</span></code></a> exception.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="k">def</span><span class="w"> </span><span class="nf">my_coroutine</span><span class="p">():</span>
 <span class="hll"><span class="linenos"> 2</span>    <span class="k">try</span><span class="p">:</span>
@@ -853,72 +860,9 @@ x=100
 </div>
 <div class="important admonition">
 <p class="admonition-title">Async Generators</p>
-<p>Generators can also be asynchronous. The semantics were proposed in PEP 525 <span id="id4">[<a class="reference internal" href="special_attributes.html#id28" title="Yury Selivanov. PEP 525 – asynchronous generators. Python Enhancement Proposal 525, Python Software Foundation, July 2016. URL: https://peps.python.org/pep-0525/ (visited on 2025-10-15).">Selivanov, 2016</a>]</span> and they rely on asynchronous functions (<code class="docutils literal notranslate"><span class="pre">async</span> <span class="pre">def</span></code>).</p>
+<p>Generators can also be asynchronous. The semantics were proposed in PEP 525 <span id="id5">[<a class="reference internal" href="references.html#id17" title="Yury Selivanov. PEP 525 – asynchronous generators. Python Enhancement Proposal 525, Python Software Foundation, July 2016. URL: https://peps.python.org/pep-0525/ (visited on 2025-10-15).">Selivanov, 2016</a>]</span> and they rely on asynchronous functions (<code class="docutils literal notranslate"><span class="pre">async</span> <span class="pre">def</span></code>).</p>
 </div>
 </section>
-</section>
-<section id="references">
-<h2>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
-<div class="docutils container" id="id5">
-<div role="list" class="citation-list">
-<div class="citation" id="id22" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">Ewi16</a><span class="fn-bracket">]</span></span>
-<p>Gregory Ewing. PEP 380 – syntax for delegating to a subgenerator. Python Enhancement Proposal 380, Python Software Foundation, February 2016. URL: <a class="reference external" href="https://peps.python.org/pep-0380/">https://peps.python.org/pep-0380/</a> (visited on 2025-10-16).</p>
-</div>
-<div class="citation" id="id20" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">SPM01</a><span class="fn-bracket">]</span></span>
-<p>Neil Schemenauer, Tim Peters, and Lie H. Magnus. PEP 255 – simple generators. Python Enhancement Proposal 255, Python Software Foundation, May 2001. URL: <a class="reference external" href="https://peps.python.org/pep-0255/">https://peps.python.org/pep-0255/</a> (visited on 2025-10-13).</p>
-</div>
-<div class="citation" id="id21" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id4">Sel16</a><span class="fn-bracket">]</span></span>
-<p>Yury Selivanov. PEP 525 – asynchronous generators. Python Enhancement Proposal 525, Python Software Foundation, July 2016. URL: <a class="reference external" href="https://peps.python.org/pep-0525/">https://peps.python.org/pep-0525/</a> (visited on 2025-10-15).</p>
-</div>
-<div class="citation" id="id12" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span>Smi12<span class="fn-bracket">]</span></span>
-<p>Eric V. Smith. PEP 420 – implicit namespace packages. Python Enhancement Proposal 420, Python Software Foundation, May 2012. URL: <a class="reference external" href="https://peps.python.org/pep-0420/">https://peps.python.org/pep-0420/</a> (visited on 2025-10-03).</p>
-</div>
-<div class="citation" id="id17" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span>PythonSFoundation25a<span class="fn-bracket">]</span></span>
-<p>Python Software Foundation. Built-in types — truth value testing. <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#truth-value-testing">https://docs.python.org/3/library/stdtypes.html#truth-value-testing</a>, October 2025. <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#truth-value-testing">https://docs.python.org/3/library/stdtypes.html#truth-value-testing</a>.</p>
-</div>
-<div class="citation" id="id18" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span>PythonSFoundation25b<span class="fn-bracket">]</span></span>
-<p>Python Software Foundation. Data model — asynchronous context managers. <a class="reference external" href="https://docs.python.org/3/reference/datamodel.html#asynchronous-context-managers">https://docs.python.org/3/reference/datamodel.html#asynchronous-context-managers</a>, October 2025. <a class="reference external" href="https://docs.python.org/3/reference/datamodel.html#asynchronous-context-managers">https://docs.python.org/3/reference/datamodel.html#asynchronous-context-managers</a>.</p>
-</div>
-<div class="citation" id="id15" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span>PythonSFoundation25c<span class="fn-bracket">]</span></span>
-<p>Python Software Foundation. Glossary — python 3 documentation: generator. <a class="reference external" href="https://docs.python.org/3/glossary.html#term-generator">https://docs.python.org/3/glossary.html#term-generator</a>, 2025. Accessed: 2025-10-07.</p>
-</div>
-<div class="citation" id="id7" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span>PythonSFoundation25d<span class="fn-bracket">]</span></span>
-<p>Python Software Foundation. The python language reference: 2.4.3. reserved classes of identifiers. 2025. URL: <a class="reference external" href="https://docs.python.org/3/reference/lexical_analysis.html#reserved-classes-of-identifiers">https://docs.python.org/3/reference/lexical_analysis.html#reserved-classes-of-identifiers</a> (visited on 2025-10-01).</p>
-</div>
-<div class="citation" id="id6" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span>PythonSFoundation25e<span class="fn-bracket">]</span></span>
-<p>Python Software Foundation. The python language reference: 3. data model. 2025. URL: <a class="reference external" href="https://docs.python.org/3/reference/datamodel.html">https://docs.python.org/3/reference/datamodel.html</a> (visited on 2025-10-01).</p>
-</div>
-<div class="citation" id="id9" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span>PythonSFoundation25f<span class="fn-bracket">]</span></span>
-<p>Python Software Foundation. The python language reference: 3.3. special method names. 2025. URL: <a class="reference external" href="https://docs.python.org/3/reference/datamodel.html#specialnames">https://docs.python.org/3/reference/datamodel.html#specialnames</a> (visited on 2025-10-01).</p>
-</div>
-<div class="citation" id="id14" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span>PythonSFoundation25g<span class="fn-bracket">]</span></span>
-<p>Python Software Foundation. The python language reference: 8. compound statements — the with statement. 2025. URL: <a class="reference external" href="https://docs.python.org/3/reference/compound_stmts.html#the-with-statement">https://docs.python.org/3/reference/compound_stmts.html#the-with-statement</a> (visited on 2025-10-07).</p>
-</div>
-<div class="citation" id="id8" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span>PythonSFoundation25h<span class="fn-bracket">]</span></span>
-<p>Python Software Foundation. The python tutorial: 6. modules. 2025. URL: <a class="reference external" href="https://docs.python.org/3/tutorial/modules.html">https://docs.python.org/3/tutorial/modules.html</a> (visited on 2025-10-01).</p>
-</div>
-<div class="citation" id="id23" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">PythonSFoundation25i</a><span class="fn-bracket">]</span></span>
-<p>Python Software Foundation. The yield statement. 2025. URL: <a class="reference external" href="https://docs.python.org/3/reference/simple_stmts.html#the-yield-statement">https://docs.python.org/3/reference/simple_stmts.html#the-yield-statement</a> (visited on 2025-10-16).</p>
-</div>
-<div class="citation" id="id16" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span>PythonSFoundation25j<span class="fn-bracket">]</span></span>
-<p>Python Software Foundation. Contextlib — utilities for with-statement contexts: contextlib.contextmanager. 2025. URL: <a class="reference external" href="https://docs.python.org/3/library/contextlib.html#contextlib.contextmanager">https://docs.python.org/3/library/contextlib.html#contextlib.contextmanager</a> (visited on 2025-10-07).</p>
-</div>
-</div>
-</div>
 </section>
 </section>
 
@@ -958,7 +902,7 @@ x=100
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Iterators</p>
+        <p class="prev-next-title"><span class="section-number">3. </span>Iterators</p>
       </div>
     </a>
     <a class="right-next"
@@ -966,7 +910,7 @@ x=100
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Structural Subtyping</p>
+        <p class="prev-next-title"><span class="section-number">5. </span>Structural Subtyping</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -986,18 +930,17 @@ x=100
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-are-generators">What Are Generators?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#can-a-generator-return">Can a Generator <code class="docutils literal notranslate"><span class="pre">return</span></code>?</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-return-values-with-subgenerators">Using Return Values with Subgenerators</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-are-generators">4.1. What Are Generators?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#can-a-generator-return">4.2. Can a Generator <code class="docutils literal notranslate"><span class="pre">return</span></code>?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-return-values-with-subgenerators">4.2.1. Using Return Values with Subgenerators</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#synchronous-coroutines">Synchronous Coroutines</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-simple-coroutine">Creating a Simple Coroutine</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#throwing-exceptions-into-coroutines">Throwing Exceptions into Coroutines</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#closing-coroutines">Closing Coroutines</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#synchronous-coroutines">4.3. Synchronous Coroutines</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-simple-coroutine">4.3.1. Creating a Simple Coroutine</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#throwing-exceptions-into-coroutines">4.3.2. Throwing Exceptions into Coroutines</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#closing-coroutines">4.3.3. Closing Coroutines</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
 </ul>
   </nav></div>
 

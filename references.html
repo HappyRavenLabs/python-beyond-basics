@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Coroutines &#8212; Beyond Basics: Mastering Advanced Python — a book to learn expert aspects of Python language</title>
+    <title>14. References &#8212; Beyond Basics: Mastering Advanced Python — a book to learn expert aspects of Python language</title>
   
   
   
@@ -35,6 +35,8 @@
     <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="_static/interactives/custom.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
@@ -57,12 +59,11 @@
     <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'coroutines';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'references';</script>
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Concurrency and Parallelism" href="concurrency_and_parallelism.html" />
-    <link rel="prev" title="Weak References" href="weakref.html" />
+    <link rel="prev" title="13. Weak References" href="weakref.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -180,21 +181,20 @@
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Beyond Basics: Mastering Advanced Python — a book to learn expert aspects of Python language</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="special_attributes.html">Special Attributes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="context_managers.html">Context Managers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="iterators.html">Iterators</a></li>
-<li class="toctree-l1"><a class="reference internal" href="generators.html">Generators</a></li>
-<li class="toctree-l1"><a class="reference internal" href="structural_subtyping.html">Structural Subtyping</a></li>
-<li class="toctree-l1"><a class="reference internal" href="higher_order_functions.html">Higher-order Functions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="decorators.html">Decorators</a></li>
-<li class="toctree-l1"><a class="reference internal" href="metaclasses.html">Metaclasses</a></li>
-<li class="toctree-l1"><a class="reference internal" href="descriptors.html">Descriptors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="code_inspect.html">Code Inspection</a></li>
-<li class="toctree-l1"><a class="reference internal" href="dynamic_execution.html">Dynamic Code Execution</a></li>
-<li class="toctree-l1"><a class="reference internal" href="generics.html">Generics</a></li>
-<li class="toctree-l1"><a class="reference internal" href="weakref.html">Weak References</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Coroutines</a></li>
-<li class="toctree-l1"><a class="reference internal" href="concurrency_and_parallelism.html">Concurrency and Parallelism</a></li>
+<li class="toctree-l1"><a class="reference internal" href="special_attributes.html">1. Special Attributes &amp; Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="context_managers.html">2. Context Managers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="iterators.html">3. Iterators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generators.html">4. Generators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="structural_subtyping.html">5. Structural Subtyping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="higher_order_functions.html">6. Higher-order Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="decorators.html">7. Decorators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="metaclasses.html">8. Metaclasses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="descriptors.html">9. Descriptors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="code_inspect.html">10. Code Inspection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dynamic_execution.html">11. Dynamic Code Execution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generics.html">12. Generics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="weakref.html">13. Weak References</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">14. References</a></li>
 </ul>
 
     </div>
@@ -266,7 +266,7 @@
       
       
       
-      <li><a href="https://github.com/HappyRavenLabs/python-beyond-basics/issues/new?title=Issue%20on%20page%20%2Fcoroutines.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/HappyRavenLabs/python-beyond-basics/issues/new?title=Issue%20on%20page%20%2Freferences.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -296,7 +296,7 @@
       
       
       
-      <li><a href="_sources/coroutines.md" target="_blank"
+      <li><a href="_sources/references.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -378,7 +378,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Coroutines</h1>
+    <h1>References</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -392,17 +392,89 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="coroutines">
-<h1>Coroutines<a class="headerlink" href="#coroutines" title="Link to this heading">#</a></h1>
-<div class="important admonition">
-<p class="admonition-title">This chapter is not ready yet?</p>
-<p>Writing a book takes time and for that chapter I did not have enough of it. Please, return later.</p>
+  <section id="references">
+<h1><span class="section-number">14. </span>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h1>
+<div class="docutils container" id="id1">
+<div role="list" class="citation-list">
+<div class="citation" id="id20" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>Cam<span class="fn-bracket">]</span></span>
+<p>Iteration. URL: <a class="reference external" href="https://dictionary.cambridge.org/dictionary/english/iteration">https://dictionary.cambridge.org/dictionary/english/iteration</a> (visited on 2025-10-20).</p>
 </div>
-<!-- ````{admonition} What is a Coroutine?
-:class: hint
-
-A **coroutine**, by definition, is a subroutine (a function) that can be paused and resumed.
-```` --></section>
+<div class="citation" id="id18" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>Ewi16<span class="fn-bracket">]</span></span>
+<p>Gregory Ewing. PEP 380 – syntax for delegating to a subgenerator. Python Enhancement Proposal 380, Python Software Foundation, February 2016. URL: <a class="reference external" href="https://peps.python.org/pep-0380/">https://peps.python.org/pep-0380/</a> (visited on 2025-10-16).</p>
+</div>
+<div class="citation" id="id22" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>KPvR01<span class="fn-bracket">]</span></span>
+<p>Yee Ka-Ping and Guido van Rossum. PEP 234 – iterators. Python Enhancement Proposal 234, Python Software Foundation, January 2001. URL: <a class="reference external" href="https://peps.python.org/pep-0234/">https://peps.python.org/pep-0234/</a> (visited on 2025-10-20).</p>
+</div>
+<div class="citation" id="id16" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>SPM01<span class="fn-bracket">]</span></span>
+<p>Neil Schemenauer, Tim Peters, and Lie H. Magnus. PEP 255 – simple generators. Python Enhancement Proposal 255, Python Software Foundation, May 2001. URL: <a class="reference external" href="https://peps.python.org/pep-0255/">https://peps.python.org/pep-0255/</a> (visited on 2025-10-13).</p>
+</div>
+<div class="citation" id="id17" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>Sel16<span class="fn-bracket">]</span></span>
+<p>Yury Selivanov. PEP 525 – asynchronous generators. Python Enhancement Proposal 525, Python Software Foundation, July 2016. URL: <a class="reference external" href="https://peps.python.org/pep-0525/">https://peps.python.org/pep-0525/</a> (visited on 2025-10-15).</p>
+</div>
+<div class="citation" id="id8" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>Smi12<span class="fn-bracket">]</span></span>
+<p>Eric V. Smith. PEP 420 – implicit namespace packages. Python Enhancement Proposal 420, Python Software Foundation, May 2012. URL: <a class="reference external" href="https://peps.python.org/pep-0420/">https://peps.python.org/pep-0420/</a> (visited on 2025-10-03).</p>
+</div>
+<div class="citation" id="id24" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>vRE05<span class="fn-bracket">]</span></span>
+<p>Guido van Rossum and Philip J. Eby. PEP 342 – coroutines via enhanced generators. Python Enhancement Proposal 342, Python Software Foundation, May 2005. URL: <a class="reference external" href="https://peps.python.org/pep-0342/">https://peps.python.org/pep-0342/</a> (visited on 2025-10-21).</p>
+</div>
+<div class="citation" id="id13" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>PythonSFoundation25a<span class="fn-bracket">]</span></span>
+<p>Python Software Foundation. Built-in types — truth value testing. <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#truth-value-testing">https://docs.python.org/3/library/stdtypes.html#truth-value-testing</a>, October 2025. <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#truth-value-testing">https://docs.python.org/3/library/stdtypes.html#truth-value-testing</a>.</p>
+</div>
+<div class="citation" id="id23" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>PythonSFoundation25b<span class="fn-bracket">]</span></span>
+<p>Python Software Foundation. Collections abstract base classes¶. 2025. URL: <a class="reference external" href="https://docs.python.org/3/library/collections.abc.html#collections-abstract-base-classes">https://docs.python.org/3/library/collections.abc.html#collections-abstract-base-classes</a> (visited on 2025-10-21).</p>
+</div>
+<div class="citation" id="id14" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>PythonSFoundation25c<span class="fn-bracket">]</span></span>
+<p>Python Software Foundation. Data model — asynchronous context managers. <a class="reference external" href="https://docs.python.org/3/reference/datamodel.html#asynchronous-context-managers">https://docs.python.org/3/reference/datamodel.html#asynchronous-context-managers</a>, October 2025. <a class="reference external" href="https://docs.python.org/3/reference/datamodel.html#asynchronous-context-managers">https://docs.python.org/3/reference/datamodel.html#asynchronous-context-managers</a>.</p>
+</div>
+<div class="citation" id="id11" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>PythonSFoundation25d<span class="fn-bracket">]</span></span>
+<p>Python Software Foundation. Glossary — python 3 documentation: generator. <a class="reference external" href="https://docs.python.org/3/glossary.html#term-generator">https://docs.python.org/3/glossary.html#term-generator</a>, 2025. Accessed: 2025-10-07.</p>
+</div>
+<div class="citation" id="id3" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>PythonSFoundation25e<span class="fn-bracket">]</span></span>
+<p>Python Software Foundation. The python language reference: 2.4.3. reserved classes of identifiers. 2025. URL: <a class="reference external" href="https://docs.python.org/3/reference/lexical_analysis.html#reserved-classes-of-identifiers">https://docs.python.org/3/reference/lexical_analysis.html#reserved-classes-of-identifiers</a> (visited on 2025-10-01).</p>
+</div>
+<div class="citation" id="id2" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>PythonSFoundation25f<span class="fn-bracket">]</span></span>
+<p>Python Software Foundation. The python language reference: 3. data model. 2025. URL: <a class="reference external" href="https://docs.python.org/3/reference/datamodel.html">https://docs.python.org/3/reference/datamodel.html</a> (visited on 2025-10-01).</p>
+</div>
+<div class="citation" id="id5" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>PythonSFoundation25g<span class="fn-bracket">]</span></span>
+<p>Python Software Foundation. The python language reference: 3.3. special method names. 2025. URL: <a class="reference external" href="https://docs.python.org/3/reference/datamodel.html#specialnames">https://docs.python.org/3/reference/datamodel.html#specialnames</a> (visited on 2025-10-01).</p>
+</div>
+<div class="citation" id="id10" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>PythonSFoundation25h<span class="fn-bracket">]</span></span>
+<p>Python Software Foundation. The python language reference: 8. compound statements — the with statement. 2025. URL: <a class="reference external" href="https://docs.python.org/3/reference/compound_stmts.html#the-with-statement">https://docs.python.org/3/reference/compound_stmts.html#the-with-statement</a> (visited on 2025-10-07).</p>
+</div>
+<div class="citation" id="id4" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>PythonSFoundation25i<span class="fn-bracket">]</span></span>
+<p>Python Software Foundation. The python tutorial: 6. modules. 2025. URL: <a class="reference external" href="https://docs.python.org/3/tutorial/modules.html">https://docs.python.org/3/tutorial/modules.html</a> (visited on 2025-10-01).</p>
+</div>
+<div class="citation" id="id19" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>PythonSFoundation25j<span class="fn-bracket">]</span></span>
+<p>Python Software Foundation. The yield statement. 2025. URL: <a class="reference external" href="https://docs.python.org/3/reference/simple_stmts.html#the-yield-statement">https://docs.python.org/3/reference/simple_stmts.html#the-yield-statement</a> (visited on 2025-10-16).</p>
+</div>
+<div class="citation" id="id12" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>PythonSFoundation25k<span class="fn-bracket">]</span></span>
+<p>Python Software Foundation. Contextlib — utilities for with-statement contexts: contextlib.contextmanager. 2025. URL: <a class="reference external" href="https://docs.python.org/3/library/contextlib.html#contextlib.contextmanager">https://docs.python.org/3/library/contextlib.html#contextlib.contextmanager</a> (visited on 2025-10-07).</p>
+</div>
+<div class="citation" id="id21" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>PythonSFoundation25l<span class="fn-bracket">]</span></span>
+<p>Python Software Foundation. Iterator. 2025. URL: <a class="reference external" href="https://docs.python.org/3/glossary.html#term-iterator">https://docs.python.org/3/glossary.html#term-iterator</a> (visited on 2025-10-20).</p>
+</div>
+</div>
+</div>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -440,17 +512,8 @@ A **coroutine**, by definition, is a subroutine (a function) that can be paused 
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Weak References</p>
+        <p class="prev-next-title"><span class="section-number">13. </span>Weak References</p>
       </div>
-    </a>
-    <a class="right-next"
-       href="concurrency_and_parallelism.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Concurrency and Parallelism</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>

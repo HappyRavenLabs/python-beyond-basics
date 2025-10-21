@@ -35,6 +35,8 @@
     <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="_static/interactives/custom.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
@@ -57,11 +59,10 @@
     <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'concurrency_and_parallelism';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'parallelism';</script>
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="Coroutines" href="coroutines.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -124,6 +125,8 @@
       
       
       
+        
+      
       <div class="bd-sidebar-primary bd-sidebar">
         
 
@@ -178,22 +181,21 @@
             </li>
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Beyond Basics: Mastering Advanced Python — a book to learn expert aspects of Python language</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="special_attributes.html">Special Attributes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="context_managers.html">Context Managers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="iterators.html">Iterators</a></li>
-<li class="toctree-l1"><a class="reference internal" href="generators.html">Generators</a></li>
-<li class="toctree-l1"><a class="reference internal" href="structural_subtyping.html">Structural Subtyping</a></li>
-<li class="toctree-l1"><a class="reference internal" href="higher_order_functions.html">Higher-order Functions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="decorators.html">Decorators</a></li>
-<li class="toctree-l1"><a class="reference internal" href="metaclasses.html">Metaclasses</a></li>
-<li class="toctree-l1"><a class="reference internal" href="descriptors.html">Descriptors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="code_inspect.html">Code Inspection</a></li>
-<li class="toctree-l1"><a class="reference internal" href="dynamic_execution.html">Dynamic Code Execution</a></li>
-<li class="toctree-l1"><a class="reference internal" href="generics.html">Generics</a></li>
-<li class="toctree-l1"><a class="reference internal" href="weakref.html">Weak References</a></li>
-<li class="toctree-l1"><a class="reference internal" href="coroutines.html">Coroutines</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Concurrency and Parallelism</a></li>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="special_attributes.html">1. Special Attributes &amp; Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="context_managers.html">2. Context Managers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="iterators.html">3. Iterators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generators.html">4. Generators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="structural_subtyping.html">5. Structural Subtyping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="higher_order_functions.html">6. Higher-order Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="decorators.html">7. Decorators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="metaclasses.html">8. Metaclasses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="descriptors.html">9. Descriptors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="code_inspect.html">10. Code Inspection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dynamic_execution.html">11. Dynamic Code Execution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generics.html">12. Generics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="weakref.html">13. Weak References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="references.html">14. References</a></li>
 </ul>
 
     </div>
@@ -265,7 +267,7 @@
       
       
       
-      <li><a href="https://github.com/HappyRavenLabs/python-beyond-basics/issues/new?title=Issue%20on%20page%20%2Fconcurrency_and_parallelism.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/HappyRavenLabs/python-beyond-basics/issues/new?title=Issue%20on%20page%20%2Fparallelism.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -295,7 +297,7 @@
       
       
       
-      <li><a href="_sources/concurrency_and_parallelism.md" target="_blank"
+      <li><a href="_sources/parallelism.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -429,15 +431,6 @@ document.write(`
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
-    <a class="left-prev"
-       href="coroutines.html"
-       title="previous page">
-      <i class="fa-solid fa-angle-left"></i>
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Coroutines</p>
-      </div>
-    </a>
 </div>
                 </footer>
               

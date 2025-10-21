@@ -10,7 +10,9 @@ kernelspec:
   name: python3
 ---
 
-# Special Attributes
+# Special Attributes & Methods
+
+## Introduction
 
 In Python, all data types have a set of special attributes, commonly referred to as **dunder attributes**[^dunder].  
 These attributes provide developers with useful metadata about Python objects. They follow the naming pattern `__attribute__` — with two leading and two trailing underscores where `attribute` is the name of the given dunder attribute.
@@ -288,6 +290,3 @@ If you are already experienced in Python, you probably know that literally **all
 In this section, the "Of Objects" subsection covers the **core special attributes** that are fundamental to **all** Python objects. The previous subsections (Modules, Functions, Methods, Classes) describe **additional specialized attributes** specific to those object types. Therefore, objects of those types will have both the general object attributes listed here and their type-specific attributes described above.
 ```
 
-## References
-```{bibliography}
-```

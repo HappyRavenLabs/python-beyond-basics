@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Context Managers &#8212; Beyond Basics: Mastering Advanced Python — a book to learn expert aspects of Python language</title>
+    <title>2. Context Managers &#8212; Beyond Basics: Mastering Advanced Python — a book to learn expert aspects of Python language</title>
   
   
   
@@ -35,6 +35,8 @@
     <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="_static/interactives/custom.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
@@ -61,8 +63,8 @@
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Iterators" href="iterators.html" />
-    <link rel="prev" title="Special Attributes" href="special_attributes.html" />
+    <link rel="next" title="3. Iterators" href="iterators.html" />
+    <link rel="prev" title="1. Special Attributes &amp; Methods" href="special_attributes.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -180,21 +182,20 @@
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Beyond Basics: Mastering Advanced Python — a book to learn expert aspects of Python language</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="special_attributes.html">Special Attributes</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Context Managers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="iterators.html">Iterators</a></li>
-<li class="toctree-l1"><a class="reference internal" href="generators.html">Generators</a></li>
-<li class="toctree-l1"><a class="reference internal" href="structural_subtyping.html">Structural Subtyping</a></li>
-<li class="toctree-l1"><a class="reference internal" href="higher_order_functions.html">Higher-order Functions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="decorators.html">Decorators</a></li>
-<li class="toctree-l1"><a class="reference internal" href="metaclasses.html">Metaclasses</a></li>
-<li class="toctree-l1"><a class="reference internal" href="descriptors.html">Descriptors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="code_inspect.html">Code Inspection</a></li>
-<li class="toctree-l1"><a class="reference internal" href="dynamic_execution.html">Dynamic Code Execution</a></li>
-<li class="toctree-l1"><a class="reference internal" href="generics.html">Generics</a></li>
-<li class="toctree-l1"><a class="reference internal" href="weakref.html">Weak References</a></li>
-<li class="toctree-l1"><a class="reference internal" href="coroutines.html">Coroutines</a></li>
-<li class="toctree-l1"><a class="reference internal" href="concurrency_and_parallelism.html">Concurrency and Parallelism</a></li>
+<li class="toctree-l1"><a class="reference internal" href="special_attributes.html">1. Special Attributes &amp; Methods</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">2. Context Managers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="iterators.html">3. Iterators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generators.html">4. Generators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="structural_subtyping.html">5. Structural Subtyping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="higher_order_functions.html">6. Higher-order Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="decorators.html">7. Decorators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="metaclasses.html">8. Metaclasses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="descriptors.html">9. Descriptors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="code_inspect.html">10. Code Inspection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dynamic_execution.html">11. Dynamic Code Execution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generics.html">12. Generics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="weakref.html">13. Weak References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="references.html">14. References</a></li>
 </ul>
 
     </div>
@@ -390,16 +391,16 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#running-in-context">Running in context</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#class-based-definition">Class-based definition</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#enter"><code class="docutils literal notranslate"><span class="pre">__enter__</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exit"><code class="docutils literal notranslate"><span class="pre">__exit__</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">2.1. Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#running-in-context">2.2. Running in context</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#class-based-definition">2.3. Class-based definition</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#enter">2.3.1. <code class="docutils literal notranslate"><span class="pre">__enter__</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exit">2.3.2. <code class="docutils literal notranslate"><span class="pre">__exit__</span></code></a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generator-based-definition">Generator-based definition</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#usage">Usage</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#asynchronous-context-managers">Asynchronous context managers</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generator-based-definition">2.4. Generator-based definition</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#usage">2.5. Usage</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#asynchronous-context-managers">2.6. Asynchronous context managers</a></li>
 </ul>
             </nav>
         </div>
@@ -412,7 +413,9 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="context-managers">
-<h1>Context Managers<a class="headerlink" href="#context-managers" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">2. </span>Context Managers<a class="headerlink" href="#context-managers" title="Link to this heading">#</a></h1>
+<section id="introduction">
+<h2><span class="section-number">2.1. </span>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
 <p>As you are (hopefully) already accustomed to (at least basic) Python, you’ve almost certainly encountered those fancy and extremely useful structures with the <code class="code docutils literal notranslate"><span class="pre">with</span></code> keyword, called <strong>context managers</strong>. Where does this name come from? Well, context managers define a runtime environment (context) for a given block of code.</p>
 <div class="tip admonition">
 <p class="admonition-title">Block of code?</p>
@@ -423,8 +426,9 @@ document.write(`
 </div>
 </div>
 <p>Why do we need such an environment? Well, when you need to configure anything before executing some piece of code (a code block) and/or tear down and clean up afterwards. That’s the core idea behind <strong>context managers</strong>: set up before, clean up after, guaranteed.</p>
+</section>
 <section id="running-in-context">
-<h2>Running in context<a class="headerlink" href="#running-in-context" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">2.2. </span>Running in context<a class="headerlink" href="#running-in-context" title="Link to this heading">#</a></h2>
 <p>To run code within the context managed by a <strong>context manager</strong>, we use the <a class="reference external" href="https://docs.python.org/3/reference/compound_stmts.html#the-with-statement"><code class="docutils literal notranslate"><span class="pre">with</span></code></a> statement. If the context manager returns any object on setup, you can bind it using the <code class="code docutils literal notranslate"><span class="pre">as</span></code> keyword:</p>
 <div class="cell tag_remove-stderr docutils container">
 <div class="cell_input docutils container">
@@ -435,10 +439,10 @@ document.write(`
 </div>
 </div>
 </div>
-<p>Context managers can be created in two ways: either as a <a class="reference internal" href="#class-based-definition"><span class="xref myst">class-based definition</span></a> or a <a class="reference internal" href="#generator-based-definition"><span class="xref myst">generator-based definition</span></a>. Both are presented below.</p>
+<p>Context managers can be created in two ways: either as a <a class="reference internal" href="#class-based-definition">class-based definition</a> or a <a class="reference internal" href="#generator-based-definition">generator-based definition</a>. Both are presented below.</p>
 </section>
 <section id="class-based-definition">
-<h2>Class-based definition<a class="headerlink" href="#class-based-definition" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">2.3. </span>Class-based definition<a class="headerlink" href="#class-based-definition" title="Link to this heading">#</a></h2>
 <div class="important admonition">
 <p class="admonition-title">Welcome OOP</p>
 <p>To define a context manager using classes, you need to know what a <strong>class</strong> is and how we can define it. If you don’t have such knowledge, learn about it and return later.</p>
@@ -450,7 +454,7 @@ document.write(`
 </ol>
 <p>It is quite clear that the first (<code class="docutils literal notranslate"><span class="pre">__enter__</span></code>) is responsible for setting up the execution context (environment), whereas the latter is responsible for cleaning up.</p>
 <section id="enter">
-<h3><code class="docutils literal notranslate"><span class="pre">__enter__</span></code><a class="headerlink" href="#enter" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">2.3.1. </span><code class="docutils literal notranslate"><span class="pre">__enter__</span></code><a class="headerlink" href="#enter" title="Link to this heading">#</a></h3>
 <p>The setup method is argumentless, namely it takes just an implicit parameter (<code class="docutils literal notranslate"><span class="pre">self</span></code>), but you can return anything. Remember that the object returned by the <code class="docutils literal notranslate"><span class="pre">__enter__</span></code> method can be bound to the target variable using the <code class="docutils literal notranslate"><span class="pre">as</span></code> keyword.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">class</span><span class="w"> </span><span class="nc">MyContextManager</span><span class="p">:</span>
 <span class="linenos">2</span>
@@ -461,11 +465,11 @@ document.write(`
 </div>
 <div class="tip admonition">
 <p class="admonition-title">Did you know?</p>
-<p>If the <code class="docutils literal notranslate"><span class="pre">__enter__</span></code> method does not raise an error, the <code class="docutils literal notranslate"><span class="pre">__exit__</span></code> method is guaranteed to be invoked <span id="id2">[<a class="reference internal" href="special_attributes.html#id21" title="Python Software Foundation. The python language reference: 8. compound statements — the with statement. 2025. URL: https://docs.python.org/3/reference/compound_stmts.html#the-with-statement (visited on 2025-10-07).">Python Software Foundation, 2025</a>]</span>, regardless of whether the block inside the context manager raises an error or not.</p>
+<p>If the <code class="docutils literal notranslate"><span class="pre">__enter__</span></code> method does not raise an error, the <code class="docutils literal notranslate"><span class="pre">__exit__</span></code> method is guaranteed to be invoked <span id="id2">[<a class="reference internal" href="references.html#id10" title="Python Software Foundation. The python language reference: 8. compound statements — the with statement. 2025. URL: https://docs.python.org/3/reference/compound_stmts.html#the-with-statement (visited on 2025-10-07).">Python Software Foundation, 2025</a>]</span>, regardless of whether the block inside the context manager raises an error or not.</p>
 </div>
 </section>
 <section id="exit">
-<h3><code class="docutils literal notranslate"><span class="pre">__exit__</span></code><a class="headerlink" href="#exit" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">2.3.2. </span><code class="docutils literal notranslate"><span class="pre">__exit__</span></code><a class="headerlink" href="#exit" title="Link to this heading">#</a></h3>
 <p>Unlike <code class="docutils literal notranslate"><span class="pre">__enter__</span></code>, the <code class="docutils literal notranslate"><span class="pre">__exit__</span></code> method imposes three parameters:</p>
 <ol class="arabic simple">
 <li><p>exception type (type hint: <code class="docutils literal notranslate"><span class="pre">type[Exception]</span> <span class="pre">|</span> <span class="pre">None</span></code>),</p></li>
@@ -477,7 +481,7 @@ document.write(`
 <li><p>suppress it (silence it, do not propagate),</p></li>
 <li><p>reraise it</p></li>
 </ol>
-<p>To suppress the exception (or manage it on your own inside the <code class="docutils literal notranslate"><span class="pre">__exit__</span></code> method), you need to return the value <code class="docutils literal notranslate"><span class="pre">True</span></code> explicitly or any expression evaluated to <code class="docutils literal notranslate"><span class="pre">True</span></code> <span id="id3">[<a class="reference internal" href="special_attributes.html#id24" title="Python Software Foundation. Built-in types — truth value testing. https://docs.python.org/3/library/stdtypes.html#truth-value-testing, October 2025. https://docs.python.org/3/library/stdtypes.html#truth-value-testing.">Python Software Foundation, 2025</a>]</span>. Otherwise, the exception will be propagated. Following our above example, let us add a dummy <code class="docutils literal notranslate"><span class="pre">__exit__</span></code> implementation:</p>
+<p>To suppress the exception (or manage it on your own inside the <code class="docutils literal notranslate"><span class="pre">__exit__</span></code> method), you need to return the value <code class="docutils literal notranslate"><span class="pre">True</span></code> explicitly or any expression evaluated to <code class="docutils literal notranslate"><span class="pre">True</span></code> <span id="id3">[<a class="reference internal" href="references.html#id13" title="Python Software Foundation. Built-in types — truth value testing. https://docs.python.org/3/library/stdtypes.html#truth-value-testing, October 2025. https://docs.python.org/3/library/stdtypes.html#truth-value-testing.">Python Software Foundation, 2025</a>]</span>. Otherwise, the exception will be propagated. Following our above example, let us add a dummy <code class="docutils literal notranslate"><span class="pre">__exit__</span></code> implementation:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">7</span>    <span class="k">def</span><span class="w"> </span><span class="fm">__exit__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">exc_type</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="ne">Exception</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span><span class="p">,</span> <span class="n">exc_val</span><span class="p">:</span> <span class="ne">Exception</span> <span class="o">|</span> <span class="kc">None</span><span class="p">,</span> <span class="n">traceback</span><span class="p">):</span> 
 <span class="linenos">8</span>        <span class="c1"># some logic goes here</span>
 <span class="hll"><span class="linenos">9</span>        <span class="k">return</span> <span class="kc">True</span> <span class="c1"># If we want to suppress the error, we return True</span>
@@ -506,12 +510,12 @@ document.write(`
 </div>
 <div class="attention admonition">
 <p class="admonition-title">Asynchronous generator-based context managers</p>
-<p>To create asynchronous context manager (see section below <a class="reference internal" href="#asynchronous-context-managers"><span class="xref myst">Asynchronous Context Managers</span></a>) <span id="id4">[<a class="reference internal" href="special_attributes.html#id25" title="Python Software Foundation. Data model — asynchronous context managers. https://docs.python.org/3/reference/datamodel.html#asynchronous-context-managers, October 2025. https://docs.python.org/3/reference/datamodel.html#asynchronous-context-managers.">Python Software Foundation, 2025</a>]</span>, you need to use <a class="reference external" href="https://docs.python.org/3/reference/datamodel.html#object.__aenter__"><code class="docutils literal notranslate"><span class="pre">__aenter__</span></code></a> and <a class="reference external" href="https://docs.python.org/3/reference/datamodel.html#object.__aexit__"><code class="docutils literal notranslate"><span class="pre">__aexit__</span></code></a> asynchronous dunder methods. Their signature is the same as their synchronous counterparts.</p>
+<p>To create asynchronous context manager (see section below <a class="reference internal" href="#asynchronous-context-managers">Asynchronous Context Managers</a>) <span id="id4">[<a class="reference internal" href="references.html#id14" title="Python Software Foundation. Data model — asynchronous context managers. https://docs.python.org/3/reference/datamodel.html#asynchronous-context-managers, October 2025. https://docs.python.org/3/reference/datamodel.html#asynchronous-context-managers.">Python Software Foundation, 2025</a>]</span>, you need to use <a class="reference external" href="https://docs.python.org/3/reference/datamodel.html#object.__aenter__"><code class="docutils literal notranslate"><span class="pre">__aenter__</span></code></a> and <a class="reference external" href="https://docs.python.org/3/reference/datamodel.html#object.__aexit__"><code class="docutils literal notranslate"><span class="pre">__aexit__</span></code></a> asynchronous dunder methods. Their signature is the same as their synchronous counterparts.</p>
 </div>
 </section>
 </section>
 <section id="generator-based-definition">
-<h2>Generator-based definition<a class="headerlink" href="#generator-based-definition" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">2.4. </span>Generator-based definition<a class="headerlink" href="#generator-based-definition" title="Link to this heading">#</a></h2>
 <div class="important admonition">
 <p class="admonition-title">Do you know <a class="reference internal" href="generators.html"><span class="std std-doc"><strong>generators</strong></span></a>?</p>
 <p>Before you dive into this section, ensure you are familiar with Python generators. Read 📰 about them in the chapter <a class="reference internal" href="generators.html"><span class="std std-doc">Generators</span></a>.</p>
@@ -520,7 +524,7 @@ document.write(`
 <p class="admonition-title">Do you know <a class="reference internal" href="decorators.html"><span class="std std-doc"><strong>decorators</strong></span></a>?</p>
 <p>You should be aware of decorators before reading this section. You will find them in the chapter <a class="reference internal" href="decorators.html"><span class="std std-doc">Decorators</span></a>.</p>
 </div>
-<p>Writing context managers as classes gives us the most flexibility; however, there is another, quite convenient way to create a simple context manager—by using a generator function <span id="id5">[<a class="reference internal" href="special_attributes.html#id22" title="Python Software Foundation. Glossary — python 3 documentation: generator. https://docs.python.org/3/glossary.html#term-generator, 2025. Accessed: 2025-10-07.">Python Software Foundation, 2025</a>]</span>. The pivotal element is the <a class="reference external" href="https://docs.python.org/3/reference/simple_stmts.html#yield"><code class="docutils literal notranslate"><span class="pre">yield</span></code></a> statement and the <a class="reference external" href="https://docs.python.org/3/library/contextlib.html#contextlib.contextmanager"><code class="docutils literal notranslate"><span class="pre">&#64;contextmanager</span></code></a> decorator from the <a class="reference external" href="https://docs.python.org/3/library/contextlib.html"><code class="docutils literal notranslate"><span class="pre">contextlib</span></code></a> <span id="id6">[<a class="reference internal" href="special_attributes.html#id23" title="Python Software Foundation. Contextlib — utilities for with-statement contexts: contextlib.contextmanager. 2025. URL: https://docs.python.org/3/library/contextlib.html#contextlib.contextmanager (visited on 2025-10-07).">Python Software Foundation, 2025</a>]</span> module, which is used to decorate the generator function. It has the following structure:</p>
+<p>Writing context managers as classes gives us the most flexibility; however, there is another, quite convenient way to create a simple context manager—by using a generator function <span id="id5">[<a class="reference internal" href="references.html#id11" title="Python Software Foundation. Glossary — python 3 documentation: generator. https://docs.python.org/3/glossary.html#term-generator, 2025. Accessed: 2025-10-07.">Python Software Foundation, 2025</a>]</span>. The pivotal element is the <a class="reference external" href="https://docs.python.org/3/reference/simple_stmts.html#yield"><code class="docutils literal notranslate"><span class="pre">yield</span></code></a> statement and the <a class="reference external" href="https://docs.python.org/3/library/contextlib.html#contextlib.contextmanager"><code class="docutils literal notranslate"><span class="pre">&#64;contextmanager</span></code></a> decorator from the <a class="reference external" href="https://docs.python.org/3/library/contextlib.html"><code class="docutils literal notranslate"><span class="pre">contextlib</span></code></a> <span id="id6">[<a class="reference internal" href="references.html#id12" title="Python Software Foundation. Contextlib — utilities for with-statement contexts: contextlib.contextmanager. 2025. URL: https://docs.python.org/3/library/contextlib.html#contextlib.contextmanager (visited on 2025-10-07).">Python Software Foundation, 2025</a>]</span> module, which is used to decorate the generator function. It has the following structure:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span><span class="w"> </span><span class="nn">contextlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">contextmanager</span>
 <span class="linenos"> 2</span>
 <span class="hll"><span class="linenos"> 3</span><span class="nd">@contextmanager</span> <span class="c1"># We need to use this decorator to make a func a context manager</span>
@@ -536,7 +540,7 @@ document.write(`
 </div>
 <p>So, we have:</p>
 <div class="pst-scrollable-table-container"><table class="table" id="code-explanation-context-manager">
-<caption><span class="caption-number">Table 2 </span><span class="caption-text">A line-by-line explanation of generator-based context manager</span><a class="headerlink" href="#code-explanation-context-manager" title="Link to this table">#</a></caption>
+<caption><span class="caption-number">Table 2.1 </span><span class="caption-text">A line-by-line explanation of generator-based context manager</span><a class="headerlink" href="#code-explanation-context-manager" title="Link to this table">#</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p><strong>Line</strong></p></th>
 <th class="head"><p><strong>Code</strong></p></th>
@@ -595,11 +599,11 @@ document.write(`
 </div>
 <div class="attention admonition">
 <p class="admonition-title">Asynchronous generator-based context managers</p>
-<p>If you intend to create an asynchronous context manager (see section below <a class="reference internal" href="#asynchronous-context-managers"><span class="xref myst">Asynchronous Context Managers</span></a>), remember to define the function (decorated with <a class="reference external" href="https://docs.python.org/3/library/contextlib.html#contextlib.asynccontextmanager"><code class="docutils literal notranslate"><span class="pre">&#64;asynccontextmanager</span></code></a>) as <code class="docutils literal notranslate"><span class="pre">async</span></code>.</p>
+<p>If you intend to create an asynchronous context manager (see section below <a class="reference internal" href="#asynchronous-context-managers">Asynchronous Context Managers</a>), remember to define the function (decorated with <a class="reference external" href="https://docs.python.org/3/library/contextlib.html#contextlib.asynccontextmanager"><code class="docutils literal notranslate"><span class="pre">&#64;asynccontextmanager</span></code></a>) as <code class="docutils literal notranslate"><span class="pre">async</span></code>.</p>
 </div>
 <div class="tip admonition">
 <p class="admonition-title">Context manager as decorator? Why not?</p>
-<p>The <a class="reference external" href="https://docs.python.org/3/library/contextlib.html"><code class="docutils literal notranslate"><span class="pre">contextlib</span></code></a> library provides a variety of other useful tools. For example, you can create a context manager <strong>as a decorator</strong>. To do that, you just follow the <a class="reference internal" href="#class-based-definition"><span class="xref myst">class-based definition</span></a> and add a parent class <a class="reference external" href="https://docs.python.org/3/library/contextlib.html#contextlib.ContextDecorator"><code class="docutils literal notranslate"><span class="pre">ContextDecorator</span></code></a>, so you can use it as:</p>
+<p>The <a class="reference external" href="https://docs.python.org/3/library/contextlib.html"><code class="docutils literal notranslate"><span class="pre">contextlib</span></code></a> library provides a variety of other useful tools. For example, you can create a context manager <strong>as a decorator</strong>. To do that, you just follow the <a class="reference internal" href="#class-based-definition">class-based definition</a> and add a parent class <a class="reference external" href="https://docs.python.org/3/library/contextlib.html#contextlib.ContextDecorator"><code class="docutils literal notranslate"><span class="pre">ContextDecorator</span></code></a>, so you can use it as:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
 <span class="linenos"> 2</span><span class="kn">from</span><span class="w"> </span><span class="nn">contextlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">ContextDecorator</span>
 <span class="linenos"> 3</span>
@@ -617,7 +621,7 @@ document.write(`
 </div>
 </section>
 <section id="usage">
-<h2>Usage<a class="headerlink" href="#usage" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">2.5. </span>Usage<a class="headerlink" href="#usage" title="Link to this heading">#</a></h2>
 <p>Regardless of the way you defined your context manager, you can use it as below:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -643,12 +647,12 @@ After context: /home
 </div>
 </section>
 <section id="asynchronous-context-managers">
-<h2>Asynchronous context managers<a class="headerlink" href="#asynchronous-context-managers" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">2.6. </span>Asynchronous context managers<a class="headerlink" href="#asynchronous-context-managers" title="Link to this heading">#</a></h2>
 <div class="important admonition">
-<p class="admonition-title">Do you know <a class="reference internal" href="coroutines.html"><span class="std std-doc"><strong>coroutines</strong></span></a>?</p>
-<p>To understand this section well, read 📰 the <a class="reference internal" href="coroutines.html"><span class="std std-doc">Coroutines</span></a> chapter first.</p>
+<p class="admonition-title">Do you know <a class="reference internal" href="#./coroutines.md"><span class="xref myst"><strong>coroutines</strong></span></a>?</p>
+<p>To understand this section well, read 📰 the <a class="reference internal" href="#./coroutines.md"><span class="xref myst">Coroutines</span></a> chapter first.</p>
 </div>
-<p>When possible, such as when performing input/output operations like handling files, opening database connections, or managing HTTP connections, we can create an asynchronous version of a context manager. The dunder methods for creating asynchronous context managers can be coroutines (see the <a class="reference internal" href="coroutines.html"><span class="std std-doc">Coroutines</span></a> chapter). These special methods’ names change slightly: they must be defined using <code class="docutils literal notranslate"><span class="pre">async</span> <span class="pre">def</span></code>, and their names are <code class="docutils literal notranslate"><span class="pre">__aenter__</span></code> and <code class="docutils literal notranslate"><span class="pre">__aexit__</span></code> for setting up and cleaning up the asynchronous context manager, respectively. As an example, let’s create a simple asynchronous context manager to lock a file in order to prevent it from being overwritten by concurrent tasks (to avoid data inconsistency).</p>
+<p>When possible, such as when performing input/output operations like handling files, opening database connections, or managing HTTP connections, we can create an asynchronous version of a context manager. The dunder methods for creating asynchronous context managers can be coroutines (see the <a class="reference internal" href="#./coroutines.md"><span class="xref myst">Coroutines</span></a> chapter). These special methods’ names change slightly: they must be defined using <code class="docutils literal notranslate"><span class="pre">async</span> <span class="pre">def</span></code>, and their names are <code class="docutils literal notranslate"><span class="pre">__aenter__</span></code> and <code class="docutils literal notranslate"><span class="pre">__aexit__</span></code> for setting up and cleaning up the asynchronous context manager, respectively. As an example, let’s create a simple asynchronous context manager to lock a file in order to prevent it from being overwritten by concurrent tasks (to avoid data inconsistency).</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">import</span><span class="w"> </span><span class="nn">asyncio</span>
 <span class="linenos"> 2</span>
 <span class="linenos"> 3</span><span class="k">class</span><span class="w"> </span><span class="nc">AsyncFileLock</span><span class="p">:</span>
@@ -693,69 +697,6 @@ Processing file...
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>File processing done
 Lock released for /tmp/sample.txt
 </pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="references">
-<h2>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
-<div class="docutils container" id="id7">
-<div role="list" class="citation-list">
-<div class="citation" id="id24" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span>Ewi16<span class="fn-bracket">]</span></span>
-<p>Gregory Ewing. PEP 380 – syntax for delegating to a subgenerator. Python Enhancement Proposal 380, Python Software Foundation, February 2016. URL: <a class="reference external" href="https://peps.python.org/pep-0380/">https://peps.python.org/pep-0380/</a> (visited on 2025-10-16).</p>
-</div>
-<div class="citation" id="id22" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span>SPM01<span class="fn-bracket">]</span></span>
-<p>Neil Schemenauer, Tim Peters, and Lie H. Magnus. PEP 255 – simple generators. Python Enhancement Proposal 255, Python Software Foundation, May 2001. URL: <a class="reference external" href="https://peps.python.org/pep-0255/">https://peps.python.org/pep-0255/</a> (visited on 2025-10-13).</p>
-</div>
-<div class="citation" id="id23" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span>Sel16<span class="fn-bracket">]</span></span>
-<p>Yury Selivanov. PEP 525 – asynchronous generators. Python Enhancement Proposal 525, Python Software Foundation, July 2016. URL: <a class="reference external" href="https://peps.python.org/pep-0525/">https://peps.python.org/pep-0525/</a> (visited on 2025-10-15).</p>
-</div>
-<div class="citation" id="id14" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span>Smi12<span class="fn-bracket">]</span></span>
-<p>Eric V. Smith. PEP 420 – implicit namespace packages. Python Enhancement Proposal 420, Python Software Foundation, May 2012. URL: <a class="reference external" href="https://peps.python.org/pep-0420/">https://peps.python.org/pep-0420/</a> (visited on 2025-10-03).</p>
-</div>
-<div class="citation" id="id19" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">PythonSFoundation25a</a><span class="fn-bracket">]</span></span>
-<p>Python Software Foundation. Built-in types — truth value testing. <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#truth-value-testing">https://docs.python.org/3/library/stdtypes.html#truth-value-testing</a>, October 2025. <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#truth-value-testing">https://docs.python.org/3/library/stdtypes.html#truth-value-testing</a>.</p>
-</div>
-<div class="citation" id="id20" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id4">PythonSFoundation25b</a><span class="fn-bracket">]</span></span>
-<p>Python Software Foundation. Data model — asynchronous context managers. <a class="reference external" href="https://docs.python.org/3/reference/datamodel.html#asynchronous-context-managers">https://docs.python.org/3/reference/datamodel.html#asynchronous-context-managers</a>, October 2025. <a class="reference external" href="https://docs.python.org/3/reference/datamodel.html#asynchronous-context-managers">https://docs.python.org/3/reference/datamodel.html#asynchronous-context-managers</a>.</p>
-</div>
-<div class="citation" id="id17" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id5">PythonSFoundation25c</a><span class="fn-bracket">]</span></span>
-<p>Python Software Foundation. Glossary — python 3 documentation: generator. <a class="reference external" href="https://docs.python.org/3/glossary.html#term-generator">https://docs.python.org/3/glossary.html#term-generator</a>, 2025. Accessed: 2025-10-07.</p>
-</div>
-<div class="citation" id="id9" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span>PythonSFoundation25d<span class="fn-bracket">]</span></span>
-<p>Python Software Foundation. The python language reference: 2.4.3. reserved classes of identifiers. 2025. URL: <a class="reference external" href="https://docs.python.org/3/reference/lexical_analysis.html#reserved-classes-of-identifiers">https://docs.python.org/3/reference/lexical_analysis.html#reserved-classes-of-identifiers</a> (visited on 2025-10-01).</p>
-</div>
-<div class="citation" id="id8" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span>PythonSFoundation25e<span class="fn-bracket">]</span></span>
-<p>Python Software Foundation. The python language reference: 3. data model. 2025. URL: <a class="reference external" href="https://docs.python.org/3/reference/datamodel.html">https://docs.python.org/3/reference/datamodel.html</a> (visited on 2025-10-01).</p>
-</div>
-<div class="citation" id="id11" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span>PythonSFoundation25f<span class="fn-bracket">]</span></span>
-<p>Python Software Foundation. The python language reference: 3.3. special method names. 2025. URL: <a class="reference external" href="https://docs.python.org/3/reference/datamodel.html#specialnames">https://docs.python.org/3/reference/datamodel.html#specialnames</a> (visited on 2025-10-01).</p>
-</div>
-<div class="citation" id="id16" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">PythonSFoundation25g</a><span class="fn-bracket">]</span></span>
-<p>Python Software Foundation. The python language reference: 8. compound statements — the with statement. 2025. URL: <a class="reference external" href="https://docs.python.org/3/reference/compound_stmts.html#the-with-statement">https://docs.python.org/3/reference/compound_stmts.html#the-with-statement</a> (visited on 2025-10-07).</p>
-</div>
-<div class="citation" id="id10" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span>PythonSFoundation25h<span class="fn-bracket">]</span></span>
-<p>Python Software Foundation. The python tutorial: 6. modules. 2025. URL: <a class="reference external" href="https://docs.python.org/3/tutorial/modules.html">https://docs.python.org/3/tutorial/modules.html</a> (visited on 2025-10-01).</p>
-</div>
-<div class="citation" id="id25" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span>PythonSFoundation25i<span class="fn-bracket">]</span></span>
-<p>Python Software Foundation. The yield statement. 2025. URL: <a class="reference external" href="https://docs.python.org/3/reference/simple_stmts.html#the-yield-statement">https://docs.python.org/3/reference/simple_stmts.html#the-yield-statement</a> (visited on 2025-10-16).</p>
-</div>
-<div class="citation" id="id18" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id6">PythonSFoundation25j</a><span class="fn-bracket">]</span></span>
-<p>Python Software Foundation. Contextlib — utilities for with-statement contexts: contextlib.contextmanager. 2025. URL: <a class="reference external" href="https://docs.python.org/3/library/contextlib.html#contextlib.contextmanager">https://docs.python.org/3/library/contextlib.html#contextlib.contextmanager</a> (visited on 2025-10-07).</p>
 </div>
 </div>
 </div>
@@ -805,7 +746,7 @@ Lock released for /tmp/sample.txt
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Special Attributes</p>
+        <p class="prev-next-title"><span class="section-number">1. </span>Special Attributes &amp; Methods</p>
       </div>
     </a>
     <a class="right-next"
@@ -813,7 +754,7 @@ Lock released for /tmp/sample.txt
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Iterators</p>
+        <p class="prev-next-title"><span class="section-number">3. </span>Iterators</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -833,16 +774,16 @@ Lock released for /tmp/sample.txt
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#running-in-context">Running in context</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#class-based-definition">Class-based definition</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#enter"><code class="docutils literal notranslate"><span class="pre">__enter__</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exit"><code class="docutils literal notranslate"><span class="pre">__exit__</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">2.1. Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#running-in-context">2.2. Running in context</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#class-based-definition">2.3. Class-based definition</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#enter">2.3.1. <code class="docutils literal notranslate"><span class="pre">__enter__</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exit">2.3.2. <code class="docutils literal notranslate"><span class="pre">__exit__</span></code></a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generator-based-definition">Generator-based definition</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#usage">Usage</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#asynchronous-context-managers">Asynchronous context managers</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generator-based-definition">2.4. Generator-based definition</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#usage">2.5. Usage</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#asynchronous-context-managers">2.6. Asynchronous context managers</a></li>
 </ul>
   </nav></div>
 

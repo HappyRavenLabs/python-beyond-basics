@@ -202,13 +202,13 @@ Type-safe collection handling
 For caching and other purposes
 :::
 
-:::{grid-item-card} [Coroutines](coroutines.md) ⏭️
+:::{grid-item-card} [Coroutines and Concurrency](coroutines_and_concurrency.md.md) ⏭️
 :class-header: bg-light
 
 And their applications
 :::
 
-:::{grid-item-card} [Concurrent & Parallel Execution](concurrency_and_parallelism.md) 🚀
+:::{grid-item-card} [Parallel Execution](parallelism.md) 🚀
 :class-header: bg-light
 
 Mastering multi-threaded and multi-process programming

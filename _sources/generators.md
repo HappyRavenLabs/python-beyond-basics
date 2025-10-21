@@ -102,6 +102,13 @@ StopIteration
 ```
 ````
 
+````{admonition} Never raise StopIteration manually in a generator!
+:class: important
+Starting with Python 3.5 (introduced by [PEP 479](https://peps.python.org/pep-0479/)) and enforced by default since Python 3.7, any [`StopIteration`](https://docs.python.org/3/library/exceptions.html#StopIteration) raised inside a generator is automatically converted into a [`RuntimeError`](https://docs.python.org/3/library/exceptions.html#RuntimeError).  
+For details, see [PEP 479](https://peps.python.org/pep-0479/).  
+Therefore, you should **never explicitly raise** a [`StopIteration`](https://docs.python.org/3/library/exceptions.html#StopIteration) exception inside a **generator**.
+````
+
 ````{admonition} Infinite Generator
 :class: hint
 There is nothing against creating an infinite generator. To achieve that you can use an infinite loop (`while True`).
@@ -300,8 +307,9 @@ A **coroutine**, by definition, is a subroutine (a function) that can be paused 
 ````
 
 ### Creating a Simple Coroutine
+It is possible to create coroutines using Python generators. This concept was proposed in PEP 342 {cite}`pep-0342` and was introduced in Python version 2.5. The same PEP also introduced the `yield` expression (explained in more detail below), which serves as the underlying mechanism for coroutine behavior.
 
-To create a coroutine, let us first create a simple generator. Let it yield successive odd numbers.
+To demonstrate this, let’s start by creating a simple generator that yields successive odd numbers.
 
 ```{code-cell} python
 :tags: ["remove-input", "remove-output"]
@@ -516,7 +524,3 @@ cor.send("Some message")
 :class: important
 Generators can also be asynchronous. The semantics were proposed in PEP 525 {cite}`pep-0525` and they rely on asynchronous functions (`async def`).
 ````
-
-## References
-```{bibliography}
-```
