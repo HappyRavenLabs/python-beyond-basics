@@ -11,6 +11,8 @@ kernelspec:
 ---
 # Context Managers
 
+## Introduction
+
 As you are (hopefully) already accustomed to (at least basic) Python, you've almost certainly encountered those fancy and extremely useful structures with the {code}`with` keyword, called **context managers**. Where does this name come from? Well, context managers define a runtime environment (context) for a given block of code.
 
 ````{admonition} Block of code?

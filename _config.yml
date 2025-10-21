@@ -21,7 +21,9 @@ sphinx:
       - ./references.bib
     html_context:
       default_mode: light
-    html_static_path: ['_static']     
+    html_static_path: ['_static']    
+    html_css_files:
+      - custom.css     
     myst_heading_anchors: 3  
       
 
