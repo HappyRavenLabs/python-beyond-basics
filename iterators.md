@@ -568,6 +568,14 @@ class MyIterator(Iterator):
 
 [^no_subclass]: The ability to check `isinstance` against [`Iterator`](https://docs.python.org/3/library/collections.abc.html#collections.abc.Iterator) without explicit subclassing is not magical. The [`Iterator`](https://docs.python.org/3/library/collections.abc.html#collections.abc.Iterator) abstract class implements a special `__subclasshook__` method that checks whether a class implements both `__iter__` and `__next__` methods.
 
+
+
+````{admonition} Iterator can be asynchronous
+:class: hint
+
+To write asynchronous iterator, you should use methods `__anext__` and `__aiter__` 
+````
+
 ## Iterable sources of data
 
 Having established how iterators work, let us examine iterable sources of data in greater detail. An object is iterable if it satisfies at least one of the following conditions {cite}`pep-0234`:
@@ -590,3 +598,5 @@ my_list = [1, 2, 3]
 list_iter = iter(my_list)  # or my_list.__iter__()
 assert isinstance(list_iter, Iterator)
 ```
+
+
