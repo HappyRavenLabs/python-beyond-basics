@@ -106,7 +106,6 @@ Learning Mindset 🔁
 - Curiosity and willingness to experiment
 - Patience with debugging and errors
 - A few hours per week for practice
-- Openness to collaborative learning
 
 :::
 
