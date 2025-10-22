@@ -64,14 +64,14 @@ my_math
 **However**, there is a special case: the `__mame__` attribute takes the value: `__main__` when a module is executed directly {cite}`python:datamodel_specialnames`.
 This covers a few cases {cite}`python-ref-import-mainspec`:
 
-#### 1. Running from interactive shell (Python REPL, IPython),
+#### Running from interactive shell (Python REPL, IPython),
 
 ```{code-cell} ipython3
 print( __name__)
 ```
 
 
-#### 2. Running from source file:
+#### Running from source file:
 
 Let's modify `my_math.py` to display the value `__main__`.
 
@@ -94,7 +94,7 @@ The output will be:
 ```
 __main__
 ```
-#### 3. Running directly code text
+#### Running directly code text
 The same happens when you execute code passed as a string:
 
 ```bash
@@ -106,7 +106,7 @@ Output:
 __main__
 ```
 
-#### 4. Running code passed from standard input:
+#### Running code passed from standard input:
 
 ```bash
 echo "print(__name__)" | python
