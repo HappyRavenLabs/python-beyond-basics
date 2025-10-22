@@ -17,6 +17,6 @@ parts:
     - file: dynamic_execution
     - file: generics
     - file: weakref
-    - file: coroutines
-    - file: concurrency_and_parallelism
+    - file: coroutines_and_concurrency
+    - file: parallelism
     - file: references
