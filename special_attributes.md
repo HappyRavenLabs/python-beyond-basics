@@ -12,6 +12,8 @@ kernelspec:
 
 # Special Attributes & Methods
 
+## Introduction
+
 In Python, all data types have a set of special attributes, commonly referred to as **dunder attributes**[^dunder].  
 These attributes provide developers with useful metadata about Python objects. They follow the naming pattern `__attribute__` — with two leading and two trailing underscores where `attribute` is the name of the given dunder attribute.
 
@@ -60,7 +62,7 @@ my_math
 
 
 **However**, there is a special case: the `__mame__` attribute takes the value: `__main__` when a module is executed directly {cite}`python:datamodel_specialnames`.
-This covers a few cases {ref}`python-ref-import-mainspec`:
+This covers a few cases {cite}`python-ref-import-mainspec`:
 
 #### 1. Running from interactive shell (Python REPL, IPython),
 
