@@ -136,10 +136,21 @@ At the very beginning of each chapter, I will list specific prerequisites you sh
 ::::{grid} 1 1 2 2
 :gutter: 3
 
-:::{grid-item-card} [Special Attributes](special_attributes.md) 🏷️
+:::{grid-item-card} [Special Attributes & Methods](special_attributes.md) 🏷️
 :class-header: bg-light
 
-Those famous `__dunder__` attributes for modules, classes, methods, and other Python objects
+Those famous `__dunder__` attributes and methods for modules, classes, methods, and other Python objects
+:::
+
+:::{grid-item-card} [Context managers](context_managers.md) 🔒
+:class-header: bg-light
+
+Usage of `with` keyword and their potential applications and limits
+:::
+
+:::{grid-item-card} [Iterators](iterators.md) 🔄
+:class-header: bg-light
+Iterating over sources of data
 :::
 
 :::{grid-item-card} [Generators](generators.md) ⚡️
@@ -147,10 +158,10 @@ Those famous `__dunder__` attributes for modules, classes, methods, and other Py
 Generating content and `yield` keyword
 :::
 
-:::{grid-item-card} [Context Managers](context_managers.md) 🔒
+:::{grid-item-card} [Structural subtyping](structural_subtyping.md) 👣
 :class-header: bg-light
 
-Usage of `with` keyword and their potential applications and limits
+Creating protocols and mechanisms behind the,
 :::
 
 :::{grid-item-card} [Higher-Order Functions](higher_order_functions.md) 🔄
@@ -177,31 +188,31 @@ A vital element in dynamic programming
 Including the popular `@property`
 :::
 
-:::{grid-item-card} [Code Inspection](code_inspect.md) 🔍
+:::{grid-item-card} [Code inspection](code_inspect.md) 🔍
 :class-header: bg-light
 
 Stack tracing, callable signature management, and more
 :::
 
-:::{grid-item-card} [Dynamic Code Execution](dynamic_execution.md) ⚡
+:::{grid-item-card} [Dynamic code execution](dynamic_execution.md) ⚡
 :class-header: bg-light
 
 And its pros and cons
 :::
 
-:::{grid-item-card} [Generic Collections](generics.md) 📦
+:::{grid-item-card} [Generic collections](generics.md) 📦
 :class-header: bg-light
 
 Type-safe collection handling
 :::
 
-:::{grid-item-card} [Weak References](weakref.md) 🔗
+:::{grid-item-card} [Weak references](weakref.md) 🔗
 :class-header: bg-light
 
 For caching and other purposes
 :::
 
-:::{grid-item-card} [Coroutines and Concurrency](coroutines_and_concurrency.md.md) ⏭️
+:::{grid-item-card} [Coroutines and concurrency](coroutines_and_concurrency.md.md) ⏭️
 :class-header: bg-light
 
 And their applications
