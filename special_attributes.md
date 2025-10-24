@@ -292,6 +292,10 @@ There are two main exceptions:
 
 ## Of Classes
 
+### Attributes
+
+#### `__mro__`
+
 ## Of Objects
 
 ### Attributes

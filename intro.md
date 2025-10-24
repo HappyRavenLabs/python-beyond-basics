@@ -158,6 +158,12 @@ Iterating over sources of data
 Generating content and `yield` keyword
 :::
 
+:::{grid-item-card} [Generic collections](generics.md) 📦
+:class-header: bg-light
+
+Type-safe collection handling
+:::
+
 :::{grid-item-card} [Structural subtyping](structural_subtyping.md) 👣
 :class-header: bg-light
 
@@ -198,12 +204,6 @@ Stack tracing, callable signature management, and more
 :class-header: bg-light
 
 And its pros and cons
-:::
-
-:::{grid-item-card} [Generic collections](generics.md) 📦
-:class-header: bg-light
-
-Type-safe collection handling
 :::
 
 :::{grid-item-card} [Weak references](weakref.md) 🔗

@@ -8,6 +8,7 @@ parts:
     - file: context_managers
     - file: iterators
     - file: generators
+    - file: generics
     - file: structural_subtyping
     - file: higher_order_functions
     - file: decorators
@@ -15,7 +16,6 @@ parts:
     - file: descriptors
     - file: code_inspect
     - file: dynamic_execution
-    - file: generics
     - file: weakref
     - file: coroutines_and_concurrency
     - file: parallelism
