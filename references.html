@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>14. References &#8212; Beyond Basics: Mastering Advanced Python — a book to learn expert aspects of Python language</title>
+    <title>16. References &#8212; Beyond Basics: Mastering Advanced Python — a book to learn expert aspects of Python language</title>
   
   
   
@@ -63,7 +63,7 @@
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="13. Weak References" href="weakref.html" />
+    <link rel="prev" title="15. Concurrency and Parallelism" href="parallelism.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -185,16 +185,18 @@
 <li class="toctree-l1"><a class="reference internal" href="context_managers.html">2. Context Managers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="iterators.html">3. Iterators</a></li>
 <li class="toctree-l1"><a class="reference internal" href="generators.html">4. Generators</a></li>
-<li class="toctree-l1"><a class="reference internal" href="structural_subtyping.html">5. Structural Subtyping</a></li>
-<li class="toctree-l1"><a class="reference internal" href="higher_order_functions.html">6. Higher-order Functions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="decorators.html">7. Decorators</a></li>
-<li class="toctree-l1"><a class="reference internal" href="metaclasses.html">8. Metaclasses</a></li>
-<li class="toctree-l1"><a class="reference internal" href="descriptors.html">9. Descriptors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="code_inspect.html">10. Code Inspection</a></li>
-<li class="toctree-l1"><a class="reference internal" href="dynamic_execution.html">11. Dynamic Code Execution</a></li>
-<li class="toctree-l1"><a class="reference internal" href="generics.html">12. Generics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generics.html">5. Generics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="structural_subtyping.html">6. Structural Subtyping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="higher_order_functions.html">7. Higher-order Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="decorators.html">8. Decorators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="metaclasses.html">9. Metaclasses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="descriptors.html">10. Descriptors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="code_inspect.html">11. Code Inspection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dynamic_execution.html">12. Dynamic Code Execution</a></li>
 <li class="toctree-l1"><a class="reference internal" href="weakref.html">13. Weak References</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">14. References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="coroutines_and_concurrency.html">14. Coroutines &amp; Concurrency</a></li>
+<li class="toctree-l1"><a class="reference internal" href="parallelism.html">15. Concurrency and Parallelism</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">16. References</a></li>
 </ul>
 
     </div>
@@ -393,7 +395,7 @@ document.write(`
                 <article class="bd-article">
                   
   <section id="references">
-<h1><span class="section-number">14. </span>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">16. </span>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h1>
 <div class="docutils container" id="id1">
 <div role="list" class="citation-list">
 <div class="citation" id="id20" role="doc-biblioentry">
@@ -407,6 +409,10 @@ document.write(`
 <div class="citation" id="id22" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span>KPvR01<span class="fn-bracket">]</span></span>
 <p>Yee Ka-Ping and Guido van Rossum. PEP 234 – iterators. Python Enhancement Proposal 234, Python Software Foundation, January 2001. URL: <a class="reference external" href="https://peps.python.org/pep-0234/">https://peps.python.org/pep-0234/</a> (visited on 2025-10-20).</p>
+</div>
+<div class="citation" id="id26" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>LLL17<span class="fn-bracket">]</span></span>
+<p>Ivan Levkivskyi, Jukka Lehtosalo, and Łukasz Langa. PEP 544 – protocols: structural subtyping (static duck typing). Python Enhancement Proposal 544, Python Software Foundation, March 2017. URL: <a class="reference external" href="https://peps.python.org/pep-0544/">https://peps.python.org/pep-0544/</a> (visited on 2025-10-23).</p>
 </div>
 <div class="citation" id="id16" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span>SPM01<span class="fn-bracket">]</span></span>
@@ -423,6 +429,10 @@ document.write(`
 <div class="citation" id="id24" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span>vRE05<span class="fn-bracket">]</span></span>
 <p>Guido van Rossum and Philip J. Eby. PEP 342 – coroutines via enhanced generators. Python Enhancement Proposal 342, Python Software Foundation, May 2005. URL: <a class="reference external" href="https://peps.python.org/pep-0342/">https://peps.python.org/pep-0342/</a> (visited on 2025-10-21).</p>
+</div>
+<div class="citation" id="id27" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>vRL14<span class="fn-bracket">]</span></span>
+<p>Guido van Rossum and Ivan Levkivskyi. PEP 483 – the theory of type hints. Python Enhancement Proposal 483, Python Software Foundation, December 2014. URL: <a class="reference external" href="https://peps.python.org/pep-0483/">https://peps.python.org/pep-0483/</a> (visited on 2025-10-23).</p>
 </div>
 <div class="citation" id="id13" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span>PythonSFoundation25a<span class="fn-bracket">]</span></span>
@@ -460,16 +470,20 @@ document.write(`
 <span class="label"><span class="fn-bracket">[</span>PythonSFoundation25i<span class="fn-bracket">]</span></span>
 <p>Python Software Foundation. The python tutorial: 6. modules. 2025. URL: <a class="reference external" href="https://docs.python.org/3/tutorial/modules.html">https://docs.python.org/3/tutorial/modules.html</a> (visited on 2025-10-01).</p>
 </div>
-<div class="citation" id="id19" role="doc-biblioentry">
+<div class="citation" id="id7" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span>PythonSFoundation25j<span class="fn-bracket">]</span></span>
+<p>Python Software Foundation. The import system — main spec. 2025. URL: <a class="reference external" href="https://docs.python.org/3/reference/import.html#main-spec">https://docs.python.org/3/reference/import.html#main-spec</a> (visited on 2025-10-03).</p>
+</div>
+<div class="citation" id="id19" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>PythonSFoundation25k<span class="fn-bracket">]</span></span>
 <p>Python Software Foundation. The yield statement. 2025. URL: <a class="reference external" href="https://docs.python.org/3/reference/simple_stmts.html#the-yield-statement">https://docs.python.org/3/reference/simple_stmts.html#the-yield-statement</a> (visited on 2025-10-16).</p>
 </div>
 <div class="citation" id="id12" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span>PythonSFoundation25k<span class="fn-bracket">]</span></span>
+<span class="label"><span class="fn-bracket">[</span>PythonSFoundation25l<span class="fn-bracket">]</span></span>
 <p>Python Software Foundation. Contextlib — utilities for with-statement contexts: contextlib.contextmanager. 2025. URL: <a class="reference external" href="https://docs.python.org/3/library/contextlib.html#contextlib.contextmanager">https://docs.python.org/3/library/contextlib.html#contextlib.contextmanager</a> (visited on 2025-10-07).</p>
 </div>
 <div class="citation" id="id21" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span>PythonSFoundation25l<span class="fn-bracket">]</span></span>
+<span class="label"><span class="fn-bracket">[</span>PythonSFoundation25m<span class="fn-bracket">]</span></span>
 <p>Python Software Foundation. Iterator. 2025. URL: <a class="reference external" href="https://docs.python.org/3/glossary.html#term-iterator">https://docs.python.org/3/glossary.html#term-iterator</a> (visited on 2025-10-20).</p>
 </div>
 </div>
@@ -507,12 +521,12 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="weakref.html"
+       href="parallelism.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">13. </span>Weak References</p>
+        <p class="prev-next-title"><span class="section-number">15. </span>Concurrency and Parallelism</p>
       </div>
     </a>
 </div>

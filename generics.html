@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>12. Generics &#8212; Beyond Basics: Mastering Advanced Python — a book to learn expert aspects of Python language</title>
+    <title>5. Generics &#8212; Beyond Basics: Mastering Advanced Python — a book to learn expert aspects of Python language</title>
   
   
   
@@ -63,8 +63,8 @@
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="13. Weak References" href="weakref.html" />
-    <link rel="prev" title="11. Dynamic Code Execution" href="dynamic_execution.html" />
+    <link rel="next" title="6. Structural Subtyping" href="structural_subtyping.html" />
+    <link rel="prev" title="4. Generators" href="generators.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -186,16 +186,18 @@
 <li class="toctree-l1"><a class="reference internal" href="context_managers.html">2. Context Managers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="iterators.html">3. Iterators</a></li>
 <li class="toctree-l1"><a class="reference internal" href="generators.html">4. Generators</a></li>
-<li class="toctree-l1"><a class="reference internal" href="structural_subtyping.html">5. Structural Subtyping</a></li>
-<li class="toctree-l1"><a class="reference internal" href="higher_order_functions.html">6. Higher-order Functions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="decorators.html">7. Decorators</a></li>
-<li class="toctree-l1"><a class="reference internal" href="metaclasses.html">8. Metaclasses</a></li>
-<li class="toctree-l1"><a class="reference internal" href="descriptors.html">9. Descriptors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="code_inspect.html">10. Code Inspection</a></li>
-<li class="toctree-l1"><a class="reference internal" href="dynamic_execution.html">11. Dynamic Code Execution</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">12. Generics</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">5. Generics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="structural_subtyping.html">6. Structural Subtyping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="higher_order_functions.html">7. Higher-order Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="decorators.html">8. Decorators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="metaclasses.html">9. Metaclasses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="descriptors.html">10. Descriptors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="code_inspect.html">11. Code Inspection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dynamic_execution.html">12. Dynamic Code Execution</a></li>
 <li class="toctree-l1"><a class="reference internal" href="weakref.html">13. Weak References</a></li>
-<li class="toctree-l1"><a class="reference internal" href="references.html">14. References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="coroutines_and_concurrency.html">14. Coroutines &amp; Concurrency</a></li>
+<li class="toctree-l1"><a class="reference internal" href="parallelism.html">15. Concurrency and Parallelism</a></li>
+<li class="toctree-l1"><a class="reference internal" href="references.html">16. References</a></li>
 </ul>
 
     </div>
@@ -368,7 +370,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -384,6 +388,14 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variance-types">5.1. Variance types</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -394,11 +406,20 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="generics">
-<h1><span class="section-number">12. </span>Generics<a class="headerlink" href="#generics" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">5. </span>Generics<a class="headerlink" href="#generics" title="Link to this heading">#</a></h1>
 <div class="important admonition">
 <p class="admonition-title">This chapter is not ready yet?</p>
 <p>Writing a book takes time and for that chapter I did not have enough of it. Please, return later.</p>
 </div>
+<section id="variance-types">
+<h2><span class="section-number">5.1. </span>Variance types<a class="headerlink" href="#variance-types" title="Link to this heading">#</a></h2>
+<p>Let us explain slightly here the type of type variance we have in Python what was explained in PEP483 <span id="id1">[<a class="reference internal" href="references.html#id27" title="Guido van Rossum and Ivan Levkivskyi. PEP 483 – the theory of type hints. Python Enhancement Proposal 483, Python Software Foundation, December 2014. URL: https://peps.python.org/pep-0483/ (visited on 2025-10-23).">van Rossum and Levkivskyi, 2014</a>]</span>. In general, types can be:</p>
+<ol class="arabic simple">
+<li><p>covariant,</p></li>
+<li><p>contravariant,</p></li>
+<li><p>invariant</p></li>
+</ol>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -432,20 +453,20 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="dynamic_execution.html"
+       href="generators.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">11. </span>Dynamic Code Execution</p>
+        <p class="prev-next-title"><span class="section-number">4. </span>Generators</p>
       </div>
     </a>
     <a class="right-next"
-       href="weakref.html"
+       href="structural_subtyping.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">13. </span>Weak References</p>
+        <p class="prev-next-title"><span class="section-number">6. </span>Structural Subtyping</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -455,6 +476,21 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variance-types">5.1. Variance types</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>

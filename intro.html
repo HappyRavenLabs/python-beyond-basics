@@ -187,16 +187,18 @@
 <li class="toctree-l1"><a class="reference internal" href="context_managers.html">2. Context Managers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="iterators.html">3. Iterators</a></li>
 <li class="toctree-l1"><a class="reference internal" href="generators.html">4. Generators</a></li>
-<li class="toctree-l1"><a class="reference internal" href="structural_subtyping.html">5. Structural Subtyping</a></li>
-<li class="toctree-l1"><a class="reference internal" href="higher_order_functions.html">6. Higher-order Functions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="decorators.html">7. Decorators</a></li>
-<li class="toctree-l1"><a class="reference internal" href="metaclasses.html">8. Metaclasses</a></li>
-<li class="toctree-l1"><a class="reference internal" href="descriptors.html">9. Descriptors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="code_inspect.html">10. Code Inspection</a></li>
-<li class="toctree-l1"><a class="reference internal" href="dynamic_execution.html">11. Dynamic Code Execution</a></li>
-<li class="toctree-l1"><a class="reference internal" href="generics.html">12. Generics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generics.html">5. Generics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="structural_subtyping.html">6. Structural Subtyping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="higher_order_functions.html">7. Higher-order Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="decorators.html">8. Decorators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="metaclasses.html">9. Metaclasses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="descriptors.html">10. Descriptors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="code_inspect.html">11. Code Inspection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dynamic_execution.html">12. Dynamic Code Execution</a></li>
 <li class="toctree-l1"><a class="reference internal" href="weakref.html">13. Weak References</a></li>
-<li class="toctree-l1"><a class="reference internal" href="references.html">14. References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="coroutines_and_concurrency.html">14. Coroutines &amp; Concurrency</a></li>
+<li class="toctree-l1"><a class="reference internal" href="parallelism.html">15. Concurrency and Parallelism</a></li>
+<li class="toctree-l1"><a class="reference internal" href="references.html">16. References</a></li>
 </ul>
 
     </div>
@@ -493,7 +495,6 @@ document.write(`
 <li><p class="sd-card-text">Curiosity and willingness to experiment</p></li>
 <li><p class="sd-card-text">Patience with debugging and errors</p></li>
 <li><p class="sd-card-text">A few hours per week for practice</p></li>
-<li><p class="sd-card-text">Openness to collaborative learning</p></li>
 </ul>
 </div>
 </div>
@@ -531,8 +532,26 @@ document.write(`
 <div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
 <div class="sd-card-body docutils">
 <div class="sd-card-title sd-font-weight-bold docutils">
-<a class="reference internal" href="special_attributes.html"><span class="std std-doc">Special Attributes</span></a> 🏷️</div>
-<p class="sd-card-text">Those famous <code class="docutils literal notranslate"><span class="pre">__dunder__</span></code> attributes for modules, classes, methods, and other Python objects</p>
+<a class="reference internal" href="special_attributes.html"><span class="std std-doc">Special Attributes &amp; Methods</span></a> 🏷️</div>
+<p class="sd-card-text">Those famous <code class="docutils literal notranslate"><span class="pre">__dunder__</span></code> attributes and methods for modules, classes, methods, and other Python objects</p>
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+<a class="reference internal" href="context_managers.html"><span class="std std-doc">Context managers</span></a> 🔒</div>
+<p class="sd-card-text">Usage of <code class="docutils literal notranslate"><span class="pre">with</span></code> keyword and their potential applications and limits</p>
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+<a class="reference internal" href="iterators.html"><span class="std std-doc">Iterators</span></a> 🔄</div>
+<p class="sd-card-text">Iterating over sources of data</p>
 </div>
 </div>
 </div>
@@ -549,8 +568,17 @@ document.write(`
 <div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
 <div class="sd-card-body docutils">
 <div class="sd-card-title sd-font-weight-bold docutils">
-<a class="reference internal" href="context_managers.html"><span class="std std-doc">Context Managers</span></a> 🔒</div>
-<p class="sd-card-text">Usage of <code class="docutils literal notranslate"><span class="pre">with</span></code> keyword and their potential applications and limits</p>
+<a class="reference internal" href="generics.html"><span class="std std-doc">Generic collections</span></a> 📦</div>
+<p class="sd-card-text">Type-safe collection handling</p>
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+<a class="reference internal" href="structural_subtyping.html"><span class="std std-doc">Structural subtyping</span></a> 👣</div>
+<p class="sd-card-text">Creating protocols and mechanisms behind the,</p>
 </div>
 </div>
 </div>
@@ -594,7 +622,7 @@ document.write(`
 <div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
 <div class="sd-card-body docutils">
 <div class="sd-card-title sd-font-weight-bold docutils">
-<a class="reference internal" href="code_inspect.html"><span class="std std-doc">Code Inspection</span></a> 🔍</div>
+<a class="reference internal" href="code_inspect.html"><span class="std std-doc">Code inspection</span></a> 🔍</div>
 <p class="sd-card-text">Stack tracing, callable signature management, and more</p>
 </div>
 </div>
@@ -603,7 +631,7 @@ document.write(`
 <div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
 <div class="sd-card-body docutils">
 <div class="sd-card-title sd-font-weight-bold docutils">
-<a class="reference internal" href="dynamic_execution.html"><span class="std std-doc">Dynamic Code Execution</span></a> ⚡</div>
+<a class="reference internal" href="dynamic_execution.html"><span class="std std-doc">Dynamic code execution</span></a> ⚡</div>
 <p class="sd-card-text">And its pros and cons</p>
 </div>
 </div>
@@ -612,16 +640,7 @@ document.write(`
 <div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
 <div class="sd-card-body docutils">
 <div class="sd-card-title sd-font-weight-bold docutils">
-<a class="reference internal" href="generics.html"><span class="std std-doc">Generic Collections</span></a> 📦</div>
-<p class="sd-card-text">Type-safe collection handling</p>
-</div>
-</div>
-</div>
-<div class="sd-col sd-d-flex-row docutils">
-<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
-<div class="sd-card-body docutils">
-<div class="sd-card-title sd-font-weight-bold docutils">
-<a class="reference internal" href="weakref.html"><span class="std std-doc">Weak References</span></a> 🔗</div>
+<a class="reference internal" href="weakref.html"><span class="std std-doc">Weak references</span></a> 🔗</div>
 <p class="sd-card-text">For caching and other purposes</p>
 </div>
 </div>
@@ -630,7 +649,7 @@ document.write(`
 <div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
 <div class="sd-card-body docutils">
 <div class="sd-card-title sd-font-weight-bold docutils">
-<a class="reference internal" href="#coroutines_and_concurrency.md.md"><span class="xref myst">Coroutines and Concurrency</span></a> ⏭️</div>
+<a class="reference internal" href="#coroutines_and_concurrency.md.md"><span class="xref myst">Coroutines and concurrency</span></a> ⏭️</div>
 <p class="sd-card-text">And their applications</p>
 </div>
 </div>

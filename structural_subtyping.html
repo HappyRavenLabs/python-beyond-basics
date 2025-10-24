@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>5. Structural Subtyping &#8212; Beyond Basics: Mastering Advanced Python — a book to learn expert aspects of Python language</title>
+    <title>6. Structural Subtyping &#8212; Beyond Basics: Mastering Advanced Python — a book to learn expert aspects of Python language</title>
   
   
   
@@ -63,8 +63,8 @@
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="6. Higher-order Functions" href="higher_order_functions.html" />
-    <link rel="prev" title="4. Generators" href="generators.html" />
+    <link rel="next" title="7. Higher-order Functions" href="higher_order_functions.html" />
+    <link rel="prev" title="5. Generics" href="generics.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -186,16 +186,18 @@
 <li class="toctree-l1"><a class="reference internal" href="context_managers.html">2. Context Managers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="iterators.html">3. Iterators</a></li>
 <li class="toctree-l1"><a class="reference internal" href="generators.html">4. Generators</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">5. Structural Subtyping</a></li>
-<li class="toctree-l1"><a class="reference internal" href="higher_order_functions.html">6. Higher-order Functions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="decorators.html">7. Decorators</a></li>
-<li class="toctree-l1"><a class="reference internal" href="metaclasses.html">8. Metaclasses</a></li>
-<li class="toctree-l1"><a class="reference internal" href="descriptors.html">9. Descriptors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="code_inspect.html">10. Code Inspection</a></li>
-<li class="toctree-l1"><a class="reference internal" href="dynamic_execution.html">11. Dynamic Code Execution</a></li>
-<li class="toctree-l1"><a class="reference internal" href="generics.html">12. Generics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generics.html">5. Generics</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">6. Structural Subtyping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="higher_order_functions.html">7. Higher-order Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="decorators.html">8. Decorators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="metaclasses.html">9. Metaclasses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="descriptors.html">10. Descriptors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="code_inspect.html">11. Code Inspection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dynamic_execution.html">12. Dynamic Code Execution</a></li>
 <li class="toctree-l1"><a class="reference internal" href="weakref.html">13. Weak References</a></li>
-<li class="toctree-l1"><a class="reference internal" href="references.html">14. References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="coroutines_and_concurrency.html">14. Coroutines &amp; Concurrency</a></li>
+<li class="toctree-l1"><a class="reference internal" href="parallelism.html">15. Concurrency and Parallelism</a></li>
+<li class="toctree-l1"><a class="reference internal" href="references.html">16. References</a></li>
 </ul>
 
     </div>
@@ -368,7 +370,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -384,6 +388,16 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nominal-subtyping">6.1. Nominal Subtyping</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#protocol-definition">6.2. Protocol Definition</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#protocol-attributes">6.3. Protocol Attributes</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -394,11 +408,305 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="structural-subtyping">
-<h1><span class="section-number">5. </span>Structural Subtyping<a class="headerlink" href="#structural-subtyping" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">6. </span>Structural Subtyping<a class="headerlink" href="#structural-subtyping" title="Link to this heading">#</a></h1>
 <div class="important admonition">
-<p class="admonition-title">This chapter is not ready yet?</p>
-<p>Writing a book takes time and for that chapter I did not have enough of it. Please, return later.</p>
+<p class="admonition-title">Meet generics first?</p>
+<p>It can be useful to learn first about <a class="reference internal" href="generics.html"><span class="std std-doc">generics</span></a>, especially the section describing <a class="reference internal" href="generics.html#variance-types"><span class="std std-ref">Variance types</span></a>.</p>
 </div>
+<section id="nominal-subtyping">
+<h2><span class="section-number">6.1. </span>Nominal Subtyping<a class="headerlink" href="#nominal-subtyping" title="Link to this heading">#</a></h2>
+<div class="hint admonition">
+<p class="admonition-title">Subtyping?</p>
+<p><strong>Subtyping</strong> is the process of <strong>creating a more specific type</strong> from a broader one.</p>
+</div>
+<p>In software engineering, we have two principal ways of subtyping:</p>
+<ol class="arabic simple">
+<li><p>nominal (i.e., by name),</p></li>
+<li><p>structural (i.e., by shape).</p></li>
+</ol>
+<p>In Python, nominal subtyping is far more popular and widely used. It relies on direct inheritance/generalization relationships. We won’t spend much time on this kind of subtyping since it’s well-known and, if you’re an experienced Python user, you’ve surely encountered and used it.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">class</span><span class="w"> </span><span class="nc">User</span><span class="p">:</span>
+<span class="linenos">2</span>    <span class="k">pass</span>
+<span class="linenos">3</span>
+<span class="hll"><span class="linenos">4</span><span class="k">class</span><span class="w"> </span><span class="nc">AuthorizedUser</span><span class="p">(</span><span class="n">User</span><span class="p">):</span>
+</span><span class="linenos">5</span>    <span class="k">pass</span>
+</pre></div>
+</div>
+<div class="pst-scrollable-table-container"><table class="table" id="code-explanation-nominal-subtyping">
+<caption><span class="caption-number">Table 6.1 </span><span class="caption-text">A line-by-line explanation of nominal subtyping</span><a class="headerlink" href="#code-explanation-nominal-subtyping" title="Link to this table">#</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Line</strong></p></th>
+<th class="head"><p><strong>Code</strong></p></th>
+<th class="head"><p><strong>Explanation</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">User</span>
+</pre></div>
+</div>
+</td>
+<td><p>Here, we create a base class (superclass/broader type)</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">AuthorizedUser</span><span class="p">(</span><span class="n">User</span><span class="p">):</span>
+</pre></div>
+</div>
+</td>
+<td><p>Here, we explicitly state (in parentheses) that <code class="docutils literal notranslate"><span class="pre">AuthorizedUser</span></code> is a subtype of <code class="docutils literal notranslate"><span class="pre">User</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Multiple inheritance/MRO</p>
+<p>Python supports multiple inheritance. In that case, methods are searched according to a predefined order. See the example below:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">A</span><span class="p">:</span>
+    <span class="k">pass</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">B</span><span class="p">:</span>
+    <span class="k">pass</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">C</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">):</span>
+    <span class="o">...</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">C</span><span class="o">.</span><span class="vm">__mro__</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This results in a tuple like:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>(&lt;class &#39;__main__.C&#39;&gt;, &lt;class &#39;__main__.A&#39;&gt;, &lt;class &#39;__main__.B&#39;&gt;, &lt;class &#39;object&#39;&gt;)
+</pre></div>
+</div>
+<p>showing the order of method lookup. Methods are searched among superclasses <strong>from left to right</strong>. See <a class="reference internal" href="special_attributes.html#mro"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">__mro__</span></code></span></a></p>
+</div>
+<div class="warning admonition">
+<p class="admonition-title">Important!</p>
+<p>Subtyping represents an <strong>asymmetrical relationship</strong>. This means <code class="docutils literal notranslate"><span class="pre">AuthorizedUser</span></code> is a <code class="docutils literal notranslate"><span class="pre">User</span></code> (it’s a specific type of user), but the reverse is not true, a <code class="docutils literal notranslate"><span class="pre">User</span></code> is not necessarily an <code class="docutils literal notranslate"><span class="pre">AuthorizedUser</span></code>. Formally, if S is a subtype of T (written S &lt;: T), you can use S wherever T is expected, but not vice versa.</p>
+</div>
+</section>
+<section id="protocol-definition">
+<h2><span class="section-number">6.2. </span>Protocol Definition<a class="headerlink" href="#protocol-definition" title="Link to this heading">#</a></h2>
+<p>Python, beginning with version 3.8, officially introduced structural subtyping via PEP 544 <span id="id1">[<a class="reference internal" href="references.html#id26" title="Ivan Levkivskyi, Jukka Lehtosalo, and Łukasz Langa. PEP 544 – protocols: structural subtyping (static duck typing). Python Enhancement Proposal 544, Python Software Foundation, March 2017. URL: https://peps.python.org/pep-0544/ (visited on 2025-10-23).">Levkivskyi <em>et al.</em>, 2017</a>]</span> by introducing protocols. Let’s start with a definition:</p>
+<div class="note admonition">
+<p class="admonition-title">Structural Subtyping</p>
+<p><strong>Structural subtyping</strong> is based <strong>only</strong> on following the same interface (implementing methods with <strong>compatible</strong> signatures) and (optionally) attributes. Unlike nominal subtyping, no explicit inheritance relationship is required.</p>
+</div>
+<p>You might ask, why do we need it at all? Sometimes you don’t need or even can’t inherit directly from a broader type. This happens when:</p>
+<ol class="arabic simple">
+<li><p>you work with legacy classes or third-party library classes you can’t modify,</p></li>
+<li><p>you want to decouple the interface from implementation (by creating protocols independent of class hierarchies),</p></li>
+<li><p>you need static type checking for duck-typed code,</p></li>
+<li><p>you create callbacks or plugins without needing to import or inherit from a superclass.</p></li>
+</ol>
+<p>Let’s move to an example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="k">class</span><span class="w"> </span><span class="nc">DataConnector</span><span class="p">:</span>
+<span class="linenos"> 2</span>
+<span class="hll"><span class="linenos"> 3</span>    <span class="k">def</span><span class="w"> </span><span class="nf">connect</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ip</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">port</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span> 
+</span><span class="linenos"> 4</span>        <span class="k">pass</span>
+<span class="linenos"> 5</span>
+<span class="hll"><span class="linenos"> 6</span>    <span class="k">def</span><span class="w"> </span><span class="nf">retrieve</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+</span><span class="linenos"> 7</span>        <span class="k">return</span> <span class="s2">&quot;&quot;</span>
+<span class="linenos"> 8</span>
+<span class="linenos"> 9</span><span class="k">class</span><span class="w"> </span><span class="nc">WebPageConnector</span><span class="p">:</span>
+<span class="linenos">10</span>
+<span class="linenos">11</span>    <span class="k">def</span><span class="w"> </span><span class="nf">connect</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ip</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">port</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span> 
+<span class="linenos">12</span>        <span class="k">return</span> <span class="kc">None</span>
+<span class="linenos">13</span>
+<span class="linenos">14</span>    <span class="k">def</span><span class="w"> </span><span class="nf">retrieve</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="linenos">15</span>        <span class="k">return</span> <span class="s2">&quot;&lt;html&gt;&lt;/html&gt;&quot;</span>
+<span class="linenos">16</span>
+<span class="linenos">17</span><span class="k">class</span><span class="w"> </span><span class="nc">DatabaseConnector</span><span class="p">:</span>
+<span class="linenos">18</span>
+<span class="linenos">19</span>    <span class="k">def</span><span class="w"> </span><span class="nf">connect</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ip</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">port</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span> 
+<span class="linenos">20</span>        <span class="k">return</span> <span class="kc">None</span>
+<span class="linenos">21</span>
+<span class="linenos">22</span>    <span class="k">def</span><span class="w"> </span><span class="nf">retrieve</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="linenos">23</span>        <span class="k">return</span> <span class="s2">&quot;1, 2, 3&quot;</span>    
+<span class="linenos">24</span>
+<span class="linenos">25</span><span class="k">def</span><span class="w"> </span><span class="nf">process_data</span><span class="p">(</span><span class="n">conn</span><span class="p">:</span> <span class="n">DataConnector</span><span class="p">):</span>
+<span class="linenos">26</span>    <span class="n">conn</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">&quot;127.0.0.1&quot;</span><span class="p">,</span> <span class="mi">8888</span><span class="p">)</span>
+<span class="linenos">27</span>    <span class="n">data</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">retrieve</span><span class="p">()</span>
+<span class="linenos">28</span>
+<span class="linenos">29</span><span class="n">process_data</span><span class="p">(</span><span class="n">DatabaseConnector</span><span class="p">())</span>
+</pre></div>
+</div>
+<p>In our example, we’ve created a class <code class="docutils literal notranslate"><span class="pre">DataConnector</span></code> and defined a pair of methods to be implemented. The classes <code class="docutils literal notranslate"><span class="pre">WebPageConnector</span></code> and <code class="docutils literal notranslate"><span class="pre">DatabaseConnector</span></code> follow that interface, but there’s an issue here:</p>
+<div class="error admonition">
+<p class="admonition-title">Static type check</p>
+<p>Though the code works and no error will be raised at runtime, static type checking (which is the pivotal aspect of structural subtyping) will fail in this case. Running the <code class="docutils literal notranslate"><span class="pre">mypy</span></code> tool to check our code, you’ll see:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">error</span><span class="p">:</span> <span class="n">Argument</span> <span class="mi">1</span> <span class="n">to</span> <span class="s2">&quot;process_data&quot;</span> <span class="n">has</span> <span class="n">incompatible</span> <span class="nb">type</span> <span class="s2">&quot;DatabaseConnector&quot;</span><span class="p">;</span> <span class="n">expected</span> <span class="s2">&quot;DataConnector&quot;</span>  <span class="p">[</span><span class="n">arg</span><span class="o">-</span><span class="nb">type</span><span class="p">]</span>
+<span class="n">Found</span> <span class="mi">1</span> <span class="n">error</span> <span class="ow">in</span> <span class="mi">1</span> <span class="n">file</span> <span class="p">(</span><span class="n">checked</span> <span class="mi">1</span> <span class="n">source</span> <span class="n">file</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This happens because static typing tools doesn’t recognize <code class="docutils literal notranslate"><span class="pre">DataConnector</span></code> as it’s structural supertype.</p>
+</div>
+<p>To solve this, PEP 544 introduced a special <a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Protocol"><code class="docutils literal notranslate"><span class="pre">Protocol</span></code></a> class type hint that marks classes as interfaces for structural subtyping. Look at the refined implementation of the code above.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="hll"><span class="linenos"> 1</span><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Protocol</span>
+</span><span class="linenos"> 2</span>
+<span class="hll"><span class="linenos"> 3</span><span class="k">class</span><span class="w"> </span><span class="nc">DataConnector</span><span class="p">(</span><span class="n">Protocol</span><span class="p">):</span>
+</span><span class="linenos"> 4</span>
+<span class="hll"><span class="linenos"> 5</span>    <span class="k">def</span><span class="w"> </span><span class="nf">connect</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ip</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">port</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span> 
+</span><span class="linenos"> 6</span>        <span class="o">...</span>
+<span class="linenos"> 7</span>
+<span class="hll"><span class="linenos"> 8</span>    <span class="k">def</span><span class="w"> </span><span class="nf">retrieve</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+</span><span class="linenos"> 9</span>        <span class="o">...</span>
+<span class="linenos">10</span>
+<span class="linenos">11</span><span class="k">class</span><span class="w"> </span><span class="nc">WebPageConnector</span><span class="p">:</span>
+<span class="linenos">12</span>
+<span class="linenos">13</span>    <span class="k">def</span><span class="w"> </span><span class="nf">connect</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ip</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">port</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span> 
+<span class="linenos">14</span>        <span class="k">return</span> <span class="kc">None</span>
+<span class="linenos">15</span>
+<span class="linenos">16</span>    <span class="k">def</span><span class="w"> </span><span class="nf">retrieve</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="linenos">17</span>        <span class="k">return</span> <span class="s2">&quot;&lt;html&gt;&lt;/html&gt;&quot;</span>
+<span class="linenos">18</span>
+<span class="linenos">19</span><span class="k">class</span><span class="w"> </span><span class="nc">DatabaseConnector</span><span class="p">:</span>
+<span class="linenos">20</span>
+<span class="linenos">21</span>    <span class="k">def</span><span class="w"> </span><span class="nf">connect</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ip</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">port</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span> 
+<span class="linenos">22</span>        <span class="k">return</span> <span class="kc">None</span>
+<span class="linenos">23</span>
+<span class="linenos">24</span>    <span class="k">def</span><span class="w"> </span><span class="nf">retrieve</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="linenos">25</span>        <span class="k">return</span> <span class="s2">&quot;1, 2, 3&quot;</span>    
+<span class="linenos">26</span>
+<span class="linenos">27</span><span class="k">def</span><span class="w"> </span><span class="nf">process_data</span><span class="p">(</span><span class="n">conn</span><span class="p">:</span> <span class="n">DataConnector</span><span class="p">):</span>
+<span class="linenos">28</span>    <span class="n">conn</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">&quot;127.0.0.1&quot;</span><span class="p">,</span> <span class="mi">8888</span><span class="p">)</span>
+<span class="linenos">29</span>    <span class="n">data</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">retrieve</span><span class="p">()</span>
+<span class="linenos">30</span>
+<span class="linenos">31</span><span class="n">process_data</span><span class="p">(</span><span class="n">DatabaseConnector</span><span class="p">())</span>
+</pre></div>
+</div>
+<p>Note that our protocol must inherit from <a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Protocol"><code class="docutils literal notranslate"><span class="pre">typing.Protocol</span></code></a> and, by convention, interface methods’ bodies contain just the ellipsis (<code class="docutils literal notranslate"><span class="pre">...</span></code>) symbol. Let’s explore the emphasized lines more deeply:</p>
+<div class="pst-scrollable-table-container"><table class="table" id="code-explanation-protocol">
+<caption><span class="caption-number">Table 6.2 </span><span class="caption-text">A line-by-line explanation of protocol definition</span><a class="headerlink" href="#code-explanation-protocol" title="Link to this table">#</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Line</strong></p></th>
+<th class="head"><p><strong>Code</strong></p></th>
+<th class="head"><p><strong>Explanation</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Protocol</span>
+</pre></div>
+</div>
+</td>
+<td><p>We need to import the <code class="docutils literal notranslate"><span class="pre">Protocol</span></code> type hint class first</p></td>
+</tr>
+<tr class="row-odd"><td><p>3</p></td>
+<td><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">DataConnector</span><span class="p">(</span><span class="n">Protocol</span><span class="p">):</span>
+</pre></div>
+</div>
+</td>
+<td><p>We use nominal subtyping (I know this can be confusing) to indicate our class will be used for structural subtyping</p></td>
+</tr>
+<tr class="row-even"><td><p>5-6</p></td>
+<td><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">connect</span><span class="p">(</span><span class="o">...</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="o">...</span>
+</pre></div>
+</div>
+</td>
+<td><p>By convention, protocol methods should contain no body except the ellipsis literal (<code class="docutils literal notranslate"><span class="pre">...</span></code>)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="important admonition">
+<p class="admonition-title">Use type hints</p>
+<p>Since structural subtyping relies on method signatures, don’t forget to use type hints!</p>
+</div>
+<div class="warning admonition">
+<p class="admonition-title">Signature matching requirements</p>
+<p>To follow the structural subtyping mechanism, the entire signature must be <strong>compatible</strong>, including:</p>
+<ol class="arabic simple">
+<li><p><strong>method name:</strong> must match exactly.</p></li>
+<li><p><strong>parameters:</strong> the number, order, and kinds (e.g., positional-only, keyword-only) of parameters must be compatible (the parameter <em>names</em> themselves do not need to match).</p></li>
+<li><p><strong>parameter types:</strong> must be compatible (contravariant).</p></li>
+<li><p><strong>return type:</strong> must be compatible (covariant).</p></li>
+</ol>
+<p>Note: Parameter types are <strong>contravariant</strong> (can accept broader types/supertypes)<a class="footnote-reference brackets" href="#why-contra" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> and return types are <strong>covariant</strong> (can accept narrower types/subtypes) in subtyping relationships.</p>
+</div>
+<div class="hint admonition">
+<p class="admonition-title">Check if class implements a protocol</p>
+<p>By default, you cannot use <code class="docutils literal notranslate"><span class="pre">isinstance</span></code> or <code class="docutils literal notranslate"><span class="pre">issubclass</span></code> checks to verify that a class implements a given protocol. Checks like:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">isinstance</span><span class="p">(</span><span class="n">DatabaseConnector</span><span class="p">(),</span> <span class="n">DataConnector</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>will fail unless you explicitly use the <code class="docutils literal notranslate"><span class="pre">&#64;runtime_checkable</span></code> decorator from the <code class="docutils literal notranslate"><span class="pre">typing</span></code> module. However, that’s not recommended as it might slow down your code and only performs shallow checks. It’s better to use the <code class="docutils literal notranslate"><span class="pre">hasattr</span></code> method to check if a class has the requested method, or rely on static type checkers.</p>
+</div>
+<div class="seealso admonition">
+<p class="admonition-title">See also decorators</p>
+<p>To learn about decorators, see the <a class="reference internal" href="decorators.html"><span class="std std-doc">Decorators</span></a> chapter!</p>
+</div>
+</section>
+<section id="protocol-attributes">
+<h2><span class="section-number">6.3. </span>Protocol Attributes<a class="headerlink" href="#protocol-attributes" title="Link to this heading">#</a></h2>
+<p>Not only methods but also attributes can be indicators of structural subtyping. Let’s slightly change our protocol so it has two attributes and the <code class="docutils literal notranslate"><span class="pre">connect</span></code> method becomes argument-free:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Protocol</span>
+<span class="linenos"> 2</span>
+<span class="linenos"> 3</span><span class="k">class</span><span class="w"> </span><span class="nc">DataConnector</span><span class="p">(</span><span class="n">Protocol</span><span class="p">):</span>
+<span class="hll"><span class="linenos"> 4</span>    <span class="n">ip</span><span class="p">:</span> <span class="nb">str</span>
+</span><span class="hll"><span class="linenos"> 5</span>    <span class="n">port</span><span class="p">:</span> <span class="nb">int</span>
+</span><span class="linenos"> 6</span>
+<span class="linenos"> 7</span>    <span class="k">def</span><span class="w"> </span><span class="nf">connect</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span> 
+<span class="linenos"> 8</span>        <span class="o">...</span>
+<span class="linenos"> 9</span>
+<span class="linenos">10</span>    <span class="k">def</span><span class="w"> </span><span class="nf">retrieve</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="linenos">11</span>        <span class="o">...</span>
+</pre></div>
+</div>
+<p>Now, to satisfy the protocol, we need to either define the attributes at the class level or initialize them is <code class="docutils literal notranslate"><span class="pre">__init__</span></code> or making them properties (<code class="docutils literal notranslate"><span class="pre">&#64;property</span></code>):</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">13</span><span class="k">class</span><span class="w"> </span><span class="nc">WebPageConnector</span><span class="p">:</span>
+<span class="hll"><span class="linenos">14</span>    <span class="n">ip</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;127.0.0.1&quot;</span>
+</span><span class="hll"><span class="linenos">15</span>    <span class="n">port</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">8888</span>
+</span><span class="linenos">16</span>
+<span class="linenos">17</span>    <span class="k">def</span><span class="w"> </span><span class="nf">connect</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span> 
+<span class="linenos">18</span>        <span class="k">return</span> <span class="kc">None</span>
+<span class="linenos">19</span>
+<span class="linenos">20</span>    <span class="k">def</span><span class="w"> </span><span class="nf">retrieve</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="linenos">21</span>        <span class="k">return</span> <span class="s2">&quot;&lt;html&gt;&lt;/html&gt;&quot;</span>
+<span class="linenos">22</span>
+<span class="linenos">23</span><span class="k">class</span><span class="w"> </span><span class="nc">DatabaseConnector</span><span class="p">:</span>
+<span class="linenos">24</span>
+<span class="linenos">25</span>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="hll"><span class="linenos">26</span>        <span class="bp">self</span><span class="o">.</span><span class="n">ip</span> <span class="o">=</span> <span class="s2">&quot;127.0.0.1&quot;</span>
+</span><span class="hll"><span class="linenos">27</span>        <span class="bp">self</span><span class="o">.</span><span class="n">port</span> <span class="o">=</span> <span class="mi">8889</span>
+</span><span class="linenos">28</span>
+<span class="linenos">29</span>    <span class="k">def</span><span class="w"> </span><span class="nf">connect</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span> 
+<span class="linenos">30</span>        <span class="k">return</span> <span class="kc">None</span>
+<span class="linenos">31</span>
+<span class="linenos">32</span>    <span class="k">def</span><span class="w"> </span><span class="nf">retrieve</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="linenos">33</span>        <span class="k">return</span> <span class="s2">&quot;1, 2, 3&quot;</span>    
+<span class="linenos">34</span>
+<span class="linenos">35</span><span class="k">def</span><span class="w"> </span><span class="nf">process_data</span><span class="p">(</span><span class="n">conn</span><span class="p">:</span> <span class="n">DataConnector</span><span class="p">):</span>
+<span class="linenos">36</span>    <span class="n">conn</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span>
+<span class="linenos">37</span>    <span class="n">data</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">retrieve</span><span class="p">()</span>
+<span class="linenos">38</span>
+<span class="linenos">39</span><span class="n">process_data</span><span class="p">(</span><span class="n">WebPageConnector</span><span class="p">())</span>
+<span class="linenos">40</span><span class="n">process_data</span><span class="p">(</span><span class="n">DatabaseConnector</span><span class="p">())</span>
+</pre></div>
+</div>
+<div class="warning admonition">
+<p class="admonition-title">Attribute variance</p>
+<p>Attributes in protocols are <strong>invariant</strong> by default (see <a class="reference internal" href="generics.html#variance-types"><span class="std std-ref">Variance types</span></a> in the <a class="reference internal" href="generics.html"><span class="std std-doc">Generics</span></a> chapter to read more about variance types), meaning an exact type match is required. This is because mutable attributes can be both read from and written to, which requires invariance for type safety.</p>
+<p>However, read-only attributes can be <strong>covariant</strong>. Use <code class="docutils literal notranslate"><span class="pre">&#64;property</span></code> to make a read-only attribute:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Protocol</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">DataConnector</span><span class="p">(</span><span class="n">Protocol</span><span class="p">):</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">some_attribute</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="o">...</span>
+</pre></div>
+</div>
+<p>Then any class following the <code class="docutils literal notranslate"><span class="pre">DataConnector</span></code> protocol should have a <code class="docutils literal notranslate"><span class="pre">some_attribute</span></code> property of type <code class="docutils literal notranslate"><span class="pre">int</span></code> or any subtype of <code class="docutils literal notranslate"><span class="pre">int</span></code>. The property ensures the attribute is read-only, allowing covariance without sacrificing type safety.</p>
+</div>
+<hr class="footnotes docutils" />
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="why-contra" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">1</a><span class="fn-bracket">]</span></span>
+<p>This rule is essential for <strong>substitutability</strong> (part of the Liskov Substitution Principle). When a class follows a protocol, it makes a promise, or “contract”. If the protocol requires a method <code class="docutils literal notranslate"><span class="pre">handle(item:</span> <span class="pre">Animal)</span></code>, it promises to handle <em>any</em> <code class="docutils literal notranslate"><span class="pre">Animal</span></code>. If an implementation tried to narrow this to <code class="docutils literal notranslate"><span class="pre">handle(item:</span> <span class="pre">Dog)</span></code>, it would break that promise. Code using the protocol could pass a <code class="docutils literal notranslate"><span class="pre">Cat</span></code> (which <em>is</em> an <code class="docutils literal notranslate"><span class="pre">Animal</span></code>), but the <code class="docutils literal notranslate"><span class="pre">Dog</span></code>-only implementation would fail. To be safely substitutable, the implementation’s parameter type must be <em>at least as general</em> as the protocol’s. It can be <code class="docutils literal notranslate"><span class="pre">Animal</span></code> (invariant) or a <em>supertype</em> like <code class="docutils literal notranslate"><span class="pre">object</span></code> (<strong>contravariant</strong>), but never a <em>subtype</em> like <code class="docutils literal notranslate"><span class="pre">Dog</span></code>.</p>
+</aside>
+</aside>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -432,12 +740,12 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="generators.html"
+       href="generics.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">4. </span>Generators</p>
+        <p class="prev-next-title"><span class="section-number">5. </span>Generics</p>
       </div>
     </a>
     <a class="right-next"
@@ -445,7 +753,7 @@ document.write(`
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">6. </span>Higher-order Functions</p>
+        <p class="prev-next-title"><span class="section-number">7. </span>Higher-order Functions</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -455,6 +763,23 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nominal-subtyping">6.1. Nominal Subtyping</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#protocol-definition">6.2. Protocol Definition</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#protocol-attributes">6.3. Protocol Attributes</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>

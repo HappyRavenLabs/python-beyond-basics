@@ -25,7 +25,9 @@ In this section, we will explore the most important core dunder attributes acros
 
 ## Of Modules
 
-### `__name__`
+### Attributes
+
+#### `__name__`
 
 The `__name__` attribute holds the name of a module.
 
@@ -62,16 +64,16 @@ my_math
 
 
 **However**, there is a special case: the `__mame__` attribute takes the value: `__main__` when a module is executed directly {cite}`python:datamodel_specialnames`.
-This covers a few cases {ref}`python-ref-import-mainspec`:
+This covers a few cases {cite}`python-ref-import-mainspec`:
 
-#### 1. Running from interactive shell (Python REPL, IPython),
+##### Running from interactive shell (Python REPL, IPython),
 
 ```{code-cell} ipython3
 print( __name__)
 ```
 
 
-#### 2. Running from source file:
+##### Running from source file:
 
 Let's modify `my_math.py` to display the value `__main__`.
 
@@ -94,7 +96,7 @@ The output will be:
 ```
 __main__
 ```
-#### 3. Running directly code text
+##### Running directly code text
 The same happens when you execute code passed as a string:
 
 ```bash
@@ -106,7 +108,7 @@ Output:
 __main__
 ```
 
-#### 4. Running code passed from standard input:
+##### Running code passed from standard input:
 
 ```bash
 echo "print(__name__)" | python
@@ -147,7 +149,7 @@ Now compare the two cases:
 - importing it inside a Python shell (or any module) with `import my_math` will print nothing
 ````
 
-### `__spec__`
+#### `__spec__`
 
 The `__spec__` attribute is an instance of [`ModuleSpec`](https://docs.python.org/3/library/importlib.html#importlib.machinery.ModuleSpec).  
 It contains the specification for the module and is central to the import system.  
@@ -217,69 +219,146 @@ There are two main exceptions:
 ````
 
 
-### `__package___`
+#### `__package___`
 
 
-### `__loader__`
+#### `__loader__`
 
 
-### `__path__`
+#### `__path__`
 
 
-### `__doc__`
 
 
-### `__annotations__`
+#### `__annotations__`
 
 
-### `__dict__`
+#### `__dict__`
 
 
+### Methods
+
+#### ....
 
 ## Of Functions
 
+### Attributes 
 
-### `__globals__`
+#### `__globals__`
 
-### `__closure__`
-
-
-### `__doc__`
-
-### `__name__`
-
-### `__qualname__`
+#### `__closure__`
 
 
+#### `__doc__`
+
+#### `__name__`
+
+#### `__qualname__`
 
 
-### `__defaults__`
 
-### `__code__`
 
-### `__dict__`
+#### `__defaults__`
 
-### `__annotations__`
+#### `__code__`
 
-### `__kwdefaults__`
+#### `__dict__`
 
-### `__type_params__`
+#### `__annotations__`
+
+#### `__kwdefaults__`
+
+#### `__type_params__`
+
+### Methods
+
+#### ....
 
 
 ## Of Methods
 
-### `__self__`
+### Attributes
 
-### `__func__`
+#### `__self__`
+
+#### `__func__`
+
+### Methods
+
+#### ....
 
 
 
 
 ## Of Classes
 
+### Attributes
+
+#### `__mro__`
+
 ## Of Objects
 
-### `__module__`
+### Attributes
+
+#### `__module__`
+
+#### `__class__`
+
+#### `__doc__`
+
+#### `__dict__`
+
+#### `__firstlineno__`
+
+#### `__static_attributes__`
+
+#### `__weakref__`
+
+### Methods
+
+#### `__new__()`
+
+#### `__init__()`
+
+#### `__setattr__()`
+
+#### `__getattribute__()`
+
+#### `__delattr__()`
+
+#### `__getstate__()`
+
+#### `__dir__()`
+
+#### `__eq__()`
+
+#### `__gt__()`
+
+#### `__ge__()`
+
+#### `__lt__()`
+
+#### `__le__()`
+
+#### `__sizeof__()`
+
+#### `__hash__()`
+
+#### `__reduce__()`
+
+#### `__reduce_ex__()`
+
+#### `__repr__()`
+
+#### `__str__()`
+
+#### `__format__()`
+
+#### `__subclasshook__()`
+
+
+
+
 
 
 ```{admonition} Everything is an Object in Python

@@ -297,7 +297,7 @@ Here, we've arrived at the place where we first meet **coroutines**.
 ````{admonition} Curious about modern coroutines?
 :class: important
 
-Here, we are about to talk about simple synchronous coroutines by means of generator functions. The topic of coroutines in the modern sense is elaborated in the chapter [Coroutines](./coroutines.md).
+Here, we are about to talk about simple synchronous coroutines by means of generator functions. The topic of coroutines in the modern sense is elaborated in the chapter [Coroutines](./coroutines_and_concurrency.md).
 ````
 
 ````{admonition} What is a Coroutine?
