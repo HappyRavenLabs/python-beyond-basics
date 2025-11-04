@@ -211,22 +211,19 @@ Imagine you're building a data structure like a stack. Without generics, you mig
 These are complementary tools - use generics to avoid duplication, use inheritance to specialize behavior!
 ````
 
-## Creating a Generic Class
+## Creating a Generic
 
-In Python, generic types are usually related to collections, e.g., *a set of floats* or *a stack of requests*, where we specify what type of objects a collection manages. To define a generic class, we use two constructs from the [`typing`](https://docs.python.org/3/library/typing.html) module:
-[`Generic`](https://docs.python.org/3/library/typing.html#typing.Generic) and [`TypeVar`](https://docs.python.org/3/library/typing.html#typing.TypeVar)
+In Python, generic types are usually related to collections classes, e.g., *a set of floats* or *a stack of requests*, where we specify what type of objects a collection manages; or methods
+
+Since Python 3.12, where a modern and simpler form of defining generics have been introduced by PEP695 {cite}`pep-0695`, we basically define generic class as:
 
 ```{code-block} python
 :lineno-start: 1
-:emphasize-lines: 3,5
+:emphasize-lines: 1
 
-from typing import Generic, TypeVar
-
-T = TypeVar("T")
-
-class Graph(Generic[T]):
+class Graph[T]:
     
-    def __init__(self):
+    def __init__(self) -> None:
         self.nodes: list[T] = []
     
     def add(self, item: T) -> None:
@@ -236,111 +233,71 @@ class Graph(Generic[T]):
         return self.nodes
 ```
 
-This is the simplest form: we specify an abstract type placeholder using [`TypeVar`](https://docs.python.org/3/library/typing.html#typing.TypeVar).
 
-````{admonition} Type var name
-:class: warning
-Remember to use exactly the same name as the [`TypeVar`](https://docs.python.org/3/library/typing.html#typing.TypeVar) argument as the name of the variable you are assigning it to!
-````
 
-Then, our generic class needs to subclass from `Generic`, which is itself parameterized with the type placeholder `T`.
 
-Now, we can create instances of our generic class in several ways:
+and generic methods as:
+
 
 ```{code-block} python
-:lineno-start: 15
+:lineno-start: 1
+:emphasize-lines: 1
 
+def join[T](arg1: T, arg2: T) -> T:
+    # some logic here
+    return arg1
+```
+
+This mysterious variable  `T` in both listing is actually the placeholder for the type generic class or method is parametrized with, e.q. in the code below:
+
+```python
+
+res = join("a", "b")
+```
+
+the `T` will be set with `str` as we passed two string literals: `"a"` and `"b"`.
+
+
+
+````{admonition} Mixed type in generic  
+:class: note
+Note that we can call `join(1, "b")` and [MyPy](https://github.com/python/mypy) will not complain. In this case, the placeholder parameter `T` is binded to the `object` type whose subclasses are both `int` and `str`. That is why static type not necesarily complains about it. You can check type binding by adding statement `reveal_type(res)`. Remember, it will not work on runtime and just on static type check with `mypy` command.
+````
+
+
+````{admonition} Type parameter name
+:class: important
+The name of type placeholder need not to be `T`. It actually can be arbitrary valid python identifier. If your generic class or function takes multiple parameter placeholder, they needs to be unique:
+
+```{code-block} python
+:lineno-start: 1
+
+class MyClass[T1, T2]:
+    pass
+```
+
+````
+
+
+````{admonition} Parametrizing generics
+:class: tip
+With functions, we cannot explicitly state the type for generic — the type is inferred automatically - but for classes, we can. In fact, we can intialize our `Graph` class in multiple ways:
+
+```{code-block} python
+:lineno-start: 1
 # All of these are valid
 graph_1 = Graph()  # Type is inferred
 graph_2: Graph[int] = Graph()  # Explicit annotation
-graph_3 = Graph[int]()  # Runtime parameterization (Python 3.9+)
+graph_3 = Graph[int]()  # Runtime parameterization
 
 # Usage
 graph_2.add(42)  # OK
 graph_2.add("hello")  # Type checker will complain!
 ```
 
-## Defining `TypeVar`
 
-The [`TypeVar`](https://docs.python.org/3/library/typing.html#typing.TypeVar) is the foundation of generics. It creates a type variable that can be used as a placeholder in generic classes and functions.
-
-### Basic `TypeVar`
-
-The simplest form:
-
-```python
-from typing import TypeVar
-
-T = TypeVar("T")  # Can be any type
-```
-
-### Constrained TypeVar
-
-You can constrain a `TypeVar` to specific types:
-
-```python
-from typing import TypeVar
-
-...
-```
-
-### Bounded TypeVar
-
-You can also bound a `TypeVar` to a base class, meaning it accepts that class or any subclass:
-
-```python
-from typing import TypeVar
-
-class Animal:
-    def speak(self) -> str:
-        return "Some sound"
-
-class Dog(Animal):
-    def speak(self) -> str:
-        return "Woof!"
-
-class Cat(Animal):
-    def speak(self) -> str:
-        return "Meow!"
-
-# Bound to Animal - accepts Animal or any subclass
-AnimalType = TypeVar("AnimalType", bound=Animal)
-
-def make_speak(animal: AnimalType) -> str:
-    return animal.speak()
-
-dog = Dog()
-cat = Cat()
-make_speak(dog)  # OK
-make_speak(cat)  # OK
-make_speak("string")  # Type error!
-```
-
-## Multiple Type Parameters
-
-Generic classes can have multiple type parameters:
-
-```python
-from typing import Generic, TypeVar
-
-K = TypeVar("K")  # Key type
-V = TypeVar("V")  # Value type
-
-class Pair(Generic[K, V]):
-    def __init__(self, key: K, value: V):
-        self.key = key
-        self.value = value
-    
-    def get_key(self) -> K:
-        return self.key
-    
-    def get_value(self) -> V:
-        return self.value
-
-# Usage
-pair1: Pair[str, int] = Pair("age", 30)
-pair2: Pair[int, str] = Pair(1, "first")
-```
+````
+## Constrained parameter type
 
 ## Types of Variance
 
@@ -382,38 +339,30 @@ Sounds mysterious? Let us see some real-world examples, quite far apart from the
 
 ### Variance in Python Code
 
-Let's see how variance works in Python generics:
+For Python generics, starting from Python 3.12, parameter type variance (e.g. `T` in our `class Graph[T]:` definitoon) is inferred automatically, unless specified explicitly. To specify it explicitly, we will use the [`TypeVar`](https://docs.python.org/3/library/typing.html#typing.TypeVar) object from [`typing`](https://docs.python.org/3/library/typing.html) built-in module.
 
-#### Invariance (Default)
 
-By default, generic types are **invariant**:
+```{code-block} python
+:lineno-start: 1
+:emphasize-lines: 1
 
-TODO
+from typing import TypeVar
 
-#### Covariance
+T = TypeVar("T") # default = invariant
+T = TypeVar("T", covariant=True) # covariant 
+T = TypeVar("T", contravariant=True) # contravariant 
+T = TypeVar("T", infer_variance=True) # infer automaticaaly based on logic of generic
 
-For **immutable** (read-only) containers, covariance makes sense:
-
-```python
-from typing import TypeVar, Generic
-
-T_co = TypeVar("T_co", covariant=True)
-
-# TODO
+T = TypeVar("T", contravariant=True, covariant=True) # error, cannot specify both at once
 ```
 
-This is safe because we can only **read** from the box, never write to it.
+then we can use them excatly as in [Creating a generic](#creating-a-generic):
 
-#### Contravariance
+```{code-block} python
+:lineno-start: 10
 
-Contravariance is used for **write-only** or **consumer** types:
-
-```python
-from typing import TypeVar, Generic
-
-T_contra = TypeVar("T_contra", contravariant=True)
-
-# TODO
+class Graph[T]:
+    # the rest of the code
 ```
 
 ````{admonition} Default variance type
@@ -422,3 +371,52 @@ The default type of variance in Python generics is **invariant**, meaning **exac
 ````
 
 
+## Upper-Bounded parameter type
+We already know, that our generic will work without type-check complains with any kind (even mixture `int` and `str`) of type. There are, however, many cases, where the type needs to be limited, e.g. a generic method should be valid only for `str` and its subclasses. To achieve this, we can specify upper-bound for our parameter placeholder by means of type annotation. We just type-annotate our placeholder type:
+
+
+```{code-block} python
+
+class Graph[T: str]:
+    # the rest of the code
+```
+
+and it will work in either case:
+
+```{code-block} python
+class Str2(str):
+    pass
+
+g1 = Graph[str]()
+g2 = Graph[Str2]()
+```
+
+
+````{admonition} excplitc bound of type-var
+:class: important
+If using the older syntax with explicit [`TypeVar`](https://docs.python.org/3/library/typing.html#typing.TypeVar), you define upper bound in the following way:
+
+```python
+T = TypeVar("T", bound=str)
+```
+
+````
+
+## Type constraints
+Besides bounding generic type placeholder to a particular type (and its subtypes), we can also constraint it to two or more types. By constraining, we mean
+
+
+
+
+
+````{admonition} excplitc constraints of type-var
+:class: important
+If using the older syntax with explicit [`TypeVar`](https://docs.python.org/3/library/typing.html#typing.TypeVar), you define constraitns as position variadic arguments:
+
+```python
+T = TypeVar("T", str, int)
+```
+
+Remember, you need to specify not less than **two** constraints!
+
+````
