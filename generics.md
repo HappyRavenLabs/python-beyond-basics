@@ -1,3 +1,16 @@
+---
+jupytext:
+  formats: md:myst
+  text_representation:
+    extension: .md
+    format_name: myst
+kernelspec:
+  display_name: Python 3
+  language: python
+  name: python3
+---
+
+
 # Generics
 
 At the very beginning, let us follow a clear distinction made in {cite}`pep-0484` between **a class** and **a type**. 
