@@ -19,4 +19,4 @@ parts:
     - file: weakref
     - file: coroutines_and_concurrency
     - file: parallelism
-    - file: references
+    - file: literature
