@@ -33,17 +33,19 @@ body:
       options:
         - Special Attributes
         - Context Managers
-        - Higehr Order Functions
-        - Decorators
+        - Iterators
         - Generators
+        - Generics
+        - Structural Subtyping
+        - Higher Order Functions
+        - Decorators
         - Metaclasses
         - Descriptors
         - Code Inspect
         - Dynamic Code Execution
-        - Coroutines
-        - Concurrency & Parallelism
-        - Generics
-        - Weak references
+        - Coroutines and Concurrency
+        - Parallelism
+        - Weak References
       default: 0
     validations:
       required: true
