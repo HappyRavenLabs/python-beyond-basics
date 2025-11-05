@@ -197,7 +197,7 @@
 <li class="toctree-l1"><a class="reference internal" href="weakref.html">13. Weak References</a></li>
 <li class="toctree-l1"><a class="reference internal" href="coroutines_and_concurrency.html">14. Coroutines &amp; Concurrency</a></li>
 <li class="toctree-l1"><a class="reference internal" href="parallelism.html">15. Concurrency and Parallelism</a></li>
-<li class="toctree-l1"><a class="reference internal" href="references.html">16. References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="literature.html">16. References</a></li>
 </ul>
 
     </div>
@@ -393,7 +393,19 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variance-types">5.1. Variance types</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#type-hints">5.1. Type Hints</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#type-aliases">5.2. Type Aliases</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-are-generic-types">5.3. What Are Generic Types?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-do-we-need-generics">5.3.1. Why Do We Need Generics?</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-generic">5.4. Creating a Generic</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#upper-bounded-parameter-type">5.5. Upper-Bounded Parameter Type</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#type-constraints">5.6. Type Constraints</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#types-of-variance">5.7. Types of Variance</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#variance-in-python-code">5.7.1. Variance in Python Code</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -407,18 +419,293 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="generics">
 <h1><span class="section-number">5. </span>Generics<a class="headerlink" href="#generics" title="Link to this heading">#</a></h1>
-<div class="important admonition">
-<p class="admonition-title">This chapter is not ready yet?</p>
-<p>Writing a book takes time and for that chapter I did not have enough of it. Please, return later.</p>
+<p>At the very beginning, let us follow a clear distinction made in <span id="id1">[<a class="reference internal" href="literature.html#id29" title="Guido van Rossum, Jukka Lehtosalo, and Łukasz Langa. PEP 484 – type hints. Python Enhancement Proposal 484, Python Software Foundation, September 2014. URL: https://peps.python.org/pep-0484/ (visited on 2025-10-28).">van Rossum <em>et al.</em>, 2014</a>]</span> between <strong>a class</strong> and <strong>a type</strong>.</p>
+<div class="note admonition">
+<p class="admonition-title">A type</p>
+<p><strong>A type</strong> is a variable or function annotation, a static attribute used for static type-checking. You cannot create instances of types!</p>
 </div>
-<section id="variance-types">
-<h2><span class="section-number">5.1. </span>Variance types<a class="headerlink" href="#variance-types" title="Link to this heading">#</a></h2>
-<p>Let us explain slightly here the type of type variance we have in Python what was explained in PEP483 <span id="id1">[<a class="reference internal" href="references.html#id27" title="Guido van Rossum and Ivan Levkivskyi. PEP 483 – the theory of type hints. Python Enhancement Proposal 483, Python Software Foundation, December 2014. URL: https://peps.python.org/pep-0483/ (visited on 2025-10-23).">van Rossum and Levkivskyi, 2014</a>]</span>. In general, types can be:</p>
+<div class="note admonition">
+<p class="admonition-title">A class</p>
+<p><strong>A class</strong> is a kind of factory for creating instances; classes are a runtime concept!</p>
+</div>
+<div class="important admonition">
+<p class="admonition-title">A class is a type</p>
+<p><strong>Every</strong> class is also <strong>a type</strong>, but not vice-versa!</p>
+</div>
+<section id="type-hints">
+<h2><span class="section-number">5.1. </span>Type Hints<a class="headerlink" href="#type-hints" title="Link to this heading">#</a></h2>
+<p>Let us recall that Python supports type hints as a completely voluntary mechanism. Although Python’s makers claim that they will never be mandatory, type hints are nevertheless an extremely useful concept which (quite easily) enables programmers to avoid potentially catastrophic logical errors.</p>
+<p>To make this concrete, let us consider a banking system. Access to money should be granted only to an authorized user, represented by an <code class="docutils literal notranslate"><span class="pre">AuthorizedUser</span></code> class, not just any <code class="docutils literal notranslate"><span class="pre">User</span></code> instance. Remember, Python does not require explicit types; hence, provided no extra validation logic is implemented, a program could accidentally grant access to an unauthorized user, leading to security vulnerabilities.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">User</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">AuthorizedUser</span><span class="p">(</span><span class="n">User</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">auth_token</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">auth_token</span> <span class="o">=</span> <span class="n">auth_token</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">withdraw_money</span><span class="p">(</span><span class="n">user</span><span class="p">:</span> <span class="n">AuthorizedUser</span><span class="p">,</span> <span class="n">amount</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="c1"># Only authorized users should access this</span>
+    <span class="c1"># Without type hints, static type check—another watchdog—will fail</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Withdrawing $</span><span class="si">{</span><span class="n">amount</span><span class="si">}</span><span class="s2"> for </span><span class="si">{</span><span class="n">user</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="kc">True</span>
+
+<span class="n">regular_user</span> <span class="o">=</span> <span class="n">User</span><span class="p">(</span><span class="s2">&quot;John&quot;</span><span class="p">)</span>
+<span class="n">withdraw_money</span><span class="p">(</span><span class="n">regular_user</span><span class="p">,</span> <span class="mf">1000.0</span><span class="p">)</span>  <span class="c1"># Static-check type error!</span>
+
+<span class="c1"># This is correct</span>
+<span class="n">authorized_user</span> <span class="o">=</span> <span class="n">AuthorizedUser</span><span class="p">(</span><span class="s2">&quot;Jane&quot;</span><span class="p">,</span> <span class="s2">&quot;token123&quot;</span><span class="p">)</span>
+<span class="n">withdraw_money</span><span class="p">(</span><span class="n">authorized_user</span><span class="p">,</span> <span class="mf">1000.0</span><span class="p">)</span>  <span class="c1"># OK</span>
+</pre></div>
+</div>
+<p>Thanks to type hints, tools for static code analysis such as <a class="reference external" href="https://github.com/python/mypy">MyPy</a> can capture such errors on demand.</p>
+<div class="hint admonition">
+<p class="admonition-title">Type hints</p>
+<p>In Python, type hints are given after a <code class="docutils literal notranslate"><span class="pre">:</span></code> (colon) symbol just after the name of a variable or function parameter, or after <code class="docutils literal notranslate"><span class="pre">-&gt;</span></code> when representing the type returned by a function:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">age</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">100</span>  <span class="c1"># we annotate `age` as a variable containing `int` values</span>
+</pre></div>
+</div>
+<p>or</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">process</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">eps</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">title</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="c1"># some logic here</span>
+    <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;Processed </span><span class="si">{</span><span class="n">title</span><span class="si">}</span><span class="s2">&quot;</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="type-aliases">
+<h2><span class="section-number">5.2. </span>Type Aliases<a class="headerlink" href="#type-aliases" title="Link to this heading">#</a></h2>
+<p>When needed, we can define aliases for a type, e.g., to make types more compact and reusable:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="hll"><span class="linenos">1</span><span class="nb">type</span> <span class="n">ListOrSet</span> <span class="o">=</span> <span class="nb">list</span> <span class="o">|</span> <span class="nb">set</span>
+</span><span class="linenos">2</span>
+<span class="linenos">3</span><span class="k">def</span><span class="w"> </span><span class="nf">process</span><span class="p">(</span><span class="n">item</span><span class="p">:</span> <span class="n">ListOrSet</span><span class="p">):</span> <span class="c1"># instead of item: list | set</span>
+<span class="linenos">4</span>    <span class="c1"># some logic here</span>
+</pre></div>
+</div>
+<p>or code — more meaningful:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="hll"><span class="linenos">1</span><span class="nb">type</span> <span class="n">Minute</span> <span class="o">=</span> <span class="nb">int</span>
+</span><span class="linenos">2</span>
+<span class="linenos">3</span><span class="k">def</span><span class="w"> </span><span class="nf">sleep</span><span class="p">(</span><span class="n">time</span><span class="p">:</span> <span class="n">Minute</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="linenos">4</span>    <span class="c1"># some logic here</span>
+<span class="linenos">5</span>    <span class="k">pass</span>
+</pre></div>
+</div>
+<p>In the above example, it is clear that the argument’s integer value represents minutes, not seconds or milliseconds, so the code is clearer and more concise than:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">def</span><span class="w"> </span><span class="nf">sleep</span><span class="p">(</span><span class="n">time_minutes</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="linenos">2</span>    <span class="c1"># some logic here</span>
+<span class="linenos">3</span>    <span class="k">pass</span>
+</pre></div>
+</div>
+<p>Let us now see another example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="nb">type</span> <span class="n">Minute</span> <span class="o">=</span> <span class="nb">int</span>
+<span class="linenos">2</span><span class="nb">type</span> <span class="n">Retry</span> <span class="o">=</span> <span class="nb">int</span>
+<span class="linenos">3</span>
+<span class="linenos">4</span><span class="k">def</span><span class="w"> </span><span class="nf">retry</span><span class="p">(</span><span class="n">backoff</span><span class="p">:</span> <span class="n">Minute</span><span class="p">,</span> <span class="n">max_retry</span><span class="p">:</span> <span class="n">Retry</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="linenos">5</span>    <span class="c1"># some logic here</span>
+<span class="linenos">6</span>    <span class="k">pass</span>
+</pre></div>
+</div>
+<p>In the code above, nothing prevents us from running the code:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">backoff_time</span><span class="p">:</span> <span class="n">Minute</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="linenos">2</span><span class="n">retry_count</span><span class="p">:</span> <span class="n">Retry</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="linenos">3</span>
+<span class="linenos">4</span><span class="c1"># Accidentally swapping the arguments!</span>
+<span class="linenos">5</span><span class="n">retry</span><span class="p">(</span><span class="n">retry_count</span><span class="p">,</span> <span class="n">backoff_time</span><span class="p">)</span>  <span class="c1"># Static type checker won&#39;t complain!</span>
+</pre></div>
+</div>
+<p>As you can see, static type checking alone doesn’t prevent this confusion because both are just <code class="docutils literal notranslate"><span class="pre">int</span></code> aliases. When you need static type-checking to be more conservative, you can define simple subclasses to enforce the right types:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">class</span><span class="w"> </span><span class="nc">Minute</span><span class="p">(</span><span class="nb">int</span><span class="p">):</span>
+<span class="linenos">2</span>    <span class="k">pass</span>
+<span class="linenos">3</span>
+<span class="linenos">4</span><span class="k">class</span><span class="w"> </span><span class="nc">Retry</span><span class="p">(</span><span class="nb">int</span><span class="p">):</span>
+<span class="linenos">5</span>    <span class="k">pass</span>
+</pre></div>
+</div>
+<p>This forces you to create instances explicitly:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="hll"><span class="linenos">1</span><span class="n">backoff_time</span><span class="p">:</span> <span class="n">Minute</span> <span class="o">=</span> <span class="n">Minute</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</span><span class="hll"><span class="linenos">2</span><span class="n">retry_count</span><span class="p">:</span> <span class="n">Retry</span> <span class="o">=</span> <span class="n">Retry</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</span><span class="linenos">3</span>
+<span class="linenos">4</span><span class="c1"># Now this will fail at static type checking</span>
+<span class="linenos">5</span><span class="n">retry</span><span class="p">(</span><span class="n">retry_count</span><span class="p">,</span> <span class="n">backoff_time</span><span class="p">)</span>  <span class="c1"># Type error!</span>
+</pre></div>
+</div>
+<p>Then, running:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mypy<span class="w"> </span>our_code.py
+</pre></div>
+</div>
+<p>will, as expected, result in the following errors:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>our_code.py:5: error: Argument 1 to &quot;retry&quot; has incompatible type &quot;Retry&quot;; expected &quot;Minute&quot;  [arg-type]
+our_code.py:5: error: Argument 2 to &quot;retry&quot; has incompatible type &quot;Minute&quot;; expected &quot;Retry&quot;  [arg-type]
+</pre></div>
+</div>
+<p>However, this approach employs explicit creation of a brand new class. That is unnecessary and requires extra computation at runtime. Hence, you can define a new type using the <a class="reference external" href="https://docs.python.org/3/library/typing.html#newtype"><code class="docutils literal notranslate"><span class="pre">NewType</span></code></a> helper construct:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">NewType</span>
+<span class="linenos">2</span>
+<span class="hll"><span class="linenos">3</span><span class="n">Minute</span> <span class="o">=</span> <span class="n">NewType</span><span class="p">(</span><span class="s2">&quot;Minute&quot;</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span>
+</span><span class="hll"><span class="linenos">4</span><span class="n">Retry</span> <span class="o">=</span> <span class="n">NewType</span><span class="p">(</span><span class="s2">&quot;Retry&quot;</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span>
+</span></pre></div>
+</div>
+<p>Remember, <code class="docutils literal notranslate"><span class="pre">NewType</span></code> <strong>must</strong> take only a name (it should be the same as the variable it is assigned to) and its superclass!</p>
+<div class="warning admonition">
+<p class="admonition-title">NewType vs Real Classes</p>
+<p><code class="docutils literal notranslate"><span class="pre">NewType</span></code> return value is used only for static type checking and cannot be subclassed. If you need inheritance, methods, or runtime behavior, use real class inheritance instead! <code class="docutils literal notranslate"><span class="pre">NewType</span></code> outputs cannot be used in subclassing or runtime checks with <code class="docutils literal notranslate"><span class="pre">isinstance</span></code>!</p>
+</div>
+</section>
+<section id="what-are-generic-types">
+<h2><span class="section-number">5.3. </span>What Are Generic Types?<a class="headerlink" href="#what-are-generic-types" title="Link to this heading">#</a></h2>
+<p>While type aliases and <a class="reference external" href="https://docs.python.org/3/library/typing.html#newtype"><code class="docutils literal notranslate"><span class="pre">NewType</span></code></a> help us create more meaningful names for existing types, they still work with concrete, fixed types. What if we need a data structure that can work with any type: integers today, strings tomorrow, or custom objects next week (while maintaining type safety)? This is where generic types come into play.</p>
+<p>First, let us see how the Cambridge Dictionary defines the adjective <strong>generic</strong> <span id="id2">[<a class="reference internal" href="literature.html#id28" title="Generic. https://dictionary.cambridge.org/dictionary/english/generic, 2025. Cambridge Dictionary (accessed 2025-10-28)."><em>generic</em>, 2025</a>]</span>:</p>
+<blockquote>
+<div><p><em>generic:</em> shared by, typical of, or relating to a whole group of similar things, rather than to any particular thing</p>
+</div></blockquote>
+<p>How do we translate that into the language of programmers? In software engineering we most frequently speak about <strong>generic types</strong> or <strong>generic classes</strong>.</p>
+<div class="note admonition">
+<p class="admonition-title">Generic types</p>
+<p><strong>Generic types</strong> are types that are parameterized by other types, e.g., <em>a list of integers</em>, <em>a stack of strings</em>, or <em>a dictionary mapping strings to users</em>!</p>
+</div>
+<section id="why-do-we-need-generics">
+<h3><span class="section-number">5.3.1. </span>Why Do We Need Generics?<a class="headerlink" href="#why-do-we-need-generics" title="Link to this heading">#</a></h3>
+<p>Imagine you’re building a data structure like a stack. Without generics, you might write an <code class="docutils literal notranslate"><span class="pre">IntStack</span></code> class dealing with integers, but what if you need a stack of strings? Or floats? You’d have to write <code class="docutils literal notranslate"><span class="pre">StringStack</span></code>, <code class="docutils literal notranslate"><span class="pre">FloatStack</span></code>, etc. This is repetitive and error-prone. Certainly, you can delegate the logic to a base class, but then classes such as <code class="docutils literal notranslate"><span class="pre">StringStack</span></code> or <code class="docutils literal notranslate"><span class="pre">FloatStack</span></code> are just dummy subclasses to satisfy type checks (provided the logic is consistent). Generics solve this problem by allowing you to write <strong>one</strong> stack that works with <strong>any</strong> type, provided they share similar logic!</p>
+<div class="note admonition">
+<p class="admonition-title">Generics vs Inheritance</p>
+<p><strong>Generics</strong> (<code class="docutils literal notranslate"><span class="pre">Stack[int]</span></code>, <code class="docutils literal notranslate"><span class="pre">Stack[str]</span></code>): Same behavior, different data types. Write one class, use it type-safely with many types.<br />
+<strong>Inheritance</strong> (<code class="docutils literal notranslate"><span class="pre">Dog</span> <span class="pre">extends</span> <span class="pre">Animal</span></code>): Different behaviors. A <code class="docutils literal notranslate"><span class="pre">Dog</span></code> has specific methods that <code class="docutils literal notranslate"><span class="pre">Animal</span></code> doesn’t.<br />
+These are complementary tools—use generics to avoid duplication, use inheritance to specialize behavior!</p>
+</div>
+</section>
+</section>
+<section id="creating-a-generic">
+<h2><span class="section-number">5.4. </span>Creating a Generic<a class="headerlink" href="#creating-a-generic" title="Link to this heading">#</a></h2>
+<p>In Python, generic types are usually (but not necessarily) related to collection classes, e.g., <em>a set of floats</em> or <em>a stack of requests</em>, where we specify what type of objects a collection manages.</p>
+<p>Since Python 3.12, where a modern and simpler form of defining generics has been introduced by PEP 695 <span id="id3">[<a class="reference internal" href="literature.html#id30" title="Eric Traut. PEP 695 – type parameter syntax. Python Enhancement Proposal 695, Python Software Foundation, March 2022. URL: https://peps.python.org/pep-0695/ (visited on 2025-11-04).">Traut, 2022</a>]</span>, we define generic classes as:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="hll"><span class="linenos"> 1</span><span class="k">class</span><span class="w"> </span><span class="nc">Graph</span><span class="p">[</span><span class="n">T</span><span class="p">]:</span>
+</span><span class="linenos"> 2</span>    
+<span class="linenos"> 3</span>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="hll"><span class="linenos"> 4</span>        <span class="bp">self</span><span class="o">.</span><span class="n">nodes</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">T</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span class="linenos"> 5</span>    
+<span class="hll"><span class="linenos"> 6</span>    <span class="k">def</span><span class="w"> </span><span class="nf">add</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">:</span> <span class="n">T</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span class="linenos"> 7</span>        <span class="bp">self</span><span class="o">.</span><span class="n">nodes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+<span class="linenos"> 8</span>    
+<span class="hll"><span class="linenos"> 9</span>    <span class="k">def</span><span class="w"> </span><span class="nf">get_all</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">T</span><span class="p">]:</span>
+</span><span class="linenos">10</span>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">nodes</span>
+</pre></div>
+</div>
+<p>and generic functions as:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="hll"><span class="linenos">1</span><span class="k">def</span><span class="w"> </span><span class="nf">join</span><span class="p">[</span><span class="n">T</span><span class="p">](</span><span class="n">arg1</span><span class="p">:</span> <span class="n">T</span><span class="p">,</span> <span class="n">arg2</span><span class="p">:</span> <span class="n">T</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">T</span><span class="p">:</span>
+</span><span class="linenos">2</span>    <span class="c1"># some logic here</span>
+<span class="linenos">3</span>    <span class="k">return</span> <span class="n">arg1</span>
+</pre></div>
+</div>
+<p>This mysterious variable <code class="docutils literal notranslate"><span class="pre">T</span></code> in both listings is actually the placeholder for the type the generic class or function is parameterized with. For example, in the code below:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">res</span> <span class="o">=</span> <span class="n">join</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>the <code class="docutils literal notranslate"><span class="pre">T</span></code> will be bound to <code class="docutils literal notranslate"><span class="pre">str</span></code> as we passed two string literals: <code class="docutils literal notranslate"><span class="pre">&quot;a&quot;</span></code> and <code class="docutils literal notranslate"><span class="pre">&quot;b&quot;</span></code>.</p>
+<div class="note admonition">
+<p class="admonition-title">Mixed types in generics</p>
+<p>Note that we can call <code class="docutils literal notranslate"><span class="pre">join(1,</span> <span class="pre">&quot;b&quot;)</span></code> and <a class="reference external" href="https://github.com/python/mypy">MyPy</a> will not complain. In this case, the placeholder parameter <code class="docutils literal notranslate"><span class="pre">T</span></code> is bound to the <code class="docutils literal notranslate"><span class="pre">object</span></code> type, whose subclasses are both <code class="docutils literal notranslate"><span class="pre">int</span></code> and <code class="docutils literal notranslate"><span class="pre">str</span></code>. That is why the static type checker doesn’t necessarily complain about it. You can check type binding by adding the statement <code class="docutils literal notranslate"><span class="pre">reveal_type(res)</span></code>. Remember, it will not work at runtime and only during static type checking with the <code class="docutils literal notranslate"><span class="pre">mypy</span></code> command.</p>
+</div>
+<div class="important admonition">
+<p class="admonition-title">Type parameter name</p>
+<p>The name of the type placeholder need not be <code class="docutils literal notranslate"><span class="pre">T</span></code>. It actually can be any arbitrary valid Python identifier. If your generic class or function takes multiple parameter placeholders, they need to be unique:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">class</span><span class="w"> </span><span class="nc">MyClass</span><span class="p">[</span><span class="n">T1</span><span class="p">,</span> <span class="n">T2</span><span class="p">]:</span>
+<span class="linenos">2</span>    <span class="k">pass</span>
+</pre></div>
+</div>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Parameterizing generics</p>
+<p>With functions, we cannot explicitly state the type for a generic (the type is inferred automatically) but for classes, we can. In fact, we can initialize our <code class="docutils literal notranslate"><span class="pre">Graph</span></code> class in multiple ways:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="c1"># All of these are valid</span>
+<span class="linenos">2</span><span class="n">graph_1</span> <span class="o">=</span> <span class="n">Graph</span><span class="p">()</span>  <span class="c1"># Type is inferred</span>
+<span class="linenos">3</span><span class="n">graph_2</span><span class="p">:</span> <span class="n">Graph</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">Graph</span><span class="p">()</span>  <span class="c1"># Explicit annotation</span>
+<span class="linenos">4</span><span class="n">graph_3</span> <span class="o">=</span> <span class="n">Graph</span><span class="p">[</span><span class="nb">int</span><span class="p">]()</span>  <span class="c1"># Runtime parameterization</span>
+<span class="linenos">5</span>
+<span class="linenos">6</span><span class="c1"># Usage</span>
+<span class="linenos">7</span><span class="n">graph_2</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>  <span class="c1"># OK</span>
+<span class="linenos">8</span><span class="n">graph_2</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;hello&quot;</span><span class="p">)</span>  <span class="c1"># Type checker will complain!</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="upper-bounded-parameter-type">
+<h2><span class="section-number">5.5. </span>Upper-Bounded Parameter Type<a class="headerlink" href="#upper-bounded-parameter-type" title="Link to this heading">#</a></h2>
+<p>We already know that our generic will work without type-check complaints with any kind of type (even a mixture of <code class="docutils literal notranslate"><span class="pre">int</span></code> and <code class="docutils literal notranslate"><span class="pre">str</span></code>). There are, however, many cases where the type needs to be limited. For example, a generic method should be valid only for <code class="docutils literal notranslate"><span class="pre">str</span></code> and its subclasses. To achieve this, we can specify an <strong>upper bound</strong> for our parameter placeholder by means of type annotation. We simply type-annotate our placeholder type:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">class</span><span class="w"> </span><span class="nc">Graph</span><span class="p">[</span><span class="n">T</span><span class="p">:</span> <span class="nb">str</span><span class="p">]:</span>
+<span class="linenos">2</span>    <span class="c1"># the rest of the code</span>
+</pre></div>
+</div>
+<p>and it will work in either case:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">class</span><span class="w"> </span><span class="nc">Str2</span><span class="p">(</span><span class="nb">str</span><span class="p">):</span>
+<span class="linenos">2</span>    <span class="k">pass</span>
+<span class="linenos">3</span>
+<span class="linenos">4</span><span class="n">g1</span> <span class="o">=</span> <span class="n">Graph</span><span class="p">[</span><span class="nb">str</span><span class="p">]()</span>
+<span class="linenos">5</span><span class="n">g2</span> <span class="o">=</span> <span class="n">Graph</span><span class="p">[</span><span class="n">Str2</span><span class="p">]()</span>
+</pre></div>
+</div>
+</section>
+<section id="type-constraints">
+<h2><span class="section-number">5.6. </span>Type Constraints<a class="headerlink" href="#type-constraints" title="Link to this heading">#</a></h2>
+<p>Besides bounding a generic type placeholder to a particular type (and its subtypes), we can also constrain it to two or more types. By constraining, we mean a type can take only one out of the passed constraint types <span id="id4">[<a class="reference internal" href="literature.html#id29" title="Guido van Rossum, Jukka Lehtosalo, and Łukasz Langa. PEP 484 – type hints. Python Enhancement Proposal 484, Python Software Foundation, September 2014. URL: https://peps.python.org/pep-0484/ (visited on 2025-10-28).">van Rossum <em>et al.</em>, 2014</a>]</span>. We specify constraints as a tuple of types:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">class</span><span class="w"> </span><span class="nc">Graph</span><span class="p">[</span><span class="n">T</span><span class="p">:</span> <span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="nb">int</span><span class="p">)]:</span>
+<span class="linenos">2</span>    <span class="c1"># the rest of the code</span>
+</pre></div>
+</div>
+<div class="important admonition">
+<p class="admonition-title">Upper bound or constraints</p>
+<p>You cannot define both: constraints and an upper bound!</p>
+</div>
+<p>Remember, you need to specify no fewer than <strong>two</strong> constraints!</p>
+</section>
+<section id="types-of-variance">
+<h2><span class="section-number">5.7. </span>Types of Variance<a class="headerlink" href="#types-of-variance" title="Link to this heading">#</a></h2>
+<p>Now that we understand generics, let’s dive into a somewhat advanced aspect: <strong>variance</strong>. The term <strong>variance</strong> might sound confusing, as it’s usually associated with the statistical measure of data spread. However, in Python’s type system, as clearly explained in PEP 483 <span id="id5">[<a class="reference internal" href="literature.html#id27" title="Guido van Rossum and Ivan Levkivskyi. PEP 483 – the theory of type hints. Python Enhancement Proposal 483, Python Software Foundation, December 2014. URL: https://peps.python.org/pep-0483/ (visited on 2025-10-23).">van Rossum and Levkivskyi, 2014</a>]</span>, there are three types of variance. In general, types can be:</p>
 <ol class="arabic simple">
-<li><p>covariant,</p></li>
-<li><p>contravariant,</p></li>
-<li><p>invariant</p></li>
+<li><p><strong>Covariant</strong></p></li>
+<li><p><strong>Contravariant</strong></p></li>
+<li><p><strong>Invariant</strong></p></li>
 </ol>
+<p>Sounds mysterious? Let us see some real-world examples, quite far apart from the software development world:</p>
+<div class="pst-scrollable-table-container"><table class="table" id="variance-real-life">
+<caption><span class="caption-number">Table 5.1 </span><span class="caption-text">Real-Life Analogies for Variance in Python</span><a class="headerlink" href="#variance-real-life" title="Link to this table">#</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Type of Variance</strong></p></th>
+<th class="head"><p><strong>Plain Explanation</strong></p></th>
+<th class="head"><p><strong>Real-Life Analogy</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Covariance</strong></p></td>
+<td><p>You can <strong>use something more specific</strong> where something more general is expected.</p></td>
+<td><p>🐶 <strong>Example:</strong> A <strong>dog</strong> is an <strong>animal</strong> beyond any doubt!<br />
+If a vet clinic says, “We treat all animals,” you can bring your <strong>dog</strong>, that’s perfectly fine.<br />
+The clinic expects an <em>animal</em> (general), and you provided a <em>dog</em> (specific).<br />
+→ That’s <strong>covariance</strong> in action.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Contravariance</strong></p></td>
+<td><p>You can <strong>accept something more general</strong> where something more specific is expected.</p></td>
+<td><p>👩‍🏫 <strong>Example:</strong> Imagine a <strong>teacher</strong> who can teach <strong>any student</strong>, regardless of age or subject.<br />
+If a school says, “We need a <strong>math teacher for high school students</strong>,” sending this general <strong>teacher</strong> still works, they can handle those students too. The teacher can <em>accept</em> a wider variety of students than what was specifically requested.<br />
+→ That’s <strong>contravariance</strong> — accepting something broader.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Invariance</strong></p></td>
+<td><p>Only an <strong>exact type match</strong> works, no substitutions allowed.</p></td>
+<td><p>🐕 <strong>Example:</strong> A <strong>dog bowl</strong> is made <strong>only for dogs</strong>.<br />
+You can’t use it for cats or generic animals, it’s a strict fit.<br />
+Even though a dog <em>is</em> an animal, the bowl says “dog only.”</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<section id="variance-in-python-code">
+<h3><span class="section-number">5.7.1. </span>Variance in Python Code<a class="headerlink" href="#variance-in-python-code" title="Link to this heading">#</a></h3>
+<p>For Python generics, starting from Python 3.12, parameter type variance (e.g., <code class="docutils literal notranslate"><span class="pre">T</span></code> in our <code class="docutils literal notranslate"><span class="pre">class</span> <span class="pre">Graph[T]:</span></code> definition) is inferred automatically, unless specified explicitly.</p>
+<div class="important admonition">
+<p class="admonition-title">Default variance type</p>
+<p>The default type of variance in Python generics is <strong>invariant</strong>, meaning <strong>exact match</strong> is required. Use <code class="docutils literal notranslate"><span class="pre">covariant=True</span></code> for immutable containers (read-only) and <code class="docutils literal notranslate"><span class="pre">contravariant=True</span></code> for consumer types (write-only/callable parameters).</p>
+</div>
+</section>
 </section>
 </section>
 
@@ -486,7 +773,19 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variance-types">5.1. Variance types</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#type-hints">5.1. Type Hints</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#type-aliases">5.2. Type Aliases</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-are-generic-types">5.3. What Are Generic Types?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-do-we-need-generics">5.3.1. Why Do We Need Generics?</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-generic">5.4. Creating a Generic</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#upper-bounded-parameter-type">5.5. Upper-Bounded Parameter Type</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#type-constraints">5.6. Type Constraints</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#types-of-variance">5.7. Types of Variance</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#variance-in-python-code">5.7.1. Variance in Python Code</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 

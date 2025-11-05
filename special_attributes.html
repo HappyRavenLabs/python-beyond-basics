@@ -197,7 +197,7 @@
 <li class="toctree-l1"><a class="reference internal" href="weakref.html">13. Weak References</a></li>
 <li class="toctree-l1"><a class="reference internal" href="coroutines_and_concurrency.html">14. Coroutines &amp; Concurrency</a></li>
 <li class="toctree-l1"><a class="reference internal" href="parallelism.html">15. Concurrency and Parallelism</a></li>
-<li class="toctree-l1"><a class="reference internal" href="references.html">16. References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="literature.html">16. References</a></li>
 </ul>
 
     </div>
@@ -510,7 +510,7 @@ document.write(`
 <h2><span class="section-number">1.1. </span>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
 <p>In Python, all data types have a set of special attributes, commonly referred to as <strong>dunder attributes</strong><a class="footnote-reference brackets" href="#dunder" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>.<br />
 These attributes provide developers with useful metadata about Python objects. They follow the naming pattern <code class="docutils literal notranslate"><span class="pre">__attribute__</span></code> — with two leading and two trailing underscores where <code class="docutils literal notranslate"><span class="pre">attribute</span></code> is the name of the given dunder attribute.</p>
-<p>Python’s built-in objects come with many such attributes. Some external libraries also define their own custom dunder attributes, but this practice is generally discouraged unless it is truly necessary and thoroughly documented <span id="id2">[<a class="reference internal" href="references.html#id3" title="Python Software Foundation. The python language reference: 2.4.3. reserved classes of identifiers. 2025. URL: https://docs.python.org/3/reference/lexical_analysis.html#reserved-classes-of-identifiers (visited on 2025-10-01).">Python Software Foundation, 2025</a>]</span>.</p>
+<p>Python’s built-in objects come with many such attributes. Some external libraries also define their own custom dunder attributes, but this practice is generally discouraged unless it is truly necessary and thoroughly documented <span id="id2">[<a class="reference internal" href="literature.html#id3" title="Python Software Foundation. The python language reference: 2.4.3. reserved classes of identifiers. 2025. URL: https://docs.python.org/3/reference/lexical_analysis.html#reserved-classes-of-identifiers (visited on 2025-10-01).">Python Software Foundation, 2025</a>]</span>.</p>
 <p>In this section, we will explore the most important core dunder attributes across different types of Python objects.</p>
 </section>
 <section id="of-modules">
@@ -523,9 +523,9 @@ These attributes provide developers with useful metadata about Python objects. T
 <div class="hint admonition">
 <p class="admonition-title">What is a Python module?</p>
 <p>Not sure what a Python module is? According to the official Python tutorial, a module is simply<br />
-“[…] <strong>a file</strong> containing Python definitions and statements” <span id="id3">[<a class="reference internal" href="references.html#id4" title="Python Software Foundation. The python tutorial: 6. modules. 2025. URL: https://docs.python.org/3/tutorial/modules.html (visited on 2025-10-01).">Python Software Foundation, 2025</a>]</span>.</p>
+“[…] <strong>a file</strong> containing Python definitions and statements” <span id="id3">[<a class="reference internal" href="literature.html#id4" title="Python Software Foundation. The python tutorial: 6. modules. 2025. URL: https://docs.python.org/3/tutorial/modules.html (visited on 2025-10-01).">Python Software Foundation, 2025</a>]</span>.</p>
 </div>
-<p>By default, the module name corresponds to the filename without the <code class="docutils literal notranslate"><span class="pre">.py</span></code> suffix <span id="id4">[<a class="reference internal" href="references.html#id4" title="Python Software Foundation. The python tutorial: 6. modules. 2025. URL: https://docs.python.org/3/tutorial/modules.html (visited on 2025-10-01).">Python Software Foundation, 2025</a>]</span>.</p>
+<p>By default, the module name corresponds to the filename without the <code class="docutils literal notranslate"><span class="pre">.py</span></code> suffix <span id="id4">[<a class="reference internal" href="literature.html#id4" title="Python Software Foundation. The python tutorial: 6. modules. 2025. URL: https://docs.python.org/3/tutorial/modules.html (visited on 2025-10-01).">Python Software Foundation, 2025</a>]</span>.</p>
 <p>For example, consider the file <code class="docutils literal notranslate"><span class="pre">my_math.py</span></code></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># file my_math.py</span>
 
@@ -542,8 +542,8 @@ These attributes provide developers with useful metadata about Python objects. T
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>my_math
 </pre></div>
 </div>
-<p><strong>However</strong>, there is a special case: the <code class="docutils literal notranslate"><span class="pre">__mame__</span></code> attribute takes the value: <code class="docutils literal notranslate"><span class="pre">__main__</span></code> when a module is executed directly <span id="id5">[<a class="reference internal" href="references.html#id5" title="Python Software Foundation. The python language reference: 3.3. special method names. 2025. URL: https://docs.python.org/3/reference/datamodel.html#specialnames (visited on 2025-10-01).">Python Software Foundation, 2025</a>]</span>.
-This covers a few cases <span id="id6">[<a class="reference internal" href="references.html#id7" title="Python Software Foundation. The import system — main spec. 2025. URL: https://docs.python.org/3/reference/import.html#main-spec (visited on 2025-10-03).">Python Software Foundation, 2025</a>]</span>:</p>
+<p><strong>However</strong>, there is a special case: the <code class="docutils literal notranslate"><span class="pre">__mame__</span></code> attribute takes the value: <code class="docutils literal notranslate"><span class="pre">__main__</span></code> when a module is executed directly <span id="id5">[<a class="reference internal" href="literature.html#id5" title="Python Software Foundation. The python language reference: 3.3. special method names. 2025. URL: https://docs.python.org/3/reference/datamodel.html#specialnames (visited on 2025-10-01).">Python Software Foundation, 2025</a>]</span>.
+This covers a few cases <span id="id6">[<a class="reference internal" href="literature.html#id7" title="Python Software Foundation. The import system — main spec. 2025. URL: https://docs.python.org/3/reference/import.html#main-spec (visited on 2025-10-03).">Python Software Foundation, 2025</a>]</span>:</p>
 <section id="running-from-interactive-shell-python-repl-ipython">
 <h5><span class="section-number">1.2.1.1.1. </span>Running from interactive shell (Python REPL, IPython),<a class="headerlink" href="#running-from-interactive-shell-python-repl-ipython" title="Link to this heading">#</a></h5>
 <div class="cell docutils container">
@@ -631,7 +631,7 @@ Some of its most relevant attributes are listed below (<a class="reference inter
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">origin</span></code></p></td>
 <td><p>Path to the file (<code class="docutils literal notranslate"><span class="pre">.py</span></code>) where the module is defined.<br />
-May be <code class="docutils literal notranslate"><span class="pre">None</span></code> (e.g., for namespace packages; see  <span id="id7">[<a class="reference internal" href="references.html#id8" title="Eric V. Smith. PEP 420 – implicit namespace packages. Python Enhancement Proposal 420, Python Software Foundation, May 2012. URL: https://peps.python.org/pep-0420/ (visited on 2025-10-03).">Smith, 2012</a>]</span>.</p></td>
+May be <code class="docutils literal notranslate"><span class="pre">None</span></code> (e.g., for namespace packages; see  <span id="id7">[<a class="reference internal" href="literature.html#id8" title="Eric V. Smith. PEP 420 – implicit namespace packages. Python Enhancement Proposal 420, Python Software Foundation, May 2012. URL: https://peps.python.org/pep-0420/ (visited on 2025-10-03).">Smith, 2012</a>]</span>.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">loader</span></code></p></td>
 <td><p>The <a class="reference external" href="https://docs.python.org/3/library/importlib.html#importlib.abc.Loader"><code class="docutils literal notranslate"><span class="pre">Loader</span></code></a> implementation</p></td>
@@ -863,7 +863,7 @@ There are two main exceptions:</p>
 <h4><span class="section-number">1.6.2.20. </span><code class="docutils literal notranslate"><span class="pre">__subclasshook__()</span></code><a class="headerlink" href="#subclasshook" title="Link to this heading">#</a></h4>
 <div class="warning admonition">
 <p class="admonition-title">Everything is an Object in Python</p>
-<p>If you are already experienced in Python, you probably know that literally <strong>all data</strong> in the Python ecosystem are <strong>objects</strong> <span id="id23">[<a class="reference internal" href="references.html#id2" title="Python Software Foundation. The python language reference: 3. data model. 2025. URL: https://docs.python.org/3/reference/datamodel.html (visited on 2025-10-01).">Python Software Foundation, 2025</a>]</span>. This means that modules, functions, methods, and classes <strong>are themselves objects</strong>, not just instances of classes (that, by the way, are objects too).</p>
+<p>If you are already experienced in Python, you probably know that literally <strong>all data</strong> in the Python ecosystem are <strong>objects</strong> <span id="id23">[<a class="reference internal" href="literature.html#id2" title="Python Software Foundation. The python language reference: 3. data model. 2025. URL: https://docs.python.org/3/reference/datamodel.html (visited on 2025-10-01).">Python Software Foundation, 2025</a>]</span>. This means that modules, functions, methods, and classes <strong>are themselves objects</strong>, not just instances of classes (that, by the way, are objects too).</p>
 <p>In this section, the “Of Objects” subsection covers the <strong>core special attributes</strong> that are fundamental to <strong>all</strong> Python objects. The previous subsections (Modules, Functions, Methods, Classes) describe <strong>additional specialized attributes</strong> specific to those object types. Therefore, objects of those types will have both the general object attributes listed here and their type-specific attributes described above.</p>
 </div>
 <hr class="footnotes docutils" />

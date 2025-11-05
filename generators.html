@@ -197,7 +197,7 @@
 <li class="toctree-l1"><a class="reference internal" href="weakref.html">13. Weak References</a></li>
 <li class="toctree-l1"><a class="reference internal" href="coroutines_and_concurrency.html">14. Coroutines &amp; Concurrency</a></li>
 <li class="toctree-l1"><a class="reference internal" href="parallelism.html">15. Concurrency and Parallelism</a></li>
-<li class="toctree-l1"><a class="reference internal" href="references.html">16. References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="literature.html">16. References</a></li>
 </ul>
 
     </div>
@@ -423,7 +423,7 @@ document.write(`
 </div>
 <section id="what-are-generators">
 <h2><span class="section-number">4.1. </span>What Are Generators?<a class="headerlink" href="#what-are-generators" title="Link to this heading">#</a></h2>
-<p>Generators were introduced in Python 2.2 with PEP255 <span id="id1">[<a class="reference internal" href="references.html#id16" title="Neil Schemenauer, Tim Peters, and Lie H. Magnus. PEP 255 – simple generators. Python Enhancement Proposal 255, Python Software Foundation, May 2001. URL: https://peps.python.org/pep-0255/ (visited on 2025-10-13).">Schemenauer <em>et al.</em>, 2001</a>]</span>.
+<p>Generators were introduced in Python 2.2 with PEP255 <span id="id1">[<a class="reference internal" href="literature.html#id16" title="Neil Schemenauer, Tim Peters, and Lie H. Magnus. PEP 255 – simple generators. Python Enhancement Proposal 255, Python Software Foundation, May 2001. URL: https://peps.python.org/pep-0255/ (visited on 2025-10-13).">Schemenauer <em>et al.</em>, 2001</a>]</span>.
 The name is already quite self-explanatory: <strong>something that generates</strong>.
 In fact, they are a particular kind of <strong>iterators</strong> (see <a class="reference internal" href="iterators.html"><span class="std std-doc">Iterators</span></a> chapter):
 a kind of <strong>resumable functions</strong> able to “remember” their current state so the next value can be computed and provided <strong>on demand</strong>. Syntactically, generators
@@ -463,7 +463,7 @@ We&#39;ve yielded: 10
 </div>
 <div class="important admonition">
 <p class="admonition-title">Yielding?</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">yield</span></code> statement (or expression) can be used only <strong>within</strong> a function’s definition <span id="id2">[<a class="reference internal" href="references.html#id19" title="Python Software Foundation. The yield statement. 2025. URL: https://docs.python.org/3/reference/simple_stmts.html#the-yield-statement (visited on 2025-10-16).">Python Software Foundation, 2025</a>]</span>!</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">yield</span></code> statement (or expression) can be used only <strong>within</strong> a function’s definition <span id="id2">[<a class="reference internal" href="literature.html#id19" title="Python Software Foundation. The yield statement. 2025. URL: https://docs.python.org/3/reference/simple_stmts.html#the-yield-statement (visited on 2025-10-16).">Python Software Foundation, 2025</a>]</span>!</p>
 </div>
 <div class="note admonition">
 <p class="admonition-title">Generator vs Generator Iterator</p>
@@ -564,7 +564,7 @@ We&#39;ve yielded: 2
 </div>
 <section id="using-return-values-with-subgenerators">
 <h3><span class="section-number">4.2.1. </span>Using Return Values with Subgenerators<a class="headerlink" href="#using-return-values-with-subgenerators" title="Link to this heading">#</a></h3>
-<p>Another case is when using subgenerators <span id="id3">[<a class="reference internal" href="references.html#id18" title="Gregory Ewing. PEP 380 – syntax for delegating to a subgenerator. Python Enhancement Proposal 380, Python Software Foundation, February 2016. URL: https://peps.python.org/pep-0380/ (visited on 2025-10-16).">Ewing, 2016</a>]</span>. Following the PEP380 document, the expression of the form:</p>
+<p>Another case is when using subgenerators <span id="id3">[<a class="reference internal" href="literature.html#id18" title="Gregory Ewing. PEP 380 – syntax for delegating to a subgenerator. Python Enhancement Proposal 380, Python Software Foundation, February 2016. URL: https://peps.python.org/pep-0380/ (visited on 2025-10-16).">Ewing, 2016</a>]</span>. Following the PEP380 document, the expression of the form:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">result</span> <span class="o">=</span> <span class="k">yield from</span> <span class="n">expression</span>
 </pre></div>
 </div>
@@ -664,7 +664,7 @@ We&#39;ve yielded: 2
 </div>
 <section id="creating-a-simple-coroutine">
 <h3><span class="section-number">4.3.1. </span>Creating a Simple Coroutine<a class="headerlink" href="#creating-a-simple-coroutine" title="Link to this heading">#</a></h3>
-<p>It is possible to create coroutines using Python generators. This concept was proposed in PEP 342 <span id="id4">[<a class="reference internal" href="references.html#id24" title="Guido van Rossum and Philip J. Eby. PEP 342 – coroutines via enhanced generators. Python Enhancement Proposal 342, Python Software Foundation, May 2005. URL: https://peps.python.org/pep-0342/ (visited on 2025-10-21).">van Rossum and Eby, 2005</a>]</span> and was introduced in Python version 2.5. The same PEP also introduced the <code class="docutils literal notranslate"><span class="pre">yield</span></code> expression (explained in more detail below), which serves as the underlying mechanism for coroutine behavior.</p>
+<p>It is possible to create coroutines using Python generators. This concept was proposed in PEP 342 <span id="id4">[<a class="reference internal" href="literature.html#id24" title="Guido van Rossum and Philip J. Eby. PEP 342 – coroutines via enhanced generators. Python Enhancement Proposal 342, Python Software Foundation, May 2005. URL: https://peps.python.org/pep-0342/ (visited on 2025-10-21).">van Rossum and Eby, 2005</a>]</span> and was introduced in Python version 2.5. The same PEP also introduced the <code class="docutils literal notranslate"><span class="pre">yield</span></code> expression (explained in more detail below), which serves as the underlying mechanism for coroutine behavior.</p>
 <p>To demonstrate this, let’s start by creating a simple generator that yields successive odd numbers.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">def</span><span class="w"> </span><span class="nf">odd_generator</span><span class="p">():</span>
 <span class="linenos">2</span>    <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span>
@@ -862,7 +862,7 @@ x=100
 </div>
 <div class="important admonition">
 <p class="admonition-title">Async Generators</p>
-<p>Generators can also be asynchronous. The semantics were proposed in PEP 525 <span id="id5">[<a class="reference internal" href="references.html#id17" title="Yury Selivanov. PEP 525 – asynchronous generators. Python Enhancement Proposal 525, Python Software Foundation, July 2016. URL: https://peps.python.org/pep-0525/ (visited on 2025-10-15).">Selivanov, 2016</a>]</span> and they rely on asynchronous functions (<code class="docutils literal notranslate"><span class="pre">async</span> <span class="pre">def</span></code>).</p>
+<p>Generators can also be asynchronous. The semantics were proposed in PEP 525 <span id="id5">[<a class="reference internal" href="literature.html#id17" title="Yury Selivanov. PEP 525 – asynchronous generators. Python Enhancement Proposal 525, Python Software Foundation, July 2016. URL: https://peps.python.org/pep-0525/ (visited on 2025-10-15).">Selivanov, 2016</a>]</span> and they rely on asynchronous functions (<code class="docutils literal notranslate"><span class="pre">async</span> <span class="pre">def</span></code>).</p>
 </div>
 </section>
 </section>
